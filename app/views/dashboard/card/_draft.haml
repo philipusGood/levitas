@@ -1,0 +1,40 @@
+.flex.flex-col.items-start.gap-3.p-4.rounded-lg.border.border-gray-200.bg-white.justify-between.h-full
+  .flex.flex-col.pb-3.gap-3.self-stretch.border-b.border-gray-100
+    - if deal.property_picture.attached?
+      = image_tag(deal.property_picture.variant(:thumb), class: "rounded-[10px] w-full h-24 object-center object-cover", height: "96")
+    - else
+      .flex.text-gray-600.font-bold.font-serif.bg-gray-200.justify-center.items-center.w-full.h-24.object-center.object-cover{class: "rounded-[10px]"}
+    .flex.flex-col.items-start.grow.min-w-0.gap-1
+      .flex.items-center.self-stretch.justify-between.font-sans.font-normal{:class => "gap-[3px]"}
+        %p.self-stretch.text-blue-600.font-sans.font-bold
+          = number_to_currency_without_cents(deal.target)
+        .badge{class: "badge-#{deal.state}"}
+          = deal.state.humanize
+      .flex.flex-col.gap-1
+        %p.font-serif.font-medium.text-xl.text-gray-600.truncate.w-full{class: "leading-[30px]"}
+          - if deal.property.address.unit.present?
+            = "#{deal.property.address.unit} #{deal.property.address.street}"
+          - else
+            = "#{deal.property.address.street}"
+        %p.font-medium.text-xs.text-gray-400
+          = "#{deal.property.address.city}, #{deal.property.address.province_abbreviation}"
+
+  .grid.grid-cols-3.grid-flow-row-dense.text-xs.text-gray-600{class: "gap-2.5"}
+    .flex.flex-col
+      %p.self-stretch.font-normal.text-gray-400= t('dashboard.index.borrower')
+      %p.font-bold.mt-auto
+    .flex.flex-col
+      %p.self-stretch.font-normal.text-xs.text-gray-400= t('dashboard.index.closing_date')
+      %p.font-bold.mt-auto
+    .flex.flex-col
+      %p.self-stretch.font-normal.text-xs.text-gray-400= t('dashboard.index.mortgage_rank')
+      %p.font-bold.mt-auto
+    .flex.flex-col
+      %p.self-stretch.font-normal.text-xs.text-gray-400= t('dashboard.index.lender_fee')
+      %p.font-bold.mt-auto
+    .flex.flex-col
+      %p.self-stretch.font-normal.text-xs.text-gray-400= t('dashboard.index.rate')
+      %p.font-bold.mt-auto
+    .flex.flex-col
+      %p.self-stretch.font-normal.text-xs.text-gray-400= t('dashboard.index.ltv')
+      %p.font-bold.mt-auto

@@ -1,0 +1,14 @@
+%h1{style: "font-size:24px;margin:0 0 20px 0;font-family:Arial,sans-serif;color: #3F3F46"}
+  We have received your investment commitment
+
+%p{style: "margin:0 0 20px 0;font-size:16px;line-height:24px;font-family:Arial,sans-serif;"}
+  Hi #{@lender.full_name} 
+
+%p{style: "margin:0 0 20px 0;font-size:16px;line-height:24px;font-family:Arial,sans-serif;"}
+  Your commitment lender for your investment of #{@amount} in #{@deal.name} is ready to sign. Please Sign your commitment letter here:
+
+%a{href: deal_url(@deal), style: "text-decoration: none; color: inherit;"}
+  %table{style: "margin:0 0 0px 0;background-color: #3B77A8; border: none; padding: 8px 12px; font-size: 16px; color: white; border-radius: 5px; cursor: pointer;font-family:Arial,sans-serif;"}
+    %tr
+      %td
+        View Deal

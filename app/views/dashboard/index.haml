@@ -1,0 +1,80 @@
+:javascript
+  posthog.identify(
+    '#{current_user.email}',
+    {name: '#{current_user.full_name}', role: '#{current_user.role}'}
+  );
+
+.flex.flex-col.gap-y-12{"data-controller" => "deals", "data-deals-selected-class" => "bg-gray-200", "data-deals-default-class" => "bg-white"}
+  .flex.justify-between
+    %h1.text-2xl.text-gray-700.font-serif.font-bold.leading-9
+      = t('.greeting', name: current_user.first_name)
+
+    - unless current_user.lender?
+      %div
+        = form_tag(deals_path, data: { turbo: false}) do
+          = button_to deals_path, class: "inline-block px-4 py-2 text-base rounded-lg flex justify-center border border-[#E4E4E7] hover:cursor-pointer bg-blue-600 text-white", type: "submit", id: "create-deal" do
+            = t('.create_deal')
+            %svg{fill: "none", height: "24", viewbox: "0 0 24 24", width: "24", xmlns: "http://www.w3.org/2000/svg"}
+              %path{"clip-rule" => "evenodd", d: "M12 7C12.2652 7 12.5196 7.10536 12.7071 7.29289C12.8946 7.48043 13 7.73478 13 8V11H16C16.2652 11 16.5196 11.1054 16.7071 11.2929C16.8946 11.4804 17 11.7348 17 12C17 12.2652 16.8946 12.5196 16.7071 12.7071C16.5196 12.8946 16.2652 13 16 13H13V16C13 16.2652 12.8946 16.5196 12.7071 16.7071C12.5196 16.8946 12.2652 17 12 17C11.7348 17 11.4804 16.8946 11.2929 16.7071C11.1054 16.5196 11 16.2652 11 16V13H8C7.73478 13 7.48043 12.8946 7.29289 12.7071C7.10536 12.5196 7 12.2652 7 12C7 11.7348 7.10536 11.4804 7.29289 11.2929C7.48043 11.1054 7.73478 11 8 11H11V8C11 7.73478 11.1054 7.48043 11.2929 7.29289C11.4804 7.10536 11.7348 7 12 7Z", fill: "white", "fill-rule" => "evenodd"}
+
+
+  - if @user_deals.empty?
+    .flex.flex-col.justify-center.items-center.h-full
+      %svg{fill: "none", height: "120", viewbox: "0 0 120 120", width: "120", xmlns: "http://www.w3.org/2000/svg"}
+        %rect{fill: "#E4E4E7", height: "120", rx: "60", width: "120"}
+      %h3.mt-2.text-sm.font-semibold.text-gray-900.text-xl.mt-4
+        = t('.no_active_deals')
+      - if current_user.lender?
+        .mt-6
+          = button_to marketplace_index_path, method: :get, params: { visibility: 'public' }, class: "inline-block px-4 py-2 text-base rounded-lg flex justify-center border border-[#E4E4E7] hover:cursor-pointer bg-blue-600 text-white" do
+            = t('.explore_marketplace')
+      - else
+        .mt-6
+          = form_tag(deals_path, data: { turbo: false}) do
+            = button_to deals_path, class: "inline-block px-4 py-2 text-base rounded-lg flex justify-center border border-[#E4E4E7] hover:cursor-pointer bg-blue-600 text-white", type: "submit" do
+              = t('.create_deal')
+  - else
+    - unless current_user.admin?
+      = render 'performance'
+    .flex.flex-col.items-start.self-stretch.gap-8
+      .flex.justify-between.items-center.self-stretch
+        %p.font-serif.font-bold.text-xl.text-gray-700{:class => "leading-[30px]"}= t('.my_deals')
+        .flex.items-start.gap-3.md:gap-6.font-sans.text-gray-600
+          = form_with url: dashboard_index_path(request.query_parameters), method: :get, data: {"deals-target": "statusFilterForm"} do|f|
+            .flex.items-start.self-stretch.max-md:hidden
+              = f.hidden_field :filter, value: params[:filter], data: {"deals-target": "filterValue"}
+              - if current_user.lender?
+                - SelectOptions::FILTER_DEALS_LENDER.each do |filter|
+                  %a{href: dashboard_index_path(request.query_parameters), class: "text-center font-medium w-24 py-1 px-3 border border-gray-200 first:rounded-l last:rounded-r #{(params[:filter].eql? filter[1]) || (filter[1] === 'all' && !params[:filter].present?) ? 'bg-blue-600 border border-blue-600 text-white pointer-events-none' : 'bg-white'}", data: {action: "click->deals#submitStatusFilter", "filter-value": filter[1]}}= filter[0]
+              - unless current_user.lender?
+                - SelectOptions::FILTER_DEALS.each do |filter|
+                  %a{href: dashboard_index_path(request.query_parameters), class: "text-center font-medium w-24 py-1 px-3 border border-gray-200 first:rounded-l last:rounded-r #{(params[:filter].eql? filter[1]) || (filter[1] === 'all' && !params[:filter].present?) ? 'bg-blue-600 border border-blue-600 text-white pointer-events-none' : 'bg-white'}", data: {action: "click->deals#submitStatusFilter", "filter-value": filter[1]}}= filter[0]
+          = form_with url: dashboard_index_path(request.query_parameters), method: :get, class: "md:hidden", data: {"deals-target": "statusFilterFormMobile"} do |f|
+            .flex.items-start.self-stretch.bg-white.md:hidden
+              - if current_user.lender?
+                = f.select :filter, options_for_select(SelectOptions::FILTER_DEALS_LENDER, params[:filter]), {}, {:class => "px-3 py-1 pr-10 rounded-l border-gray-200 font-medium hover:cursor-pointer md:hidden", :onchange => "this.form.submit()"}
+              - unless current_user.lender?
+                = f.select :filter, options_for_select(SelectOptions::FILTER_DEALS, params[:filter]), {}, {:class => "px-3 py-1 pr-10 rounded-l border-gray-200 font-medium hover:cursor-pointer md:hidden", :onchange => "this.form.submit()"}
+          .flex.items-center.lg:divide-x.divide-gray-200
+            .flex.gap-2.pr-2.max-lg:hidden
+              .flex.flex-col.p-2.content-center.justify-center.rounded-md{"data-action" => "click->deals#switchView", "data-deals-target" => "cardViewMenu", class: "#{(@deals_view.present? && @deals_view.eql?('card')) ? 'bg-gray-200 hover:cursor-auto' : 'bg-white hover:cursor-pointer'}"}
+                %svg{xmlns: "http://www.w3.org/2000/svg", width: "16", height: "16", viewBox: "0 0 16 16", fill:"none", id: "card-view"}
+                  %path{d: "M4.00039 2.40039C3.57604 2.40039 3.16908 2.56896 2.86902 2.86902C2.56896 3.16908 2.40039 3.57604 2.40039 4.00039V5.60039C2.40039 6.02474 2.56896 6.4317 2.86902 6.73176C3.16908 7.03182 3.57604 7.20039 4.00039 7.20039H5.60039C6.02474 7.20039 6.4317 7.03182 6.73176 6.73176C7.03182 6.4317 7.20039 6.02474 7.20039 5.60039V4.00039C7.20039 3.57604 7.03182 3.16908 6.73176 2.86902C6.4317 2.56896 6.02474 2.40039 5.60039 2.40039H4.00039ZM4.00039 8.80039C3.57604 8.80039 3.16908 8.96896 2.86902 9.26902C2.56896 9.56908 2.40039 9.97605 2.40039 10.4004V12.0004C2.40039 12.4247 2.56896 12.8317 2.86902 13.1318C3.16908 13.4318 3.57604 13.6004 4.00039 13.6004H5.60039C6.02474 13.6004 6.4317 13.4318 6.73176 13.1318C7.03182 12.8317 7.20039 12.4247 7.20039 12.0004V10.4004C7.20039 9.97605 7.03182 9.56908 6.73176 9.26902C6.4317 8.96896 6.02474 8.80039 5.60039 8.80039H4.00039ZM8.80039 4.00039C8.80039 3.57604 8.96896 3.16908 9.26902 2.86902C9.56908 2.56896 9.97605 2.40039 10.4004 2.40039H12.0004C12.4247 2.40039 12.8317 2.56896 13.1318 2.86902C13.4318 3.16908 13.6004 3.57604 13.6004 4.00039V5.60039C13.6004 6.02474 13.4318 6.4317 13.1318 6.73176C12.8317 7.03182 12.4247 7.20039 12.0004 7.20039H10.4004C9.97605 7.20039 9.56908 7.03182 9.26902 6.73176C8.96896 6.4317 8.80039 6.02474 8.80039 5.60039V4.00039ZM8.80039 10.4004C8.80039 9.97605 8.96896 9.56908 9.26902 9.26902C9.56908 8.96896 9.97605 8.80039 10.4004 8.80039H12.0004C12.4247 8.80039 12.8317 8.96896 13.1318 9.26902C13.4318 9.56908 13.6004 9.97605 13.6004 10.4004V12.0004C13.6004 12.4247 13.4318 12.8317 13.1318 13.1318C12.8317 13.4318 12.4247 13.6004 12.0004 13.6004H10.4004C9.97605 13.6004 9.56908 13.4318 9.26902 13.1318C8.96896 12.8317 8.80039 12.4247 8.80039 12.0004V10.4004Z", fill: "#52525B" }
+              .flex.flex-col.p-2.content-center.justify-center.rounded-md{"data-action" => "click->deals#switchView", "data-deals-target" => "tableViewMenu", class: "#{(@deals_view.present? && @deals_view.eql?('table')) ? 'bg-gray-200 hover:cursor-auto' : 'bg-white hover:cursor-pointer'}"}
+                %svg{xmlns: "http://www.w3.org/2000/svg", width: "16", height: "16", viewBox: "0 0 16 16", fill:"none", id: "table-view"}
+                  %path{"fill-rule" => "evenodd", "clip-rule" => "evenodd", d: "M2.40039 3.20039C2.40039 2.98822 2.48468 2.78473 2.63471 2.63471C2.78473 2.48468 2.98822 2.40039 3.20039 2.40039H12.8004C13.0126 2.40039 13.216 2.48468 13.3661 2.63471C13.5161 2.78473 13.6004 2.98822 13.6004 3.20039C13.6004 3.41256 13.5161 3.61605 13.3661 3.76608C13.216 3.91611 13.0126 4.00039 12.8004 4.00039H3.20039C2.98822 4.00039 2.78473 3.91611 2.63471 3.76608C2.48468 3.61605 2.40039 3.41256 2.40039 3.20039ZM2.40039 6.40039C2.40039 6.18822 2.48468 5.98473 2.63471 5.83471C2.78473 5.68468 2.98822 5.60039 3.20039 5.60039H12.8004C13.0126 5.60039 13.216 5.68468 13.3661 5.83471C13.5161 5.98473 13.6004 6.18822 13.6004 6.40039C13.6004 6.61256 13.5161 6.81605 13.3661 6.96608C13.216 7.11611 13.0126 7.20039 12.8004 7.20039H3.20039C2.98822 7.20039 2.78473 7.11611 2.63471 6.96608C2.48468 6.81605 2.40039 6.61256 2.40039 6.40039ZM2.40039 9.60039C2.40039 9.38822 2.48468 9.18473 2.63471 9.03471C2.78473 8.88468 2.98822 8.80039 3.20039 8.80039H12.8004C13.0126 8.80039 13.216 8.88468 13.3661 9.03471C13.5161 9.18473 13.6004 9.38822 13.6004 9.60039C13.6004 9.81256 13.5161 10.016 13.3661 10.1661C13.216 10.3161 13.0126 10.4004 12.8004 10.4004H3.20039C2.98822 10.4004 2.78473 10.3161 2.63471 10.1661C2.48468 10.016 2.40039 9.81256 2.40039 9.60039ZM2.40039 12.8004C2.40039 12.5882 2.48468 12.3847 2.63471 12.2347C2.78473 12.0847 2.98822 12.0004 3.20039 12.0004H12.8004C13.0126 12.0004 13.216 12.0847 13.3661 12.2347C13.5161 12.3847 13.6004 12.5882 13.6004 12.8004C13.6004 13.0126 13.5161 13.216 13.3661 13.3661C13.216 13.5161 13.0126 13.6004 12.8004 13.6004H3.20039C2.98822 13.6004 2.78473 13.5161 2.63471 13.3661C2.48468 13.216 2.40039 13.0126 2.40039 12.8004Z", fill: "#52525B"}
+            .flex.gap-2.lg:pl-2
+              .flex-inline.flex-col.p-2.content-center.justify-center.bg-white.rounded-md.relative.hover:cursor-pointer.max-lg:hidden{"data-action" => "click->popover#toggle", "data-popover-id": "sort-deals"}
+                %svg{xmlns: "http://www.w3.org/2000/svg", width: "16", height: "16", viewBox: "0 0 16 16", fill: "none"}
+                  %path{d: "M2.39961 2.40039C2.18744 2.40039 1.98395 2.48468 1.83392 2.63471C1.68389 2.78473 1.59961 2.98822 1.59961 3.20039C1.59961 3.41256 1.68389 3.61605 1.83392 3.76608C1.98395 3.91611 2.18744 4.00039 2.39961 4.00039H11.1996C11.4118 4.00039 11.6153 3.91611 11.7653 3.76608C11.9153 3.61605 11.9996 3.41256 11.9996 3.20039C11.9996 2.98822 11.9153 2.78473 11.7653 2.63471C11.6153 2.48468 11.4118 2.40039 11.1996 2.40039H2.39961ZM2.39961 5.60039C2.18744 5.60039 1.98395 5.68468 1.83392 5.83471C1.68389 5.98473 1.59961 6.18822 1.59961 6.40039C1.59961 6.61256 1.68389 6.81605 1.83392 6.96608C1.98395 7.11611 2.18744 7.20039 2.39961 7.20039H7.99961C8.21178 7.20039 8.41527 7.11611 8.56529 6.96608C8.71532 6.81605 8.79961 6.61256 8.79961 6.40039C8.79961 6.18822 8.71532 5.98473 8.56529 5.83471C8.41527 5.68468 8.21178 5.60039 7.99961 5.60039H2.39961ZM2.39961 8.80039C2.18744 8.80039 1.98395 8.88468 1.83392 9.03471C1.68389 9.18473 1.59961 9.38822 1.59961 9.60039C1.59961 9.81256 1.68389 10.016 1.83392 10.1661C1.98395 10.3161 2.18744 10.4004 2.39961 10.4004H5.59961C5.81178 10.4004 6.01527 10.3161 6.16529 10.1661C6.31532 10.016 6.39961 9.81256 6.39961 9.60039C6.39961 9.38822 6.31532 9.18473 6.16529 9.03471C6.01527 8.88468 5.81178 8.80039 5.59961 8.80039H2.39961ZM11.9996 6.40039C11.9996 6.18822 11.9153 5.98473 11.7653 5.83471C11.6153 5.68468 11.4118 5.60039 11.1996 5.60039C10.9874 5.60039 10.784 5.68468 10.6339 5.83471C10.4839 5.98473 10.3996 6.18822 10.3996 6.40039V10.8692L9.36521 9.83479C9.21433 9.68906 9.01225 9.60843 8.80249 9.61025C8.59273 9.61207 8.39208 9.69621 8.24375 9.84454C8.09543 9.99286 8.01129 10.1935 8.00947 10.4033C8.00765 10.613 8.08828 10.8151 8.23401 10.966L10.634 13.366C10.784 13.516 10.9875 13.6002 11.1996 13.6002C11.4117 13.6002 11.6152 13.516 11.7652 13.366L14.1652 10.966C14.3109 10.8151 14.3916 10.613 14.3897 10.4033C14.3879 10.1935 14.3038 9.99286 14.1555 9.84454C14.0071 9.69621 13.8065 9.61207 13.5967 9.61025C13.387 9.60843 13.1849 9.68906 13.034 9.83479L11.9996 10.8692V6.40039Z", fill: "#52525B"}
+                .absolute.w-64.right-0.top-10.z-10.flex-inline.flex-col.gap-2.border.rounded.border-gray-200.items-start.font-sans.text-left.bg-white.hidden{"data-popover-target" => "popover", id: "sort-deals"}
+                  %a.flex.py-3.px-4.hover:bg-gray-200{href: dashboard_index_path({sort: SelectOptions::SORT_DEALS[:closing_date], order: 'asc'}), data: {action: "click->deals#orderDeals"}}= t('.deals_filter.sort.asc.closing_date')
+                  %a.flex.py-3.px-4.hover:bg-gray-200{href: dashboard_index_path({sort: SelectOptions::SORT_DEALS[:closing_date], order: 'desc'}), data: {action: "click->deals#orderDeals"}}= t('.deals_filter.sort.desc.closing_date')
+                  %a.flex.py-3.px-4.hover:bg-gray-200{href: dashboard_index_path({sort: SelectOptions::SORT_DEALS[:amount], order: 'asc'}), data: {action: "click->deals#orderDeals"}}= t('.deals_filter.sort.asc.amount')
+                  %a.flex.py-3.px-4.hover:bg-gray-200{href: dashboard_index_path({sort: SelectOptions::SORT_DEALS[:amount], order: 'desc'}), data: {action: "click->deals#orderDeals"}}= t('.deals_filter.sort.desc.amount')
+              .flex.flex-col.content-center.p-2.bg-white.rounded-md.hover:cursor-pointer{"data-action" => "click->sidebar#toggleDashboardFilters"}
+                %svg{xmlns: "http://www.w3.org/2000/svg", width: "16", height: "16", viewBox: "0 0 16 16", fill: "none"}
+                  %path{"fill-rule" => "evenodd", "clip-rule" => "evenodd", d: "M2.40039 2.39961C2.40039 2.18744 2.48468 1.98395 2.63471 1.83392C2.78473 1.68389 2.98822 1.59961 3.20039 1.59961H12.8004C13.0126 1.59961 13.216 1.68389 13.3661 1.83392C13.5161 1.98395 13.6004 2.18744 13.6004 2.39961V4.79961C13.6003 5.01177 13.516 5.21521 13.366 5.36521L9.60039 9.13081V11.9996C9.60035 12.2118 9.51603 12.4152 9.36599 12.5652L7.76599 14.1652C7.65411 14.2771 7.51158 14.3532 7.35642 14.3841C7.20125 14.4149 7.04043 14.3991 6.89427 14.3386C6.74811 14.278 6.62318 14.1755 6.53527 14.044C6.44736 13.9124 6.40042 13.7578 6.40039 13.5996V9.13081L2.63479 5.36521C2.48475 5.21521 2.40044 5.01177 2.40039 4.79961V2.39961Z", fill: "#52525B"}
+      = render 'card_view', deals: @deals
+      = render 'table_view', deals: @deals
+      = render 'partials/pagination', collection: @deals

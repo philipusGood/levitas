@@ -1,0 +1,4 @@
+- if !current_user.confirmed_at.present? && !current_user.admin?
+  .levitas-alert.warning
+    %p= t('.confirm_email_msg')
+    = link_to t('.resend_confirmation_email'), resend_confirmation_path, data: { turbo_method: :post }

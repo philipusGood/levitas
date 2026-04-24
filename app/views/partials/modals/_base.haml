@@ -1,0 +1,10 @@
+= turbo_frame_tag :modal do
+  .levitas-modal{"data-controller": "modal"}
+    .header
+      %span.title Fallback Modal
+      = button_tag type: :button, class: "min-w-[1.5rem] mn-h-[1.5rem]" do
+        = image_tag "icons/x.svg", {"data-action": "click->modal#close"}
+    .body
+    .footer
+      %span{"data-action": "click->modal#close"}
+        = levitas_button :button, "Close"

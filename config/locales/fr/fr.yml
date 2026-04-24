@@ -1,0 +1,1175 @@
+---
+fr:
+  after_signups:
+    completed:
+      account_completed: Configuration de votre compte terminée 
+      congratulations: Félicitations ! Vous êtes maintenant prêts pour consulter les offres potentiels.
+      open_dashboard: Accéder votre tableau de bord
+      view_profile: Visiter votre profil
+    information:
+      information: Information
+      profile: Profil
+      title: Titre
+      first_name: Prénom
+      middle_name: Deuxième prénom (facultatif)
+      last_name: Nom 
+      birth_date: Date de naissance
+      contact_information: Coordonnées
+      email: Courriel
+      message_under_email: Toute communication pertinente vous sera envoyée à cette adresse courielle.
+      phone_number: Numéro de téléphone
+      corporation: Société
+      corporation_name: Nom de la société
+      address: Adresse
+      street: Rue
+      unit: Numéro d'appartement 
+      city: Ville
+      province: Province
+      country: Pays
+      postal_code: Code postal
+      accredited_investor: Investisseur accrédité
+      accept_accredited_investor: Êtes-vous un investisseur accrédité selon la loi
+        provinciale ?
+  brokers:
+    form:
+      profile: Profil
+      title: Titre
+      first_name: Prénom
+      middle_name: Deuxième prénom
+      last_name: Nom 
+      birth_date: Date de naissance
+      contact_information: Coordonnées
+      email: Courriel
+      message_under_email: Toute communication pertinente vous sera envoyée à cette adresse courielle.
+      phone_number: Numéro de téléphone
+      role: Rôle
+      address: Adresse
+      street: Rue
+      unit: Unité
+      city: Ville
+      province: Province
+      country: Pays
+      postal_code: Code postal
+      cancel: Annuler
+      save_changes: Enregistrer 
+    edit:
+      back_to_profile: Retour à votre profil
+      edit: Modifier
+    index:
+      no_brokers: Sans courtier
+      start_adding_brokers: Veuillez ajouter un courtier
+      invite_brokers: Inviter un courtier
+      brokers: Courtier
+      full_name: Nom complet
+      email: Courriel
+      status: Statut
+      edit: Modifier
+      delete: Supprimer
+    lenders_pool:
+      back_to_brokers: Retour à la liste des courtiers
+      profile: Profil
+      lender_pool: Réseau de prêteurs
+      lenders: Prêteurs
+      full_name: Nom
+      email: Courriel
+      status: Statut
+      remove_from_pool: Retrait du réseau
+    new:
+      new_broker: Nouveau courtier
+    show:
+      back_to_brokers: Retour aux courtiers
+      profile: Profil
+      lender_pool: Réseau de prêteurs
+      "#{current_userrole}_information": 'Informations sur #{Current Userrole}'
+      contact_information: Informations de contact
+      edit_profile: Modifier votre profil
+  dashboard:
+    stats:
+      total_mortgage_value: Valeur totale de l'hypothèque
+      deals_closing: Transactions à completer
+      fees_generated: Frais générés
+      total_active_deals: Transactions actives
+      total_invested_capital: Capital investi
+      total_commited_capital: Capital engagé 
+      total_ROI: Rendement total sur votre investissement
+      monthly_cashflow: Flux financier mensuel
+    table_view:
+      deal: Offre
+      mls: MLS
+      status: Statut
+      interest_rate: Taux d'intérêt
+      fee: Frais
+      closing_date: Date de clôture
+      amount: Montant
+      borrower: Emprunteur
+    index:
+      greeting: Bonjour, %{name}
+      create_deal: Créer une 
+      no_active_deals: Aucune offre active
+      my_deals: Mes offres
+      borrower: Emprunteur
+      closing_date: Date de clôture
+      deal: Transaction
+      mls: MLS
+      status: STATUT
+      interest_rate: Taux d'intérêt
+      fee: Frais
+      mortgage_rank: Rang de l'hypothèque
+      lender_fee: Frais du prêteur
+      rate: Taux
+      ltv: LTV
+      performance: Performance
+      active_deals: Offres actives
+      deal_progress:
+        committed: Engagé
+        pending: En attente
+        draft: Brouillon
+        submitted: Soumis
+      deals_filter:
+        all: Tous
+        active: Actif
+        closed: Fermé
+        draft: Brouillon
+        finished: Terminé
+        sort:
+          asc:
+            closing_date: Trier par date de clôture (Asc)
+            amount: Trier par montant (Asc)
+          desc:
+            closing_date: Trier par date de clôture (desc)
+            amount: Trier par montant (desc)
+      deal_status:
+        draft: Brouillons
+        review: Révision
+        funding: Financement
+        signatures: Signatures
+        notary: Notaire
+        disbursement: déboursement
+        paying: Paiement
+      you_funded_this_deal_with: Vous avez financé cette transaction avec
+  deals:
+    edit_complete: L'offre a été mise à jour avec succès.
+    applicant_form:
+      information: Informations
+      title: Titre
+      first_name: Prénom
+      last_name: Nom de famille
+      date_of_birth: Date de naissance
+      social_insurance_number: Numéro d'assurance sociale
+      credit_score: Cote de crédit
+      credit_score_source: Source (Agence de notation)
+      credit_score_report_date: Date du rapport
+      contact_information: Informations de contact
+      email: Courriel
+      email_footer: Pied de page de l'e-mail
+      phone_number: Numéro de téléphone
+      street: Rue
+      unit: Unité
+      city: Ville
+      province: Province
+      country: Pays
+      postal_code: Code postal
+      employer_information: Informations sur l'employeur
+      employer_name: Nom de l'employeur
+      job_title: Intitulé du poste
+      industry_type: Type d'industrie
+      employment_type: Type d'emploi
+      duration_of_employment: Durée de l'emploi
+      years: Années
+      months: Mois
+      income_type: Type de revenu
+      period: Période
+      amount: Montant
+      income: Revenu
+      add_other_income: Ajouter un autre revenu
+      employer_contact: Contact de l'employeur
+      ext: Postérieur
+      fax: Télécopie
+      email_address: Adresse courriel
+      add_asset: Ajouter un actif
+      taxes_owned: Impôts dus
+      child_support: Pension alimentaire pour enfants
+      enter_zero: Saisissez Zéro
+      bankrupcty: Faillite
+      'yes': Oui
+      'no': Non
+      bankrupcty_status: Statut de faillite
+      active: Actif
+      resolved: Résolu
+      expected_release_date: Date de sortie prévue
+      enter_approximate_date: Entrez la date approximative
+      cost_of_release: Coût de libération
+      enter_approximate_cost: Entrez le coût approximatif
+    deal:
+      terms: Conditions
+      applicant_information: Informations sur le demandeur
+      documents: Documents
+      signatures: Signatures
+      payments: Paiements
+      make_it_public: Besoin d'un coup de pouce ? Rendez-le public
+      main_applicant: Demandeur principal
+      secondary_applicant: Demandeur secondaire
+      download: Télécharger
+      rank: Rang
+      institution: Institution
+      amount_due: Montant dû
+      monthly_payment: Paiement mensuel
+      mortgage_maturity_date: Date d'échéance de l'hypothèque
+      blocked_applicant: Les informations relatives aux demandeurs principaux et secondaires, à la cote de crédit, à l'emploi, au revenu, aux actifs et aux passifs ne sont disponibles que pour les investisseurs accrédités.
+      blocked_property_mortgage: Les informations relatives aux hypothèques actuelles sur la propriété ne sont disponibles que pour les investisseurs accrédités.
+      blocked_documents: Tous les documents relatifs à la propriété et à l'emprunteur ne sont disponibles que pour les investisseurs accrédités.
+      please_sign_up: Veuillez vous inscrire ou vous connecter pour voir
+      log_in: "Connectez-vous / Inscrivez-vous pour voir"
+      information: Informations
+      title_check: Vérification du titre
+      fraud_check: Vérification de fraude
+      details: Détails
+      hide: Masquer
+    applicant:
+      assets:
+        title: Actifs
+        leading: Dressez la liste des actifs de l'emprunteur, tels que les économies,
+          les investissements, les propriétés immobilières et autres biens de valeur.
+          Inclure ces informations offre une vue d'ensemble complète de la situation
+          financière de
+        add_asset: Ajouter un actif
+      income:
+        title: Revenu
+        leading: Fournissez des informations complètes sur les sources de revenu de
+          l'emprunteur, y compris l'emploi, l'auto-emploi, les revenus locatifs et
+          toute autre source pertinente. Ces informations aident à évaluer la capacité
+        employer_information: Informations sur l'employeur
+        employer_name: Nom de l'employeur
+        job_title: Intitulé du poste
+        industry_type: Type d'industrie
+        employment_type: Type d'emploi
+        duration_of_employment: Durée d'emploi
+        years: Années
+        months: Mois
+        income_type: Type de revenu
+        period: Période
+        amount: Montant
+        add_other_income: Ajouter d'autres revenus
+        street: Rue
+        unit: Numéro d'unité
+        city: Ville
+        province: Province
+        country: Pays
+        postal_code: Code postal
+        employer_contact: Coordonnées de l'employeur
+        phone_number: Numéro de téléphone
+        ext: Poste
+        fax: Télécopie
+        email_address: Adresse courriel
+      information:
+        borrower_information: Informations sur l'emprunteur
+        leading: Rassemblez les détails essentiels sur l'emprunteur pour initier l'opération
+          hypothécaire. Remplissez les informations nécessaires telles que le nom,
+          les coordonnées, l'adresse et autres détails pertinents de l'empr
+        information: Informations
+        title: Titre
+        first_name: Prénom
+        last_name: Nom de famille
+        date_of_birth: Date de naissance
+        social_insurance_number: Numéro d'assurance sociale
+        contact_information: Informations de contact
+        email: Courriel
+        email_footer: Toutes les informations importantes seront envoyées à cet email.
+        phone_number: Numéro de téléphone
+        street: Rue
+        unit: Numéro d'unité
+        city: Ville
+        province: Province
+        country: Pays
+        postal_code: Code postal
+      liabilities:
+        title: Passifs
+        leading: Dressez la liste des actifs de l'emprunteur, tels que les économies,
+          les investissements, les propriétés immobilières et autres biens de valeur.
+          Inclure ces informations offre une vue d'ensemble complète de la situation
+          financière de
+        taxes_owned: Devez-vous des impôts au gouvernement (fédéral et/ou provincial)
+          ?
+        child_support: Payez-vous une pension alimentaire pour enfant ?
+        enter_zero: Entrez 0 ou le montant correspondant
+        bankrupcty: Avez-vous déjà déclaré une faillite ou une proposition de consommateur
+          au cours des 7 dernières années ?
+        'yes': Oui
+        'no': Non
+        bankrupcty_status: Statut de faillite
+        active: Actif
+        resolved: Résolu
+        expected_release_date: Date de sortie prévue
+        enter_approximate_date: Entrez une date approximative de libération de faillite
+        cost_of_release: Coût de libération
+        enter_approximate_cost: Entrez le montant de règlement requis pour la libération
+    broker_fees:
+      index:
+        title: Frais de courtage
+        leading: Saisissez vos frais de courtier pour la facilitation de l'opération
+          hypothécaire. Si applicable, vous pouvez également inclure tous frais supplémentaires
+          de courtier. Cette étape vous permet de définir clairement votre structure
+          de rémunération, ass
+        add_another_broker_fee: Ajouter des frais de courtier supplémentaires
+    credit_check:
+      index:
+        title: Autorisation de vérification de crédit
+        leading: Autorisez Levitas à demander une vérification de crédit pour l'emprunteur
+          en acceptant les termes ci-dessous. Cette vérification aide à évaluer la
+          solvabilité de l'emprunteur, aidant ainsi à la décision de prêt.
+        terms_of_service: |-
+          <div class="max-w-2xl mx-auto p-8">
+            <h1 class="text-2xl font-bold mb-6 text-center">Conditions de Service d'Autorisation de Chèque Levitas</h1>
+            <section>
+                <h2 class="text
+        accept_terms: J'accepte les conditions et autorise Levitas à demander une
+          vérification de crédit pour l'emprunteur
+    edit:
+      secondary_applicant: Demandeur secondaire
+      title: Titre
+      first_name: Prénom
+      last_name: Nom de famille
+      email: Courriel
+      phone_number: Numéro de téléphone
+      street: Rue
+      unit: Unité
+      city: Ville
+      province: Province
+      country: Pays
+      postal_code: Code postal
+      type: Type
+      mls: SIA (Système inter-agences)
+      property_price: Prix de la propriété
+      approximate_closing_deal: Clôture approximative de le transaction
+      property_picture: Photo du bien immobilier
+      property_address: Adresse du bien immobilier
+      mortage_terms: Conditions hypothécaires
+      mortage_principal: Montant du prêt demandé
+      mortage_principal_hint: Montant que l'emprunteur recevra (hors frais)
+      total_mortgage_principal: Capital hypothécaire total
+      total_mortgage_principal_hint: Y compris les frais de prêteur, les frais de courtage et les frais de notaire
+      requested_amount: Montant du prêt demandé
+      requested_amount_hint: Montant que l'emprunteur recevra (hors frais)
+      terms: Conditions
+      amortization_period: Période d'amortissement
+      prepayment_penalty: Pénalité de remboursement anticipé
+      prepayment_term: Durée de remboursement anticipé
+      add_another_broker_fee: Ajouter des frais de courtier supplémentaires
+      save: Enregistrer
+    guarantors:
+      index:
+        information: Informations
+        title: Titre
+        first_name: Prénom
+        last_name: Nom de famille
+        email: Courriel
+        phone_number: Numéro de téléphone
+        street: Rue
+        unit: Unité
+        city: Ville
+        province: Province
+        country: Pays
+        postal_code: Code postal
+    partials:
+      filters:
+        filters: Filtres
+        deal_amount: Montant de l'opération
+        min: Min.
+        max: Maximal
+        closing_date: Date de clôture
+        within_next_days: Dans les %{days} jours à venir
+        interest_rate: Taux d'intérêt
+        lenders_fee: Frais du prêteur
+        provinces: Provinces
+        show_deals: Afficher les offres
+        clear_all: Effacer tout
+      payments:
+        not_ready: Pas prêt
+        not_ready_msg: Une fois le processus de distribution terminé, vous pourrez
+          suivre les paiements.
+        next_due_payment: Prochain paiement dû
+        no_: NON.
+        payment: Paiement
+        payment_date: Date de paiement
+        balance: Solde
+        status: Statut
+        paid: Payé
+      score:
+        excellent: Excellent
+        average: Moyenne
+        bad: Mauvais
+      score_gauge:
+        gross_service_ratio: Taux brut de service
+        loan_to_value_ratio: Rapport prêt-valeur
+        total_debt_service_ratio: Taux d'endettement total
+      signatures:
+        review_in_progress: Révision en cours
+        review_in_progress_msg: Cette fonctionnalité sera activée une fois le montant
+          total du financement pour le projet engagé. Veuillez revenir bientôt pour
+          commencer à recueillir les signatures des parties concernées.
+        lender: Prêteur
+        name: Nom
+        role: Rôle
+        status: Statut
+        pending_to_sign: En attente de signature
+        signed_days_ago: Signé il y a %{count}d
+        signed_today: Signé aujourd'hui
+        waiting_for_lenders: En attente des prêteurs
+        send_reminder: Envoyer un rappel
+        sent_days_ago:
+          one: Envoyé il y a 1 jour
+          other: Envoyé il y a %{count} jours
+      terms_form:
+        mortage_principal: Capital de l'hypothèque
+        terms: Conditions
+        interest_rate: Taux d'intérêt
+        amortization_period: Période d'amortissement
+        broker_fee: Frais de courtage
+        type: Type
+      topbar:
+        back_to_deals: Retour aux offres
+        invite_lenders: Inviter des prêteurs
+        edit_deal: Modifier l'offaire
+        delete: Supprimer
+        mortgage: Hypothèque
+        property_value: Valeur du bien immobilier
+        stage: Étape
+        "#{@dealstate}": "#{@Dealstate}"
+        broker: Agent
+        borrower: Emprunteur
+        closing_date: Date de clôture
+        share: 'Partager'
+        copy_link: 'Copier le lien'
+        copy_link_description: "Copiez ce lien pour le partager avec les parties intéressées, telles que les prêteurs ou les courtiers :"
+      deal_cycle:
+        admin_accepted:
+          mortgage_principal: Capital hypothécaire total
+          lenders_fee: Frais du prêteur
+          interest_rate: Taux d'intérêt
+          amortization: Amortisation
+          terms: Conditions
+          type: Type
+        admin_funding:
+          mortgage_principal: Capital hypothécaire total
+          terms: Conditions
+          interest_rate: Taux d'intérêt
+          lenders_fee: Frais du prêteur
+          amortization: Amortisation
+          broker_fee: Frais de courtage
+          type: Type
+        admin_payments:
+          mortgage_principal: Capital hypothécaire total
+          terms: Conditions
+          interest_rate: Taux d'intérêt
+          lenders_fee: Frais du prêteur
+          amortization: Amortisation
+          broker_fee: Frais de courtage
+          type: Type
+        admin_rejected:
+          mortgage_principal: Capital hypothécaire total
+          lenders_fee: Frais du prêteur
+          interest_rate: Taux d'intérêt
+          amortization: Amortisation
+          terms: Conditions
+          type: Type
+        admin_reviewed:
+          mortgage_principal: Capital hypothécaire total
+          lenders_fee: Frais du prêteur
+          interest_rate: Taux d'intérêt
+          amortization: Amortisation
+          terms: Conditions
+          type: Type
+          reject: Rejeter
+          change_deal_terms: Modifier les conditions de l'offre
+        admin_signatures:
+          mortgage_principal: Capital hypothécaire total
+          terms: Conditions
+          interest_rate: Taux d'intérêt
+          lenders_fee: Frais du prêteur
+          amortization: Amortisation
+          broker_fee: Frais de courtage
+          type: Type
+        admin_submitted:
+          mortage_principal: Capital de l'hypothèque
+          lenders_fee: Frais du prêteur
+          interest_rate: Taux d'intérêt
+          amortization_period: Période d'amortissement
+          terms: Conditions
+          type: Type
+          reject: Rejeter
+          send_deal_terms: Envoyer les conditions de l'offre
+        broker_accepted:
+          mortgage_principal: Capital hypothécaire total
+          terms: Conditions
+          interest_rate: Taux d'intérêt
+          lenders_fee: Frais du prêteur
+          amortization: Amortisation
+          broker_fee: Frais de courtage
+          type: Type
+        broker_funding:
+          mortgage_principal: Capital hypothécaire total
+          terms: Conditions
+          interest_rate: Taux d'intérêt
+          lenders_fee: Frais du prêteur
+          amortization: Amortisation
+          broker_fee: Frais de courtage
+          type: Type
+        broker_payments:
+          mortgage_principal: Capital hypothécaire total
+          terms: Conditions
+          interest_rate: Taux d'intérêt
+          lenders_fee: Frais du prêteur
+          amortization: Amortisation
+          broker_fee: Frais de courtage
+          type: Type
+        broker_reviewed:
+          mortgage_principal: Capital hypothécaire total
+          terms: Conditions
+          interest_rate: Taux d'intérêt
+          lenders_fee: Frais du prêteur
+          amortization: Amortisation
+          broker_fee: Frais de courtage
+          type: Type
+          reject: Rejeter
+          accept_terms: Accepter les conditions
+        broker_signatures:
+          mortgage_principal: Capital hypothécaire total
+          terms: Conditions
+          interest_rate: Taux d'intérêt
+          lenders_fee: Frais du prêteur
+          amortization: Amortisation
+          broker_fee: Frais de courtage
+          type: Type
+        broker_closed:
+          mortgage_principal: Capital hypothécaire total
+          terms: Conditions
+          interest_rate: Taux d'intérêt
+          lenders_fee: Frais du prêteur
+          amortization: Amortisation
+          broker_fee: Frais de courtage
+          type: Type
+        admin_closed:
+          mortgage_principal: Capital hypothécaire total
+          terms: Conditions
+          interest_rate: Taux d'intérêt
+          lenders_fee: Frais du prêteur
+          amortization: Amortisation
+          broker_fee: Frais de courtage
+          type: Type
+      deal_flow:
+        admin_accepted:
+          stage: Étape
+          accepted: Accepté
+          proceed_to_funding: Procéder au financement
+        admin_distribution:
+          stage: Étape
+          fund_distribution: Distribution des fonds
+          business_days: jours ouvrables
+          fund_is_distributed: Le fonds est distribué
+          capital_commited: Capital engagé
+          target: Cible
+          commited: Engagé
+          progress: Progrès
+          investors_commited: investisseurs engagés
+        admin_finalized:
+          stage: Étape
+          deal_finalized: Accord finalisé
+          capital_commited: Capital engagé
+          target: Cible
+          commited: Engagé
+          progress: Progrès
+          investors_commited: investisseurs engagés
+        admin_funding:
+          stage: Étape
+          funding: Financement
+          request_signatures: Demander des signatures
+          capital_commited: Capital engagé
+          target: Cible
+          commited: Engagé
+          progress: Progrès
+          investors_commited: investisseurs engagés
+          funding_is_completed: Le financement est terminé !
+        admin_notary:
+          stage: Étape
+          notary: Notarisation
+          business_days: jours ouvrables
+          approved_by_notary: Approuvé par notaire
+          capital_commited: Capital engagé
+          target: Cible
+          commited: Engagé
+          progress: Progrès
+          investors_commited: investisseurs engagés
+        admin_payments:
+          stage: Étape
+          payments: Paiements
+          business_days: jours ouvrables
+          next_payment: Prochain paiement
+          amount: Montant
+          view_payments: Voir les paiements
+          capital_commited: Capital engagé
+          target: Cible
+          commited: Engagé
+          progress: Progrès
+          investors_commited: investisseurs engagés
+        admin_signatures:
+          stage: Étape
+          signature_request: Demande de signature
+          signatures_collected: signatures recueillies
+          approve_signatures: Approuver les signatures
+          capital_commited: Capital engagé
+          target: Cible
+          commited: Engagé
+          progress: Progrès
+          investors_commited: investisseurs engagés
+        admin_submitted:
+          stage: Étape
+          review: Révision
+          not_funded_msg: Cette offre n'est pas encore prête pour le financement.
+        broker_accepted:
+          stage: Étape
+          accepted: Accepté
+          accepted_msg: En attente que Levitas commence le financement.
+        broker_distribution:
+          stage: Étape
+          fund_distribution: Distribution des fonds
+          business_days: jours ouvrables
+          capital_commited: Capital engagé
+          target: Cible
+          commited: Engagé
+          progress: Progrès
+          lenders_commited: Prêteurs engagés
+          investors_commited: investisseurs engagés
+          you_funded_this_deal_with: Vous avez financé cette transaction avec
+        broker_finalized:
+          stage: Étape
+          deal_finalized: Accord finalisé
+          capital_commited: Capital engagé
+          target: Cible
+          commited: Engagé
+          progress: Progrès
+          lenders_commited: Prêteurs engagés
+          investors_commited: investisseurs engagés
+          you_funded_this_deal_with: Vous avez financé cette transaction avec
+        broker_funding:
+          stage: Étape
+          view_all: Voir tout
+          funding: Financement
+          capital_commited: Capital engagé
+          target: Cible
+          commited: Engagé
+          progress: Progrès
+          investors_commited: investisseurs engagés
+          funding_msg: Commencez à inviter vos prêteurs à financer cette transaction !
+          invite_lenders: Inviter des prêteurs
+          funding_is_completed: Le financement est terminé!
+        broker_notary:
+          stage: Étape
+          notary: Notaire
+          business_days: jours ouvrables
+          capital_commited: Capital engagé
+          target: Cible
+          commited: Engagé
+          progress: Progrès
+          lenders_commited: Prêteurs engagés
+          investors_commited: investisseurs engagés
+          you_funded_this_deal_with: Vous avez financé cette transaction avec
+        broker_payments:
+          stage: Étape
+          payments: Paiements
+          next_payment: Prochain paiement
+          amount: Montant
+          view_payments: Voir les paiements
+          capital_commited: Capital engagé
+          target: Cible
+          commited: Engagé
+          progress: Progrès
+          investors_commited: investisseurs engagés
+        broker_signatures:
+          stage: Étape
+          signature_request: Demande de signature
+          signatures_collected: signatures recueillies
+          capital_commited: Capital engagé
+          target: Cible
+          commited: Engagé
+          progress: Progrès
+          lenders_commited: Prêteurs engagés
+          investors_commited: investisseurs engagés
+          funding_is_completed: Le financement est terminé !
+          you_funded_this_deal_with: Vous avez financé cette transaction avec
+        broker_submitted:
+          stage: Étape
+          review: Révision
+          not_funded_msg: Cette offre n'est pas encore prête à être financée.
+        lender_funding:
+          stage: Étape
+          funding: Financement
+          capital_commited: Capital engagé
+          target: Cible
+          commited: Engagé
+          progress: Progrès
+          lenders_commited: Prêteurs engagés
+          commit_capital: Engager des capitaux
+          you_funded_this_deal_with: Vous avez financé cette transaction avec
+          add_more_capital: Ajouter plus de capital
+    properties:
+      index:
+        title: Offre de prêt hypothécaire
+        leading: Ces détails contribuent à la documentation précise de l'accord hypothécaire,
+          facilitant ainsi un processus rationalisé pour toutes les parties impliquées.
+        type: Type
+        mls: Numéro MLS
+        property_price: Prix de la propriété
+        approximate_closing_deal: Date de clôture approximative
+        property_address: Adresse du bien immobilier
+        street: Rue
+        unit: Numéro d'unité
+        city: Ville
+        province: Province
+        country: Pays
+        postal_code: Code postal
+        has_mortgages: A des hypothèques
+        mortgages_description: Listez les hypothèques existantes par ordre de priorité. Commencez par l'hypothèque de premier rang et énumérez-les par ordre décroissant de priorité.
+        institution: Institution
+        monthly_payment: Paiement mensuel
+        amount_due: Montant dû
+        add_mortgages: Ajouter des hypothèques
+        end_date: Date de fin
+    submit:
+      index:
+        title: Offre de prêt hypothécaire soumise avec succès !
+        leading: Félicitations ! Notre équipe va examiner les détails fournis et traiter
+          votre demande rapidement. Nous apprécions votre confiance en Levitas pour
+          vos besoins de prêt.
+        open_dashboard: Ouvrir le tableau de bord
+        view_deals: Voir les offres
+    summary:
+      index:
+        title: Résumé
+        leading: Prenez un moment pour examiner attentivement toutes les informations
+          saisies et assurez-vous de leur clarté et de leur exactitude. Une fois que
+          vous avez vérifié que tout est correct, vous pouvez procéder à la soumission
+          de le transaction pour approbation. Cette dernière
+        applicant_information: Informations sur le demandeur
+        main_applicant: Demandeur principal
+        unpaid_taxes: Impôts impayés
+        fed_and_or_prov: Fédéral et/ou provincial
+        monthly_obligations: Obligations mensuelles
+        average: Moyenne
+        poor: Mauvais
+        excellent: Excellent
+    terms:
+      index:
+        title: Conditions de l'offre
+        leading: Si vous souhaitez garder votre accord privé, vous pouvez définir
+          les termes de l'accord vous-même. Cependant, si vous souhaitez conclure
+          un accord public, le personnel de Levitas examinera l'accord et suggérera
+          les intérê
+        make_it_public: Rendez-le public et laissez Levitas faire une suggestion sur
+          les conditions.
+        mortage_terms: Conditions hypothécaires
+        mortage_principal: Montant du prêt demandé
+        mortage_principal_hint: Montant que l'emprunteur recevra (hors frais)
+        lenders_fee: Frais du prêteur (%)
+        interest_rate: Taux d'intérêt (%)
+        type: Type
+        terms: Durée (mois)
+        amortization_period: Période d'amortissement
+        prepayment_penalty: Pénalité de remboursement anticipé
+        prepayment_term: Durée de remboursement anticipé
+        terms_in_words:
+          years:
+            zero: Please provide the English text you need translated to French.
+            one: "%{count} an"
+            other: "%{count} ans"
+          months:
+            zero: Please provide the English text you need translated to French.
+            one: "%{count} mois"
+            other: "%{count} mois"
+    documents:
+      index:
+        title: Documents
+        leading: Ajoutez tout document pertinent pour cette affaire.
+        click_to_upload: Cliquez pour télécharger
+        or_drag_and_drop: ou faites glisser et déposez
+        max_file_size: "Taille maximale du fichier : 10 Mo"
+        browse_file: Parcourir le fichier
+      document:
+        make_it_private: "Rendre privé"
+        make_it_public: "Rendre public"
+        edit: "Modifier"
+        delete: "Supprimer"
+        download: Télécharger
+    view:
+      index:
+        terms: Conditions
+  devise:
+    confirmations:
+      new:
+        resend_confirmation_instructions: Renvoyer les instructions de confirmation
+        email: Courriel
+    invitations:
+      edit:
+        set_your_password: Définissez votre mot de passe
+        password: Mot de passe
+        password_confirmation: Confirmation du mot de passe
+        create_account: Créer un compte
+    passwords:
+      edit:
+        change_your_password: Modifier votre mot de passe
+        password: Mot de passe
+        password_confirmation: Confirmation du mot de passe
+        change_my_password: Modifier mon mot de passe
+      new:
+        forgot_your_password: Mot de passe oublié
+        email: Courriel
+        send_me_reset_password_instructions: Envoyez-moi les instructions de réinitialisation
+          du mot de passe
+    registrations:
+      edit:
+        edit_profile: Modifier le profil
+        title: Titre
+        first_name: Prénom
+        middle_name: Deuxième prénom
+        last_name: Nom de famille
+        birth_date: Date de naissance
+        contact_information: Informations de contact
+        phone_number: Numéro de téléphone
+        corporation: Société
+        corporation_name: Nom de la société
+        address: Adresse
+        street: Rue
+        unit: Unité
+        city: Ville
+        province: Province
+        country: Pays
+        postal_code: Code postal
+        cancel: Annuler
+        save: Enregistrer
+      new:
+        create_an_account: Créer un compte
+        select_profile: Veuillez sélectionner un profil et saisir vos coordonnées
+          pour créer votre compte
+        broker: Agent
+        lender: Prêteur
+        email: Courriel
+        password: Mot de passe
+        password_confirmation: Confirmation du mot de passe
+        continue: Continuer
+        already_have_an_account: Vous avez déjà un compte ?
+        sign_in: Connexion
+    sessions:
+      new:
+        welcome_back: Bon retour
+        please_enter_details: Veuillez saisir vos coordonnées pour vous connecter
+        email: Courriel
+        password: Mot de passe
+        remember_me: Souviens-toi de moi
+        forgot_password: Mot de passe oublié ?
+        sign_in: Connexion
+        don_you_have_account: Vous n'avez pas de compte ?
+        create_account: Créer un compte
+    unlocks:
+      new:
+        resend_unlock_instructions: Renvoyer les instructions de déverrouillage
+        email: Courriel
+  errors:
+    '404':
+      page_not_found: Page non trouvée
+      page_not_found_msg: La page que vous recherchez n'existe pas.
+      back_to_home: Retour à l'accueil
+      contact_support: Contacter le support
+      help_center: Centre d'aide
+    '500':
+      something_went_wrong: Oups ! Un problème est survenu
+      something_went_wrong_msg: Nous sommes dessus et devrions avoir tout remis en
+        marche bientôt. Merci de votre patience !
+      back_to_home: Retour à l'accueil
+      contact_support: Contacter le support
+      help_center: Centre d'aide
+  layouts:
+    confirm_email:
+      confirm_email_msg: Veuillez vérifier votre e-mail pour sécuriser votre compte
+        Levitas et accéder à nos services sans interruption. La vérification de l'e-mail
+        est essentielle pour confirmer votre identité et protéger votre compte.
+      resend_confirmation_email: Renvoyer l'email de confirmation
+    navigation:
+      view_profile: Voir le profil
+      logout: Déconnexion
+    after_signup:
+      sidebar:
+        lets_start: Commençons
+        information: Informations
+        account_created: Compte créé
+    devise:
+      about: À propos
+      team: Équipe
+      contact_us: Contactez-nous
+      support: Assistance
+  lender:
+    brokers:
+      index:
+        no_brokers: Sans courtiers
+        start_adding_brokers: Commencer à ajouter des courtiers
+        invite_brokers: Inviter des courtiers
+        brokers: Courtiers
+        full_name: Nom complet
+        email: Courriel
+        prospect_deals: Offres potentielles
+        commited_deals: Opérations conclues
+        edit: Modifier
+        reject: Rejeter
+        accept_invitation: Accepter l'invitation
+        remove_pool: Supprimer la piscine
+  lenders:
+    form:
+      profile: Profil
+      title: Titre
+      first_name: Prénom
+      middle_name: Deuxième prénom
+      last_name: Nom de famille
+      birth_date: Date de naissance
+      contact_information: Informations de contact
+      email: Courriel
+      message_under_email: Message sous courriel
+      phone_number: Numéro de téléphone
+      role: Rôle
+      address: Adresse
+      street: Rue
+      unit: Unité
+      city: Ville
+      province: Province
+      country: Pays
+      postal_code: Code postal
+      cancel: Annuler
+      save_changes: Enregistrer les modifications
+    edit:
+      back_to_profile: Retour au profil
+      edit: Modifier
+    index:
+      no_lenders: Aucun prêteur
+      start_adding_lenders: Commencez à ajouter des prêteurs
+      invite_lenders: Inviter des prêteurs
+      lenders: Prêteurs
+      full_name: Nom complet
+      email: Courriel
+      status: Statut
+      resend_invite: Renvoyer l'invitation
+      edit: Modifier
+      delete: Supprimer
+      remove_from_pool: Retirer du groupe
+    new:
+      new_lender: Nouveau prêteur
+  marketplace:
+    index:
+      marketplace: Place de marché
+      deal_type: Offres %{visibility}
+  notifications:
+    deal_reviewed: Levitas vous a envoyé les conditions de l'offre
+    deal_rejected: Les conditions de l'offre ont été rejetées
+    deal_destroyed: Votre offre %{name} a été supprimée ou rejetée. Si vous avez des préoccupations, n'hésitez pas à nous contacter à support@levitas.ai
+    lender_signature_reminder: Votre prêteur engagé pour votre investissement de %{amount} dans %{deal_name} est prêt à signer
+    deal_funding: Le transaction est prête pour le financement
+    deal_expired: L'offre a expiré
+    invited_deal: vous avez été invité à un accord
+    sidebar:
+      notifications: Notifications
+      clear_all: Effacer tout
+      delete_all: Supprimer tout
+      cancel: Annuler
+      last_24_hours: Dernières 24 heures
+      last_7_days: 7 derniers jours
+      older: Plus âgé
+      delete: Supprimer
+      you_dont_have_new_notifications: Vous n'avez pas de nouvelles notifications
+      no_notifications_msg: Vous êtes actuellement à jour. Veuillez revenir plus tard
+        pour consulter les prochaines mises à jour.
+      delete_all_msg: Cette action supprimera toutes les notifications et ne pourra
+        pas être annulée.
+      distance_in_words:
+        about_x_hours:
+          one: Il y a %{count} heure
+          other: il y a %{count} heures
+        about_x_months:
+          one: il y a %{count} mois
+          other: il y a %{count} mois
+        about_x_years:
+          one: Il y a %{count} an
+          other: il y a %{count} ans
+        almost_x_years:
+          one: presque %{count} an
+          other: presque %{count} ans
+        half_a_minute: Il y a 30 secondes
+        less_than_x_seconds:
+          one: moins de %{count} seconde
+          other: moins de %{count} secondes
+        less_than_x_minutes:
+          one: Maintenant
+          other: moins de %{count} minutes
+        over_x_years:
+          one: Il y a %{count} an
+          other: il y a %{count} ans
+        x_seconds:
+          one: "%{count}s"
+          other: "%{count}s"
+        x_minutes:
+          one: "%{count}m"
+          other: "%{count}m"
+        x_days:
+          one: "%{count}J"
+          other: "%{count}J"
+        x_months:
+          one: "%{count}M"
+          other: "%{count}M"
+        x_years:
+          one: "%{count}A"
+          other: "%{count}A"
+  partials:
+    modals:
+      invite_lenders:
+        invite_lenders: Inviter des prêteurs
+        invite_lenders_msg: Invitez des prêteurs existants de votre groupe ou saisissez
+          leur courriel s'ils ne sont pas dans votre groupe pour rejoindre.
+        search_lenders: Rechercher des prêteurs
+        send_invites: Envoyer des invitations
+        lender_email: Courriel du prêteur
+        remove: Supprimer
+        not_registered: Non inscrit
+        lenders_selected:
+          zero: Aucun prêteur sélectionné
+          one: 1 prêteur sélectionné
+          other: "%{count} prêteurs sélectionnés"
+        invite_success:
+          invitations_sent: Invitations envoyées !
+          success_msg: Félicitations ! Notre équipe va examiner les détails fournis
+            et traiter votre demande rapidement. Nous apprécions votre confiance en
+            Levitas pour vos besoins de prêt.
+          finish: Terminer
+        non_registered_invite:
+          invite_lenders: Inviter des prêteurs
+          invite_lenders_msg: Invitez des prêteurs en saisissant leur e-mail pour
+            rejoindre votre groupe.
+          search_lenders: Rechercher des prêteurs
+          send_invites: Envoyer des invitations
+          lender_email: Courriel du prêteur
+          remove: Supprimer
+        view_all:
+          capital_commited: Capital engagé
+          target: Cible
+          commited: Engagé
+          closing_date: Date de clôture
+          progress: Progrès
+          resend_invite: Renvoyer l'invitation
+          funding_is_completed: Le financement est terminé !
+          invite_lenders: Inviter des prêteurs
+      make_deal_public:
+        make_public_deal: Rendre l'offre publique
+        make_public_deal_msg:
+          html: |-
+            En général, lorsque le courtier n'a pas rassemblé les fonds nécessaires, vous avez la possibilité d'ouvrir le transaction au public. Si vous décidez de procéder, veuillez noter :
+            - Le transaction ne sera pas mise en pause
+        checkbox_label: Je comprends et souhaite continuer.
+        cancel: Annuler
+      reject_terms:
+        reject_deal: Rejeter l'offre
+        enter_reject_details: Saisir les détails du rejet
+        cancel: Annuler
+      terms_success:
+        deal_terms_rejected: Conditions de l'offre rejetées
+        close: Fermer
+      deal_terms:
+        confirm_terms:
+          confirm_and_accept_terms: Confirmer et accepter les conditions
+          review: Révision
+          confirm: Confirmer
+          deal_terms_policy:
+            html: |-
+              Version en Langage Clair
+
+              Reconnaissance du Courtier pour la Plateforme Levitas
+
+              Cher Courtier,
+
+              Bienvenue sur Levitas, avant de procéder à la saisie d'une transaction sur notre plateforme, nous avons besoin d'un moment de votre attention.
+
+              Votre R
+          checkbox_label_html: J'accepte la <strong>Politique et les Conditions</strong>
+            de Levitas.
+          close: Fermer
+          enter_full_name: Entrez le nom complet
+          confirm_deal: Confirmer l'offre
+        confirm_terms_success:
+          deal_terms_accepted: Conditions de l'offre acceptées !
+          success_msg: Félicitations pour avoir accepté les conditions de l'offre
+            ! L'étape cruciale suivante consiste à sécuriser le financement de l'offre.
+            Rendez-vous dans la section de financement, où vous trouverez les étapes
+            nécessaires pour garantir un
+          go_to_deal_details: Accéder aux détails de l'offre
+        review_terms:
+          review_terms: Réviser les conditions
+          review: Révision
+          confirm: Confirmer
+          mortgage_principal: Capital hypothécaire total
+          term: Durée
+          interest_rate: Taux d'intérêt
+          lenders_fee: Frais du prêteur
+          amortization: Amortisation
+          broker_fee: Frais de courtage
+          type: Type
+          close: Fermer
+          continue: Continuer
+      lender_funding:
+        confirm_investment:
+          confirm_and_fund_deal: Confirmer et financer l'opération
+          investment: Investissement
+          confirm: Confirmer
+          lender_fund_user_agreement:
+            html: |-
+              <h2>Accord d'utilisateur</h2>
+              <p>Toutes les demandes sont soumises à l'approbation du chef adjoint, ou de son délégué. Aucun travail ne peut commencer tant que la demande et l'accord d'utilisateur n'
+          checkbox_label_html: J'accepte la <strong>Politique et les Conditions</strong>
+            de Levitas.
+          cancel: Annuler
+          change_investment: Modifier l'investissement
+          enter_full_name: Entrez le nom complet
+        review_investment:
+          enter_your_investment_amount: Saisissez le montant de votre investissement
+          investment: Investissement
+          confirm: Confirmer
+          terms: Conditions
+          mortgage_principal: Capital hypothécaire total
+          term: Durée
+          interest_rate: Taux d'intérêt
+          lenders_fee: Frais du prêteur
+          amortization: Amortisation
+          closing_date: Date de clôture
+          type: Type
+          investment_amount: Montant de l'investissement
+          minimum_investment: Investissement minimum
+          funds_distribution_msg: Les fonds seront distribués une fois le capital
+            constitué et l'étape de notarisation terminée.
+          cancel: Annuler
+          continue: Continuer
+        success_investment:
+          success_msg:
+            html: Merci de votre confiance et de votre engagement envers Levitas.
+              Votre contribution joue un rôle essentiel pour rendre cette transaction
+              possible. Nous apprécions votre soutien et attendons avec impatience
+              l'impact positif que cela aura. Si vous avez
+          view_deal_details: Voir les détails de l'offre
+    impersonation_banner:
+      impersonate_msg: "Vous êtes connecté entant que %{username}"
+  profiles:
+    show:
+      profile: Profil
+      back_to_dashboard: Retour au tableau de bord
+      edit: Modifier
+      lender_pool: Réseau de prêteurs
+      "#{current_userrole}_information": 'Informations sur #{Current Userrole}'
+      contact_information: Informations de contact
+      edit_profile: Modifier le profil
+  time:
+    formats:
+      devise:
+        mailer:
+          invitation_instructions:
+            accept_until_format: "%B %d, %Y %H:%M"

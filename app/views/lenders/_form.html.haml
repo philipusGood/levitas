@@ -1,0 +1,60 @@
+= form_with(model: @lender) do |f|
+  = render 'devise/shared/error_messages', resource: @lender
+  .grid.grid-cols-1.md:grid-cols-2.gap-6
+    %h3.col-span-full.py-3.col-span-full.text-xl.font-serif.leading-8.font-bold.text-gray-600= t('.profile')
+    .col-span-full.flex.flex-col.w-28{class: "gap-1.5"}
+      = f.label :title, t('.title'), class: 'form-label levitas-form-label text-gray-700 font-bold leading-5'
+      = f.select :title, options_for_select(SelectOptions::PROFILE_TITLES, f.object.title), {}, {class: 'form-select levitas-form-input' }
+    .flex.flex-col{class: "gap-1.5"}
+      = f.label :first_name, t('.first_name'), class: 'form-label levitas-form-label'
+      = f.text_field :first_name, class: 'form-input-text levitas-form-input'
+    .flex.flex-col{class: "gap-1.5"}
+      = f.label :middle_name, t('.middle_name'), class: 'form-label levitas-form-label'
+      = f.text_field :middle_name, class: 'form-input-text levitas-form-input'
+    .flex.flex-col{class: "gap-1.5"}
+      = f.label :last_name, t('.last_name'), class: 'form-label levitas-form-label'
+      = f.text_field :last_name, class: 'form-input-text levitas-form-input'
+    .flex.flex-col{class: "gap-1.5"}
+      = f.label :birth_date, t('.birth_date'), class: 'form-label levitas-form-label'
+      = f.text_field :birth_date, class: 'form-input-date datepicker levitas-form-input'
+  .grid.grid-cols-1.md:grid-cols-2.gap-6.pt-10.lg:pt-20
+    %h3.py-3.col-span-full.text-xl.font-serif.leading-8.font-bold.text-gray-600= t('.contact_information')
+    .flex.flex-col{class: "gap-1.5"}
+      = f.label :email, t('.email'), class: 'form-label levitas-form-label'
+      = f.text_field :email, class: 'form-input-text levitas-form-input', disabled: !@lender.new_record?
+      %p.mt-1.text-xs.leading-6.text-gray-600= t('.message_under_email')
+    .flex.flex-col{class: "gap-1.5"}
+      = f.label :phone_number, t('.phone_number'), class: 'form-label levitas-form-label'
+      = f.text_field :phone_number, class: 'form-input-text levitas-form-input'
+    .flex.flex-col{class: "gap-1.5"}
+      = f.label :role, t('.role'), class: 'form-label levitas-form-label'
+      = f.select :role, User.roles.keys.map { |role| [role.capitalize, role] }, {}, {class: 'form-select levitas-form-input'}
+  .grid.grid-cols-1.md:grid-cols-4.gap-6.pt-10.lg:pt-20
+    %h3.py-3.col-span-full.text-xl.font-serif.leading-8.font-bold.text-gray-600= t('.address')
+    .md:col-span-3.flex.flex-col{class: "gap-1.5"}
+      = f.label :address_street, t('.street'), class: 'form-label levitas-form-label'
+      = f.text_field :address_street, class: 'form-input-text levitas-form-input'
+    .flex.flex-col{class: "gap-1.5"}
+      = f.label :address_unit, t('.unit'), class: 'form-label levitas-form-label' do
+        = t('.unit')
+        %span.font-thin.text-xs
+          = t('.optional')
+      = f.text_field :address_unit, class: 'form-input-text levitas-form-input'
+    .flex.flex-col{class: "gap-1.5"}
+      = f.label :address_city, t('.city'), class: 'form-label levitas-form-label'
+      = f.text_field :address_city, class: 'form-input-text levitas-form-input'
+    .flex.flex-col{class: "gap-1.5"}
+      = f.label :address_province, t('.province'),  class: 'form-label levitas-form-label'
+      = f.select :address_province, options_for_select(SelectOptions::CANADIAN_PROVIENCES, f.object.address_province), {}, {class: 'form-select levitas-form-input'}
+    .flex.flex-col{class: "gap-1.5"}
+      = f.label :address_country, t('.country'), class: 'form-label levitas-form-label'
+      = f.select :address_country, options_for_select([%w(Canada canada)]), {}, {class: 'form-select levitas-form-input' }
+    .flex.flex-col{class: "gap-1.5"}
+      = f.label :address_postal_code, t('.postal_code'), class: 'form-label levitas-form-label'
+      = f.text_field :address_postal_code, class: 'form-input-text levitas-form-input'
+
+  .flex.items-center.justify-end.gap-3.pt-10.lg:pt-20
+    = link_to lenders_path, class: "btn btn-default" do
+      = t('.cancel')
+    %button.btn.btn-primary{:type => "submit"}
+      = t('.save_changes')

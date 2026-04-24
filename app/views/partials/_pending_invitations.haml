@@ -1,0 +1,6 @@
+- if current_user.lender? && current_user.as_lender.pending_broker_invitations.any? && !request.path.include?("/deals")
+  = content_for :banners do
+    .bg-yellow-100.w-full.text-yellow-700.flex.items-center{class: "min-h-[64px]"}
+      %span.inline-block.align-middle.text-center.w-full
+        You have pending invitations from broker(s).
+        = link_to "See invitations", lender_brokers_path, class: "underline cursor:hover"

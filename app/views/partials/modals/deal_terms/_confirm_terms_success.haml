@@ -1,0 +1,16 @@
+= turbo_stream.update :modal do
+  .relative.z-40{ "aria-labelledby": "modal-title", "role": "dialog", "aria-modal": "true"}
+    .fixed.inset-0.bg-gray-500.bg-opacity-75
+    .fixed.inset-0.z-10.p-6.md:p-10.overflow-y-auto
+      .flex.min-h-full.items-center.justify-center.max-w-5xl.mx-auto
+        .levitas-modal.md:p-40
+          .body
+            .flex.flex-col.gap-3.justify-center.text-center
+              .flex.flex-1.items-center.justify-center
+                .flex.items-center.justify-center.p-7.rounded-full.border-2.border-green-500.bg-green-50.w-28.h-28
+                  = image_tag "icons/check-green.svg"
+              %span.text-2xl.font-serif.font-bold.leading-9= t('.deal_terms_accepted')
+              %p= t('.success_msg')
+              .flex.justify-center.md:pt-8
+                %span{"data-action": "click->modal#reload"}
+                  = levitas_button :button, t('.go_to_deal_details'), nil, nil, :large

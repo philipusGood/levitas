@@ -1,0 +1,7 @@
+.flex.flex-wrap.justify-between.items-center.content-center.self-stretch.gap-4.font-sans
+  %p.py-1.text-gray-700
+    = t('partials.pagination.showing')
+    %span.font-bold #{((collection.prev_page || 0) * collection.limit_value) + 1} - #{collection.last_page? ? ((collection.prev_page || 0) * collection.limit_value) + collection.size : (collection.current_page * collection.size)}
+    = t('partials.pagination.of')
+    %span.font-bold #{collection.total_count}
+  = paginate collection, outer_window: 1, inner_window: 2

@@ -1,0 +1,82 @@
+%div
+  %h1.deal-creator-step-title
+    Guarantor
+  %p.deal-creator-step-description
+    This details provide the necessary information to add a guarantor to your mortgage deal.
+  = render 'devise/shared/error_messages', resource: @guarantor
+  = form_for @guarantor, url: deal_guarantor_index_path(@deal), method: :post, data: { turbo: false, controller: "guarantors" } do |f|
+    %section.inline-block.mb-8
+      .levitas-checkbox
+        = f.check_box :confirmation, data: { action: "change->guarantors#confirmGuarantor", "guarantors-target": "confirmation" }
+        = f.label :confirmation, "Do you have a Guarantor?"
+    %section.mb-8#guarantor-information.invisible
+      %h2.deal-creator-section-title
+        = t('.information')
+      .py-6
+        .flex.flex-col.sm:flex-row.gap-6.mb-6
+          %div
+            = f.label :title, t('.title'), class: "deal-creator-label" do
+              = t('.title')
+              = ai_badge(f.object.title, 'guarantor.title')
+            = f.select :title, options_for_select(SelectOptions::PROFILE_TITLES, f.object.title), {}, {class: 'deal-creator-select' }
+          .flex-1
+            = f.label :first_name, t('.first_name'), class: "deal-creator-label" do
+              = t('.first_name')
+              = ai_badge(f.object.first_name, 'guarantor.first_name')
+            = f.text_field :first_name, class: "deal-creator-input-text "
+          .flex-1
+            = f.label :last_name, t('.last_name'), class: "deal-creator-label" do
+              = t('.last_name')
+              = ai_badge(f.object.last_name, 'guarantor.last_name')
+            = f.text_field :last_name, class: "deal-creator-input-text "
+        .flex.flex-col.sm:flex-row.gap-6
+          .flex-1
+            = f.label :email, t('.email'), class: "deal-creator-label" do
+              = t('.email')
+              = ai_badge(f.object.email, 'guarantor.email')
+            = f.email_field :email, class: "deal-creator-input-text"
+          .flex-1
+            = f.label :phone_number, t('.phone_number'), class: "deal-creator-label" do
+              = t('.phone_number')
+              = ai_badge(f.object.phone_number, 'guarantor.phone_number')
+            = f.text_field :phone_number, class: "deal-creator-input-text "
+      %section.mb-8
+        %h2.deal-creator-section-title Address
+        = f.fields_for :address, @guarantor.address do |address_fields|
+          .py-6
+            .flex.gap-6.mb-6
+              .flex-1
+                = address_fields.label :street, t('.street'), class: "deal-creator-label" do
+                  = t('.street')
+                  = ai_badge(address_fields.object.street, 'guarantor.address.street')
+                = address_fields.text_field :street, class: "deal-creator-input-text "
+              %div{:class => "max-w-[125px]"}
+                = address_fields.label :unit, t('.unit'), class: "deal-creator-label" do
+                  = t('.unit')
+                  %span.font-thin.text-xs
+                    = t('.optional')
+                  = ai_badge(address_fields.object.unit, 'guarantor.address.unit')
+                = address_fields.number_field :unit, class: "deal-creator-input-text "
+            .flex.flex-col.sm:flex-row.gap-6
+              .flex-1
+                = address_fields.label :city, t('.city'), class: "deal-creator-label" do
+                  = t('.city')
+                  = ai_badge(address_fields.object.city, 'guarantor.address.city')
+                = address_fields.text_field :city, class: "deal-creator-input-text "
+              .flex-1
+                = address_fields.label :province, t('.province'), class: "deal-creator-label" do
+                  = t('.province')
+                  = ai_badge(address_fields.object.province, 'guarantor.address.province')
+                = address_fields.select :province, options_for_select(SelectOptions::CANADIAN_PROVIENCES, address_fields.object.province), {}, {class: 'deal-creator-select'  }
+              .flex-1
+                = address_fields.label :country, t('.country'), class: "deal-creator-label" do
+                  = t('.country')
+                  = ai_badge(address_fields.object.country, 'guarantor.address.country')
+                = address_fields.select :country, options_for_select(["Canada"], selected: 'Canada'), {}, { class: 'deal-creator-select', disabled: true}
+                = address_fields.hidden_field :country, value: "Canada"
+              .flex-1
+                = address_fields.label :postal_code, t('.postal_code'), class: "deal-creator-label" do
+                  = t('.postal_code')
+                  = ai_badge(address_fields.object.postal_code, 'guarantor.address.postal_code')
+                = address_fields.text_field :postal_code, class: "deal-creator-input-text "
+    = render partial: 'deals/partials/action_bar', locals: { f: f, back_action_path: @deal.has_secondary_applicant? ? deal_secondary_applicant_path(@deal, 'liabilities') : deal_main_applicant_path(@deal, 'liabilities'), show_save_action: true, skip_action_path: nil, submit: false }

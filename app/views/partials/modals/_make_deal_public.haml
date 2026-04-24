@@ -1,0 +1,19 @@
+= turbo_frame_tag :modal do
+  .relative.z-40{ "aria-labelledby": "modal-title", "role": "dialog", "aria-modal": "true"}
+    .fixed.inset-0.bg-gray-500.bg-opacity-75
+    .fixed.inset-0.z-10.p-6.md:p-10.overflow-y-auto
+      .flex.min-h-full.items-center.justify-center.max-w-lg.mx-auto
+        = form_with url: make_public_deal_path(@deal), method: :post, class: "levitas-modal", data: {controller: "modal", action: "turbo:submit-end->modal#submitEnd"} do |f|
+          .header
+            %span.title= t('.make_public_deal')
+            = button_tag type: :button, class: "min-w-[1.5rem] min-h-[1.5rem]" do
+              = image_tag "icons/x.svg", {"data-action": "click->modal#close"}
+          .body
+            = t('.make_public_deal_msg.html')
+            .levitas-checkbox
+              = f.check_box :proceed, data: { "modal-target": "checkbox", action: "change->modal#check" }
+              = f.label :proceed, t('.checkbox_label')
+          .footer
+            %span{"data-action": "click->modal#close"}
+              = levitas_button :button, t('.cancel'), nil, nil, :large
+            = f.submit t('.make_public_deal'), disabled: :disabled, class: "levitas-button primary large", data: { "modal-target": "button" }

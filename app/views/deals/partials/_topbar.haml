@@ -1,0 +1,89 @@
+.flex.flex-col.items-start.gap-3.px-6.pt-6.lg:px-10.-mx-6.-mt-6.lg:-mx-10.bg-white
+  .flex.flex-auto.items-center.justify-between.text-gray-600.w-full
+    - if user_signed_in?
+      = link_to dashboard_index_path, class: "flex items-center max-w-max gap-2 px-1 py-2" do
+        = image_tag "icons/arrow-left.svg", class: "p-1"
+        %span.font-medium= t('.back_to_deals')
+    .flex.gap-3.relative{"data-controller": "deals"}
+      - if user_signed_in? && @deal.terms.is_public?
+        .relative{"data-controller" => "dropdown"}
+          %button.btn.btn-default.bg-red-600.max-md:hidden.font-normal{"data-action" => "dropdown#toggle click@window->dropdown#hide", type: "button"}
+            .font-normal
+              = t('.share')
+          .hidden.transition.transform.origin-top-right.absolute.right-0{"data-dropdown-target" => "menu", "data-transition-enter-from" => "opacity-0 scale-95", "data-transition-enter-to" => "opacity-100 scale-100", "data-transition-leave-from" => "opacity-100 scale-100", "data-transition-leave-to" => "opacity-0 scale-100"}
+            .mt-2.rounded-lg.bg-white.p-3.border.border-gray-locale{class: "w-[420px]"}
+              %p
+                = t('.copy_link_description')
+              .flex.flex-column.mt-2.gap-3{"data-clipboard-success-content-value" => "Copied!", "data-controller" => "clipboard"}
+                %input{class: "levitas-form-input flex-1", disabled: true, value: "#{marketplace_url(@deal.url_code || @deal.id)}", "data-clipboard-target" => "source"}
+                %button.btn.btn-primary{"data-action" => "clipboard#copy", "data-clipboard-target" => "button", type: "button"}
+                  = t('.copy_link')
+      - # Hide button when deal state set to "funding"
+      - if current_user&.broker? && @deal&.invitable?
+        = link_to invite_lenders_modal_deal_path, class: "levitas-button primary large", id: "invite-lenders", data: { "turbo-frame": "modal" } do
+          = image_tag 'icons/mail.svg'
+          = t('.invite_lenders')
+      - if user_signed_in?
+        = link_to bookmark_deal_path(@deal), class: "btn btn-default bg-red-600 max-md:hidden #{'active' if @deal.bookmarked}", data: { turbo_method: :post } do
+          = image_tag 'icons/bookmark.svg'
+        - if current_user&.broker? && !@deal.state.in?(['funding', 'signatures', 'payments'])
+          %a.btn.btn-default.max-md:hidden{href: '#', "data-action": "click->popover#toggle", "data-popover-id": "deal-broker-actions"}
+            = image_tag 'icons/dots-horizontal-black.svg'
+          %div.hidden.flex.flex-col.absolute.z-10.right-0.top-12.w-32.border.border-gray-200.bg-white.divide-y.divide-gray-200.rounded-lg.text-gray-700{"data-popover-target" => "popover", id: "deal-broker-actions"}
+            = link_to edit_deal_path(@deal), class: "py-3 px-4" do
+              = t('.edit_deal')
+      - if current_user&.admin?
+        %a.btn.btn-default.max-md:hidden{href: '#', "data-action": "click->popover#toggle", "data-popover-id": "deal-admin-actions"}
+          = image_tag 'icons/dots-horizontal-black.svg'
+        %div.hidden.flex.flex-col.absolute.z-10.right-0.top-12.w-32.border.border-gray-200.bg-white.divide-y.divide-gray-200.rounded-lg.text-gray-700{"data-popover-target" => "popover", id: "deal-admin-actions"}
+          = link_to edit_deal_path(@deal), class: "py-3 px-4" do
+            = t('.edit_deal')
+          = link_to deal_path(@deal), class: "py-3 px-4 text-red-500",  data: { turbo_method: :delete, turbo_confirm: 'Are you sure ?' } do
+            = t('.delete')
+
+  .flex.max-lg:flex-col.items-start.max-lg:gap-6.lg:items-center.md:justify-between.w-full
+    .flex.gap-4
+      .flex.flex-col.items-start.md:order-2{class: @deal.property_picture.attached? ? "max-md:basis-[72.5%] md:basis-5/6" : ""}
+        %p.text-sm.text-gray-500= "##{@deal.property.mls_number}"
+        %p.font-serif.font-bold.text-3xl.text-gray-600.max-md:line-clamp-3{class: "leading-[2.75rem] #{blur_style('xl')}"}
+          = blur_content(@deal.property.address.full_address, "4 Place Ville Marie")
+        - unless user_signed_in?
+          %p.font-medium.text-xs.text-gray-400
+            = "#{@deal.property.address.city}, #{@deal.property.address.province_abbreviation}"
+        %p.self-stretch
+          %span.max-md:flex.text-blue-600.text-xl.font-bold{class: "leading-[1.875rem]"}
+            = "#{t('.mortgage')}: #{number_to_currency_without_cents(@deal.target)}"
+          %span.max-md:hidden.text-gray-500.text-xl · 
+          %span.max-md:flex.text-gray-500.text-xl{class: "leading-[1.875rem]"}
+            = "#{t('.property_value')}: #{number_to_currency_without_cents(@deal.property.price)}"
+      - if @deal.property_picture.attached?
+        .md:order-1{class: "max-md:basis-[27.5%] md:basis-1/6"}
+          = image_tag(@deal.property_picture.variant(:thumb), class: "rounded-xl object-center object-cover h-full md:w-full", height: "192", width: "192")
+    .grid.grid-cols-2.md:flex.md:w-full.lg:justify-end.md:justify-between.items-start.max-md:content-center.gap-3.md:gap-4.text-gray-600
+      .flex.flex-col.items-start.gap-1
+        %p.self-stretch.text-sm.font-light
+          = t('.stage')
+        .badge{class: "badge-#{@deal.state}"}= t(".#{@deal.state}")
+      .flex.flex-col.items-start.gap-1
+        %p.self-stretch.text-sm.font-light
+          = t('.broker')
+        .flex.items-center.justify-center.gap-2
+          .flex.items-center.justify-center.bg-indigo-500.rounded-full.text-white.text-xs.font-bold.uppercase.w-5.h-5{class: "#{blur_style}"}
+            = @deal&.user&.first_name&.chr
+          %p.font-bold{class: "#{blur_style}"}
+            = blur_content(@deal&.user&.full_name)
+      .flex.flex-col.items-start.gap-1
+        %p.self-stretch.text-sm.font-light
+          = t('.borrower')
+        .flex.items-center.justify-center.gap-2{class: blur_style}
+          .flex.items-center.justify-center.bg-purple-500.rounded-full.text-white.text-xs.font-bold.uppercase.w-5.h-5
+            = @deal&.applicant&.first_name&.chr
+          %p.font-bold
+            = blur_content(@deal&.applicant&.full_name)
+      .flex.flex-col.items-start.gap-1
+        %p.self-stretch.text-sm.font-light
+          = t('.closing_date')
+        %p.font-bold
+          = Date.parse(@deal.property.approximate_closing_date).strftime("%b %d, %Y")
+  .flex.w-full.md:hidden
+    = render "deals/partials/deal_flow/#{@deal_flow_partial}"

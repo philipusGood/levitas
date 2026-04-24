@@ -1,0 +1,11 @@
+.flex
+  = image_tag '500.svg', class: "w-full"
+.flex.flex-col.mx-8.md:items-center.md:mx-0
+  .flex.flex-col
+    .flex.flex-col.max-w-xl.pt-12.gap-4.text-gray-600
+      %h1.text-3xl.font-bold.font-serif{class: "leading-[45px]"}= t('.something_went_wrong')
+      %p= t('.something_went_wrong_msg')
+      = link_to t('.back_to_home'), root_path, class: "levitas-button large max-w-fit"
+    .flex.pt-16.gap-6.text-blue-500.font-medium.text-sm
+      = link_to t('.contact_support'), root_path
+      = link_to t('.help_center'), root_path

@@ -1,0 +1,51 @@
+version: '3.8'
+
+services:
+
+  db:
+    image: postgres:15-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: levitas
+      POSTGRES_DB: levitas_production
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  redis:
+    image: redis:7-alpine
+    restart: unless-stopped
+
+  web:
+    image: ghcr.io/philipusgood/levitas:latest
+    restart: unless-stopped
+    depends_on:
+      - db
+      - redis
+    ports:
+      - "3000:3000"
+    environment:
+      RAILS_ENV: production
+      DATABASE_URL: postgresql://postgres:levitas@db:5432/levitas_production
+      REDIS_URL: redis://redis:6379/0
+      SECRET_KEY_BASE: 714b2dd59b4063ffc0f9e7be38df7bbfcae0a00818cb861513f0a7b56ce4b9934bf6123387346e1c45414eebf003b0438ffeabe60072d17ea427fc577cd2b207
+      APP_HOST: "10.0.1.73:3000"
+    volumes:
+      - storage_data:/app/storage
+
+  worker:
+    image: ghcr.io/philipusgood/levitas:latest
+    restart: unless-stopped
+    command: bundle exec sidekiq -c 2
+    depends_on:
+      - db
+      - redis
+    environment:
+      RAILS_ENV: production
+      DATABASE_URL: postgresql://postgres:levitas@db:5432/levitas_production
+      REDIS_URL: redis://redis:6379/0
+      SECRET_KEY_BASE: 714b2dd59b4063ffc0f9e7be38df7bbfcae0a00818cb861513f0a7b56ce4b9934bf6123387346e1c45414eebf003b0438ffeabe60072d17ea427fc577cd2b207
+
+volumes:
+  postgres_data:
+  storage_data:

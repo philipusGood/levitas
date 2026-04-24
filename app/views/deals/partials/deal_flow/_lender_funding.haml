@@ -1,0 +1,38 @@
+.flex.flex-col.flex-auto.gap-4.p-3.rounded-lg.border.border-gray-200.bg-white
+  .flex.items-center.justify-between.gap-1
+    %p.font-serif.font-bold.text-xl.text-gray-700= t('.stage')
+    = image_tag "icons/information-circle.svg"
+  .flex.mb-5
+    .flex.items-center.gap-3
+      .flex.w-8.h-8.rounded-full.items-center.justify-center.bg-blue-600{class: "p-1.5"}
+        = image_tag("icons/cash.svg")
+      %span.font-medium.text-blue-600= t('.funding')
+  .flex.flex-col.gap-3.mb-5
+    %span.font-serif.font-bold.text-xl.text-gray-700= t('.capital_commited')
+    .grid.grid-cols-2.gap-x-3.gap-y-2.text-gray-600
+      .flex.flex-col.items-start.p-2.rounded.bg-gray-50
+        %span.text-sm.opacity-70= t('.target')
+        %p.font-bold
+          = number_to_currency_without_cents(@deal.target)
+      .flex.flex-col.items-start.p-2.rounded.bg-gray-50
+        %span.text-sm.opacity-70= t('.commited')
+        %p.font-bold= number_to_currency_without_cents(@deal.commited_capital)
+      .flex.flex-col.gap-1.col-span-full
+        .flex.justify-between
+          %span.text-gray-500.text-xs= t('.progress')
+          %span.text-gray-500.text-xs= number_to_percentage(@deal.funding_progress, precision: 0)
+        %progress.deal-progress-bar{ value: @deal.funding_progress, max: 100, class: "#{'completed' if @deal.funding_completed?}"}
+      .flex.col-span-full
+        %p.text-blue-500.font-medium= "#{@deal.total_investors_comitted} " + t('.lenders_commited')
+    - if user_signed_in? && !@deal.lender_commited?(current_user) && !@deal.funding_completed? && current_user.as_lender.deal_available?(@deal)
+      = link_to review_investment_modal_deal_lender_path(deal_id: @deal.id, id: current_user.id), class: "levitas-button primary large disabled", id: "funding-deal-btn", data: { "turbo-frame": "modal" } do
+        = image_tag 'icons/cash.svg'
+        = t('.commit_capital')
+    - if user_signed_in? && @deal.lender_commited?(current_user)
+      .flex.items-center.justify-center.py-4.px-6.rounded-lg.bg-emerald-50
+        %p.font-bold.text-sm.text-emerald-500= t('.you_funded_this_deal_with') + " #{number_to_currency_without_cents(current_user.becomes(Lender).commited_capital(@deal))}"
+      - unless @deal.funding_completed?
+        = link_to review_investment_modal_deal_lender_path(deal_id: @deal.id, id: current_user.id), class: "levitas-button large", data: { "turbo-frame": "modal" } do
+          = image_tag 'icons/cash-gray.svg'
+          = t('.add_more_capital')
+

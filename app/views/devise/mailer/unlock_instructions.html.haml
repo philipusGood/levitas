@@ -1,0 +1,17 @@
+%p
+%p 
+%p 
+%p= link_to 'Unlock my account', 
+
+
+%h1{style: "font-size:24px;margin:0 0 20px 0;font-family:Arial,sans-serif;color: #3F3F46"}
+  Hello #{@resource.email}!
+%p{style: "margin:0 0 30px 0;font-size:16px;line-height:24px;font-family:Arial,sans-serif;"}
+  Your account has been locked due to an excessive number of unsuccessful sign in attempts.
+%p{style: "margin:0 0 30px 0;font-size:16px;line-height:24px;font-family:Arial,sans-serif;"}
+  Click the link below to unlock your account:
+%a{href: unlock_url(@resource, unlock_token: @token), style: "text-decoration: none; color: inherit;"}
+  %table{style: "margin:0 0 0px 0;background-color: #3B77A8; border: none; padding: 8px 12px; font-size: 16px; color: white; border-radius: 5px; cursor: pointer;font-family:Arial,sans-serif;"}
+    %tr
+      %td
+        Unlock my account

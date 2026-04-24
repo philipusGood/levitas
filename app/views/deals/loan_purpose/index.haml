@@ -1,0 +1,28 @@
+%div
+  %h1.deal-creator-step-title
+    = t('.title')
+  %p.deal-creator-step-description
+    = t('.leading')
+  = render 'devise/shared/error_messages', resource: @loan_purpose
+  = form_for @loan_purpose, url: deal_loan_purpose_index_path(@deal), method: :post, data: { turbo: false, controller: "loan-purpose" } do |f|
+    %sectioin.mb-8
+      .py-6
+        .flex.flex-col.gap-6.mb-6
+          .flex.flex-col.flex-1{class: "gap-1.5"}
+            .flex.justify-between
+              = f.label :funds_usage, t('.use_of_funds'), class: "deal-creator-label mb-0" do
+                = t('.use_of_funds')
+                = ai_badge(f.object.funds_usage, 'loan_purpose.funds_usage')
+              %span.text-sm.text-gray-600{id: "count_funds_usage"} 0/1000
+            = f.text_area :funds_usage, maxlength: 1000, rows: 6, placeholder: t('.use_of_funds_placeholder'), class: "deal-creator-textarea", data: { action: "keyup->loan-purpose#change", "loan-purpose-target": "textInput", id: "funds_usage" }
+            %p.text-sm.text-gray-500= t('.use_of_funds_desc')
+          .flex.flex-col.flex-1{class: "gap-1.5"}
+            .flex.justify-between
+              = f.label :exit_strategy, t('.exit_strategy'), class: "deal-creator-label mb-0" do
+                = t('.exit_strategy')
+                = ai_badge(f.object.exit_strategy, 'loan_purpose.exit_strategy')
+              %span.text-sm.text-gray-600{id: "count_exit_strategy"} 0/1000
+            = f.text_area :exit_strategy, maxlength: 1000, rows: 6, placeholder: t('.exit_strategy_placeholder'), class: "deal-creator-textarea", data: { action: "keyup->loan-purpose#change", "loan-purpose-target": "textInput", id: 'exit_strategy' }
+            %p.text-sm.text-gray-500= t('.exit_strategy_desc')
+
+    = render partial: 'deals/partials/action_bar', locals: { f: f, back_action_path: deal_terms_path, show_save_action: true, skip_action_path: nil, submit: false }

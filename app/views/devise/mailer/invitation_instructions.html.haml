@@ -1,0 +1,9 @@
+%h1{style: "font-size:24px;margin:0 0 20px 0;font-family:Arial,sans-serif;color: #3F3F46"}
+  = t("devise.mailer.invitation_instructions.hello", email: @resource.email)
+%p{style: "margin:0 0 30px 0;font-size:16px;line-height:24px;font-family:Arial,sans-serif;"}
+  = t("devise.mailer.invitation_instructions.someone_invited_you", url: root_url)
+%a{href: accept_invitation_url(@resource, invitation_token: @token), style: "text-decoration: none; color: inherit;"}
+  %table{style: "margin:0 0 0px 0;background-color: #3B77A8; border: none; padding: 8px 12px; font-size: 16px; color: white; border-radius: 5px; cursor: pointer;font-family:Arial,sans-serif;"}
+    %tr
+      %td
+        = t("devise.mailer.invitation_instructions.accept")

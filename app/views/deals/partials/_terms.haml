@@ -1,0 +1,28 @@
+.flex.flex-col.self-stretch.gap-3.bg-white.border.border-gray-200.rounded-lg.text-gray-600.font-sans{"data-controller": "modal"}
+  = render partial: "deals/partials/terms_banner", locals: { title: "Review Terms", description: "Make sure you understand and accept these terms proposed by Levitas." }
+  = render "deals/partials/terms_notes"
+  .flex.flex-wrap.px-2.gap-3.border-b.border-gray-200.pb-3
+    .terms-cell
+      %p.text-sm.opacity-70 Mortgage Principal
+      %p.font-bold $700,000
+    .terms-cell
+      %p.text-sm.opacity-70 Mortgage Principal
+      %p.font-bold $700,000
+    .terms-cell
+      %p.text-sm.opacity-70 Mortgage Principal
+      %p.font-bold $700,000
+    .terms-cell
+      %p.text-sm.opacity-70 Mortgage Principal
+      %p.font-bold $700,000
+    .terms-cell
+      %p.text-sm.opacity-70 Mortgage Principal
+      %p.font-bold $700,000
+    .terms-cell
+      %p.text-sm.opacity-70 Mortgage Principal
+      %p.font-bold $700,000
+  .flex.flex-col.md:flex-row.px-2.gap-3
+    = render "deals/partials/score_gauge"
+  .flex.items-center.justify-end.p-4.gap-3.self-stretch
+    %span{"data-action": "click->modal#showModal", "data-modal-id-param": "rejectTermsModal"} test
+    = levitas_button(:button, "Reject")
+    = levitas_button(:button, "Accept Terms", "primary")

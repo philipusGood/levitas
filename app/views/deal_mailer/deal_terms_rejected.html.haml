@@ -1,0 +1,10 @@
+%h1{style: "font-size:24px;margin:0 0 20px 0;font-family:Arial,sans-serif;color: #3F3F46"}
+  Deal Rejected
+
+- if @user.admin?
+  %p{style: "margin:0 0 20px 0;font-size:16px;line-height:24px;font-family:Arial,sans-serif;"}
+    Your deal #{@deal_name} has been deleted or rejected. If you have any concerns please feel free to contact us at support@levitas.ai
+
+- else
+  %p{style: "margin:0 0 20px 0;font-size:16px;line-height:24px;font-family:Arial,sans-serif;"}
+    The broker rejected the deal terms

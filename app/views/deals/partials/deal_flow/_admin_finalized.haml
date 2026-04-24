@@ -1,0 +1,26 @@
+.flex.flex-col.flex-auto.gap-4.p-3.rounded-lg.border.border-gray-200.bg-white
+  .flex.items-center.justify-between.gap-1
+    %p.font-serif.font-bold.text-xl.text-gray-700= t('.stage')
+    = image_tag "icons/information-circle.svg"
+  .flex
+    .flex.items-center.gap-3
+      .flex.w-8.h-8.rounded-full.items-center.justify-center.bg-blue-600{class: "p-1.5"}
+        = image_tag("icons/check.svg")
+      .flex.flex-col{class: "-gap-0.5"}
+        %span.font-medium.text-blue-600= t('.deal_finalized')
+  .flex.flex-col.gap-3
+    %span.font-serif.font-bold.text-xl.text-gray-700= t('.capital_commited')
+    .grid.grid-cols-2.gap-x-3.gap-y-2.text-gray-600
+      .flex.flex-col.items-start.p-2.rounded.bg-gray-50
+        %span.text-sm.opacity-70= t('.target')
+        %p.font-bold= number_to_currency_without_cents(@deal.target)
+      .flex.flex-col.items-start.p-2.rounded.bg-gray-50
+        %span.text-sm.opacity-70= t('.commited')
+        %p.font-bold $700,000
+      .flex.flex-col.gap-1.col-span-full
+        .flex.justify-between
+          %span.text-gray-500.text-xs= t('.progress')
+          %span.text-gray-500.text-xs 100%
+        %progress.deal-progress-bar.completed{ value: 100, max: 100}
+      .flex.col-span-full
+        %p.text-blue-500.font-medium= "#{@deal.lenders.size}/6 " + t('.investors_commited')

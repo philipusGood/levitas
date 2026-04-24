@@ -1,0 +1,7 @@
+.flex.flex-col.items-end.gap-1.self-stretch
+  .flex.items-start.gap-1.self-stretch
+    %p.font-normal.text-xs.text-right.text-gray-500
+      = t("dashboard.index.deal_progress.#{progress[:state]}")
+    %p.font-normal.text-xs.text-right.text-gray-500{:class => 'flex-[1_0_0]'}
+      = number_to_percentage(progress[:percentage], precision: 0)
+  %progress.deal-progress-bar{ value: progress[:percentage], max: 100, class: "#{'completed' if progress[:percentage] >= 100}"}

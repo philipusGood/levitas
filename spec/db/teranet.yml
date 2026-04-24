@@ -1,0 +1,6 @@
+title_check:
+  active_mortgage: true
+    description: "Active Mortgage"
+  active_liens: false
+fraud_check:
+  loan_to_estimated_value: "NA" # "NA" or "PASS" or "FAIL"

@@ -1,0 +1,29 @@
+%aside.deal-edit-sidebar{"data-controller": "edit-d"}
+  %h4.title= t('deals.partials.topbar.edit_deal')
+  .flex.flex-col.gap-4
+    - if deal.property_picture.attached?
+      = image_tag(deal.property_picture.variant(:thumb), class: "rounded-xl h-24 object-center object-cover", height: "96", width: "240")
+    .flex.flex-col{class: "gap-1.5"}
+      %p.text-blue-600.font-sans.font-bold
+        = number_to_currency_without_cents(deal.target)
+      %p.font-serif.font-medium.text-xl.text-gray-600{class: "leading-[30px] #{blur_style}"}
+        - if deal.property.address.unit.present?
+          = blur_content("#{deal.property.address.unit} #{deal.property.address.street}")
+        - else
+          = blur_content("#{deal.property.address.street}")
+      %p.font-medium.text-xs.text-gray-400
+        = "#{deal.property.address.city}, #{deal.property.address.province_abbreviation}"
+  .steps{id: "steps"}
+    - @steps.admin_steps.each do |step|
+      - unless step.eql?(:secondary_applicant) && !deal.has_secondary_applicant?
+        - if @steps.sub_steps?(step) && @steps.show_sub_steps
+          .step-nested{class: "#{'expanded' if step == @active_step} group/#{step.to_s}", "data-action": "click->edit-deal-sidebar#select"}
+            %h2
+              %a{href: "##{step.to_s.downcase}", "data-edit-deal-sidebar-target": "menuItem", "data-edit-deal-sidebar-id": "#{step.to_s.downcase}"}= step.to_s.humanize
+            .substeps
+              - @steps.subitems_for(step).each do |substep|
+                %a{href: "##{step.to_s.downcase}_#{substep.to_s.downcase}", class: "#{'active' if substep == @active_sub_step && step == @active_step}", "data-action": "click->edit-deal-sidebar#select", "data-edit-deal-sidebar-target": "menuItem", "data-edit-deal-sidebar-id": "#{step.to_s.downcase}_#{substep.to_s.downcase}"}= substep.to_s.humanize
+        - unless @steps.sub_steps?(step)
+          .step
+            %h2
+              %a{href: "##{step.to_s.downcase}", "data-action": "click->edit-deal-sidebar#select", "data-edit-deal-sidebar-target": "menuItem", "data-edit-deal-sidebar-id": "#{step.to_s.downcase}"}= step.to_s.humanize

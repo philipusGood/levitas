@@ -1,0 +1,53 @@
+= turbo_frame_tag :modal do
+  .relative.z-40{ "aria-labelledby": "modal-title", "role": "dialog", "aria-modal": "true"}
+    .fixed.inset-0.bg-gray-500.bg-opacity-75
+    .fixed.inset-0.z-10.p-6.md:p-10.overflow-y-auto
+      .flex.min-h-full.items-center.justify-center.max-w-5xl.mx-auto
+        .levitas-modal
+          .header.max-md:flex-col
+            %span.title= t('.review_terms')
+            .flex.gap-4
+              .step.current
+                .number.rounded-full 1
+                = t('.review')
+              .step
+                .number.rounded-full 2
+                = t('.confirm')
+          .body
+            .flex.flex-wrap.px-2.gap-3.border-b.border-gray-200.pb-3
+              .terms-cell
+                %p.text-sm.opacity-70= t('.mortgage_principal')
+                %p.font-bold
+                  = number_to_currency_without_cents(@deal.target)
+              .terms-cell
+                %p.text-sm.opacity-70
+                  = t('.term')
+                %p.font-bold
+                  = deal_terms_in_words(@deal.terms.terms_to_years_months)
+              .terms-cell
+                %p.text-sm.opacity-70
+                  = "#{t('.interest_rate')}  + #{t('.lenders_fee')}"
+                %p.font-bold
+                  = "#{number_to_percentage(@deal.terms.interest_rate, precision: 2, strip_insignificant_zeros: true)} + #{number_to_percentage(@deal.terms.lenders_fee, precision: 2, strip_insignificant_zeros: true)}"
+              .terms-cell
+                %p.text-sm.opacity-70
+                  = t('.amortization')
+                %p.font-bold
+                  = @deal.terms.amortization_period
+              .terms-cell
+                %p.text-sm.opacity-70
+                  = t('.broker_fee')
+                %p.font-bold
+                  = number_to_currency_without_cents(@deal.broker_fees.total)
+              .terms-cell
+                %p.text-sm.opacity-70
+                  = t('.type')
+                %p.font-bold
+                  = @deal.terms.type
+            .flex.flex-col.md:flex-row.px-2.gap-3
+              = render "deals/partials/score_gauge"
+          .footer
+            .flex.md:flex-1.gap-3.justify-between
+              %span{"data-action": "click->modal#close"}
+                = levitas_button :button, t('.close'), nil, nil, :large
+              = link_to t('.continue'), review_terms_modal_deal_path({step_2: true}), class: "levitas-button primary large", data: { turbo_frame: :modal }

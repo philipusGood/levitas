@@ -1,0 +1,37 @@
+- unless deal.accepted?
+  .flex.items-center.p-6.gap-6.bg-blue-50.border.border-blue-200.rounded-xl
+    .flex.items-center.justify-center.p-5.md:p-9.border.border-2.rounded-full.bg-blue-100.border-blue-400.select-none{class: "w-[100px] h-[100px] min-w-[100px] min-h-[100px] max-w-[100px] max-h-[100px] md:w-[120px] md:h-[120px] md:min-w-[120px] md:min-h-[120px] md:max-w-[120px] md:max-h-[120px]"}
+      = image_tag "icons/cash-blue.svg", class: "w-8 h-8 md:w-12 md:h-12"
+    .flex.flex-col.gap-2.text-gray-600
+      %h4.font-serif.font-bold= t('.not_ready')
+      %p.text-sm= t('.not_ready_msg')
+
+- if deal.accepted?
+  .flex.flex-col.gap-2
+    .flex.p-4.gap-3.rounded-xl.border.border-gray-100.bg-white
+      .flex.flex-col.flex-1.items-start.p-2.text-gray-600
+        %span.opacity-70.text-xs= t('.next_due_payment')
+        %span.text-sm.font-bold Jul 12, 2023
+      .flex.flex-col.flex-1.items-start.p-2.text-gray-600
+        %span.opacity-70.text-xs= t('.next_due_payment')
+        %span.text-sm.font-bold Jul 12, 2023
+      .flex.flex-col.flex-1.items-start.p-2.text-gray-600
+        %span.opacity-70.text-xs= t('.next_due_payment')
+        %span.text-sm.font-bold Jul 12, 2023
+    %table.rounded-table.table-fixed.w-full.select-text
+      %thead
+        %tr
+          %th= t('.no_').upcase
+          %th= t('.payment').upcase
+          %th= t('.payment_date')
+          %th= t('.balance').upcase
+          %th= t('.status').upcase
+      %tbody
+        - #deal.details.payments.each do |payment|
+        %tr
+          %td 1
+          %td.font-bold $58,649.79
+          %td Jun 12, 2023
+          %td.font-bold $641,933.55
+          %td
+            .badge.badge-green.max-w-min= t('.paid')

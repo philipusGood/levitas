@@ -1,0 +1,58 @@
+.flex.flex-col.gap-8
+  .flex.flex-col.gap-3.font-sans
+    %h1.deal-summary-step-title
+      = t('.title')
+    %p.deal-summary-step-description
+      = t('.leading')
+  %section.flex.flex-col.gap-8
+    %h2.deal-summary-section-title
+      = t('.applicant_information')
+
+    = form_tag(deal_submit_index_path(@deal), class: "flex flex-col gap-8", method: :post, data: { turbo: false }) do |f|
+      %section.flex.flex-col.gap-6
+        .flex.items-center.gap-3
+          %h2.min-w-fit.text-xl.text-gray-700.font-bold.font-serif{class: "leading-[30px]"}
+            = t('.main_applicant')
+          %div.w-full.h-px.bg-gray-200
+        = render partial: 'applicant', locals: { applicant: @deal.applicant }
+
+      - if @deal.property.mortgages.any?
+        .flex.flex-col.self-stretch.gap-2
+          %h2.min-w-fit.text-xl.text-gray-700.font-bold.font-serif{class: "leading-[30px]"}
+            = t('.property_mortgage_rank')
+          - @deal.property.mortgages.each_with_index do |mortgage, index|
+            .flex.flex-col.p-4.rounded-lg.border.border-gray-200.bg-white.sm:flex-row
+              .flex-1.flex-col
+                %p.text-sm.break-words{class: "text-gray-600/60"}
+                  = t('.rank')
+                %p.font-bold.text-gray-600
+                  = "#{(index + 1).ordinalize}"
+              .flex-1
+                %p.text-sm.break-words{class: "text-gray-600/60"}
+                  = t('.institution')
+                %p.font-bold.text-gray-600
+                  = mortgage.institution
+              .flex-1
+                %p.text-sm.break-words{class: "text-gray-600/60"}
+                  = t('.amount_due')
+                %p.font-bold.text-gray-600
+                  = number_to_currency_without_cents(mortgage.amount_due)
+              .flex-1
+                %p.text-sm.break-words{class: "text-gray-600/60"}
+                  = t('.monthly_payment')
+                %p.font-bold.text-gray-600
+                  = number_to_currency_without_cents(mortgage.monthly_payment)
+              .flex-1
+                %p.text-sm.break-words{class: "text-gray-600/60"}
+                  = t('.mortgage_maturity_date')
+                %p.font-bold.text-gray-600
+                  = ordinalize_date(mortgage.end_date)
+
+      - if @deal.has_secondary_applicant?
+        %section.flex.flex-col.gap-6
+          .flex.items-center.gap-3
+            %h2.min-w-fit.text-xl.text-gray-700.font-bold.font-serif{class: "leading-[30px]"}
+              = t('deals.summary.index.secondary_applicant')
+            %div.w-full.h-px.bg-gray-200
+          = render partial: 'applicant', locals: { applicant: @deal.secondary_applicant }
+      = render partial: 'deals/partials/action_bar', locals: { f: f, back_action_path: deal_credit_check_index_path, show_save_action: true, skip_action_path: nil, submit: true }

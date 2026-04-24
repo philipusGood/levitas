@@ -1,0 +1,26 @@
+.fixed.w-full.right-0.bottom-0.lg:bottom-10.flex.justify-between.items-center.bg-gray-900.lg:rounded-xl.p-4.lg:p-6.z-30{:class => "lg:right-[40px] lg:w-[calc(100%-400px)] gap-2.5"}
+  = button_tag type: 'submit', class: 'save-as-draft-btn', name: "draft", value: "true" do
+    Save as Draft
+    %span.hidden.lg:inline and Exit
+
+  .flex.w-full.lg:w-auto.justify-between{:class => "gap-2.5"}
+    %div{class: "#{'invisible' if back_action_path.nil?}"}
+      = link_to back_action_path, class: 'flex items-center gap-2 bg-gray-200 rounded-lg leading-6 py-2 px-3 font-medium text-gray-600' do
+        %svg{:fill => "none", :height => "24", :viewbox => "0 0 24 24", :width => "24", :xmlns => "http://www.w3.org/2000/svg"}
+          %path{"clip-rule" => "evenodd", :d => "M14.7068 7.29279C14.8943 7.48031 14.9996 7.73462 14.9996 7.99979C14.9996 8.26495 14.8943 8.51926 14.7068 8.70679L11.4138 11.9998L14.7068 15.2928C14.8889 15.4814 14.9897 15.734 14.9875 15.9962C14.9852 16.2584 14.88 16.5092 14.6946 16.6946C14.5092 16.88 14.2584 16.9852 13.9962 16.9875C13.734 16.9897 13.4814 16.8889 13.2928 16.7068L9.29279 12.7068C9.10532 12.5193 9 12.265 9 11.9998C9 11.7346 9.10532 11.4803 9.29279 11.2928L13.2928 7.29279C13.4803 7.10532 13.7346 7 13.9998 7C14.265 7 14.5193 7.10532 14.7068 7.29279Z", :fill => "#52525B", "fill-rule" => "evenodd"}
+        Back
+
+    - if show_save_action
+      = button_tag type: 'submit', class: 'flex items-center gap-2 bg-blue-600 rounded-lg leading-6 py-2 px-3 font-medium text-white', id: "continue-button" do
+        - if submit
+          %span Submit deal
+        - else
+          %span.hidden.lg:inline Save and Continue
+        %svg{:fill => "none", :height => "24", :viewbox => "0 0 24 24", :width => "24", :xmlns => "http://www.w3.org/2000/svg"}
+          %path{"clip-rule" => "evenodd", :d => "M9.29279 16.7074C9.10532 16.5199 9 16.2656 9 16.0004C9 15.7352 9.10532 15.4809 9.29279 15.2934L12.5858 12.0004L9.29279 8.70741C9.11063 8.5188 9.00983 8.2662 9.01211 8.00401C9.01439 7.74181 9.11956 7.491 9.30497 7.30559C9.49038 7.12018 9.74119 7.01501 10.0034 7.01273C10.2656 7.01045 10.5182 7.11125 10.7068 7.29341L14.7068 11.2934C14.8943 11.4809 14.9996 11.7352 14.9996 12.0004C14.9996 12.2656 14.8943 12.5199 14.7068 12.7074L10.7068 16.7074C10.5193 16.8949 10.265 17.0002 9.99979 17.0002C9.73462 17.0002 9.48031 16.8949 9.29279 16.7074Z", :fill => "white", "fill-rule" => "evenodd"}
+
+    - if skip_action_path
+      = link_to skip_action_path , class: 'flex items-center gap-2 bg-blue-600 rounded-lg leading-6 py-2 px-3 font-medium text-white' do
+        Skip and Continue
+        %svg{:fill => "none", :height => "24", :viewbox => "0 0 24 24", :width => "24", :xmlns => "http://www.w3.org/2000/svg"}
+          %path{"clip-rule" => "evenodd", :d => "M9.29279 16.7074C9.10532 16.5199 9 16.2656 9 16.0004C9 15.7352 9.10532 15.4809 9.29279 15.2934L12.5858 12.0004L9.29279 8.70741C9.11063 8.5188 9.00983 8.2662 9.01211 8.00401C9.01439 7.74181 9.11956 7.491 9.30497 7.30559C9.49038 7.12018 9.74119 7.01501 10.0034 7.01273C10.2656 7.01045 10.5182 7.11125 10.7068 7.29341L14.7068 11.2934C14.8943 11.4809 14.9996 11.7352 14.9996 12.0004C14.9996 12.2656 14.8943 12.5199 14.7068 12.7074L10.7068 16.7074C10.5193 16.8949 10.265 17.0002 9.99979 17.0002C9.73462 17.0002 9.48031 16.8949 9.29279 16.7074Z", :fill => "white", "fill-rule" => "evenodd"}

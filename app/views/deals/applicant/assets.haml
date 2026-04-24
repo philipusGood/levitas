@@ -1,0 +1,18 @@
+.mb-40
+  %h1.deal-creator-step-title
+    = t('.title')
+    = ai_badge_collection(@assets, 'applicant.assets')
+  %p.deal-creator-step-description
+    = t('.leading')
+  = form_for @assets, url: wizard_path, method: :put, data: { turbo: false } do |f|
+    %div{"data-controller" => "form"}
+      %template{"data-form-target" => "template"}
+        = render partial: 'assets_form', locals: { asset: Deal::Assets::Item.new, f: f, index: "INDEX_TEMPLATE" }
+      %div{"data-form-target" => "items"}
+        - @assets.items.each_with_index do |asset, index|
+          = render partial: 'assets_form', locals: { asset: asset, f: f, index: index }
+      .flex
+        %button.py-2.px-3.border.rounded-lg.border-gray-200.text-gray-600{type: "button", "data-action" => "click->form#add", id: "add-asset"}
+          = t('.add_asset')
+
+    = render partial: 'deals/partials/action_bar', locals: { f: f, back_action_path: wizard_step_path(@deal, 'income'), show_save_action: true, skip_action_path: nil, submit: false }

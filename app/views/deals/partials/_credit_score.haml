@@ -1,0 +1,27 @@
+.flex.flex-col.bg-white.border.border-gray-200.rounded-lg.p-2{class: "gap-2.5"}
+  .flex.flex-col.gap-1
+    %p.text-sm.opacity-70= t('deals.summary.index.credit_score')
+    .flex.items-center.gap-2
+      - if applicant.credit_score.to_f < 600
+        %span.font-bold.text-rose-500
+          = applicant.credit_score
+        %p.font-bold= t('deals.summary.index.poor')
+      - elsif applicant.credit_score.to_f >= 600 && applicant.credit_score.to_f < 720
+        %span.font-bold.text-amber-500
+          = applicant.credit_score
+        %p.font-bold= t('deals.summary.index.average')
+      - else
+        %span.font-bold.text-emerald-500
+          = applicant.credit_score
+        %p.font-bold= t('deals.summary.index.excellent')
+    .flex{class: "gap-0.5"}
+      .flex-auto.flex-col
+        .credit-score-gauge.bg-rose-500{class: "#{'active' if applicant.credit_score.to_f < 600 }"}
+        %span.text-xs.text-gray-400.w-full 300
+      .flex-auto.flex-col
+        .credit-score-gauge.bg-amber-500{class: "#{'active' if applicant.credit_score.to_f >= 600 && applicant.credit_score.to_f < 720 }"}
+        %span.text-xs.text-gray-400.w-full 600
+      .flex-auto.flex-col
+        .credit-score-gauge.bg-emerald-500{class: "#{'active' if applicant.credit_score.to_f >= 720 }"}
+        %span.text-xs.text-gray-400.w-full 720
+  = link_to t('deals.summary.index.how_credit_score_works'), '#', class: "text-sm font-medium text-blue-500 pb-3"

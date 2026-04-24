@@ -1,0 +1,17 @@
+.flex.items-center.gap-2
+  - if value <= ranges[:excellent]
+    %span.font-bold.text-emerald-500= number_to_percentage(value, precision: 0)
+    %p.font-bold= t('.excellent')
+  - if value > ranges[:excellent] && value <= ranges[:average]
+    %span.font-bold.text-amber-500= number_to_percentage(value, precision: 0)
+    %p.font-bold= t('.average')
+  - if value > ranges[:average]
+    %span.font-bold.text-rose-500= number_to_percentage(value, precision: 0)
+    %p.font-bold= t('.bad')
+.flex{class: "gap-0.5"}
+  .flex-auto.flex-col
+    .credit-score-gauge.bg-emerald-500{class: "#{'active' if value <= ranges[:excellent]}"}
+  .flex-auto.flex-col
+    .credit-score-gauge.bg-amber-500{class: "#{'active' if value > ranges[:excellent] && value <= ranges[:average]}"}
+  .flex-auto.flex-col
+    .credit-score-gauge.bg-rose-500{class: "#{'active' if value > ranges[:average]}"}

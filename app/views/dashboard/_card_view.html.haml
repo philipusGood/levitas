@@ -1,0 +1,13 @@
+.grid.grid-cols-1.sm:grid-cols-2.lg:grid-cols-3.gap-3{class: "#{'hidden' if @deals_view.present? && !@deals_view.eql?('card')}", data: { 'deals-target': 'cardView' }}
+  - @deals.each do |deal|
+    - if deal.draft?
+      - if Flipper.enabled?(:ai_documents, Current.user) 
+        = link_to deal_documents_path(deal) do
+          = render 'dashboard/card/draft', deal: deal
+      - else
+        = link_to deal_main_applicant_index_path(deal) do
+          = render 'dashboard/card/draft', deal: deal
+        = render 'dashboard/card/draft', deal: deal
+    - unless deal.draft?
+      = link_to deal_path(deal) do
+        = render 'dashboard/card/card', deal: deal

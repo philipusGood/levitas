@@ -1,0 +1,8 @@
+.flex.flex-col.flex-auto.gap-4.p-3.rounded-lg.border.border-gray-200.bg-white
+  .flex.items-center.justify-between.gap-1
+    %p.font-serif.font-bold.text-xl.text-gray-700= t('.stage')
+  .flex
+    .flex.items-center.gap-3
+      .flex.w-8.h-8.rounded-full.items-center.justify-center.bg-blue-600{class: "p-1.5"}
+        = render "partials/search_icon", style: "fill-gray-100"
+      %span.font-medium.text-blue-600= t('.closed')

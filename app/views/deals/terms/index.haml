@@ -1,0 +1,67 @@
+%div
+  %h1.deal-creator-step-title
+    = t('.title')
+  %p.deal-creator-step-description
+    = t('.leading')
+  = render 'devise/shared/error_messages', resource: @terms
+  = form_for @terms, url: deal_terms_path(@deal), method: :post, data: { turbo: false, controller: "terms" } do |f|
+    %section.inline-block.mb-8
+      .levitas-checkbox
+        = f.check_box :public, data: { action: "change->terms#togglePublic", "terms-target": "public" }
+        = f.label :public, t('.make_it_public')
+    %section.mb-8
+      %h2.deal-creator-section-title
+        = t('.mortage_terms')
+      .py-6
+        .flex.flex-col.sm:flex-row.gap-6.mb-6
+          .flex-1
+            = f.label :mortgage_principal, t('.mortage_principal'), class: "deal-creator-label" do
+              = t('.mortage_principal')
+              = ai_badge(f.object.mortgage_principal, 'terms.mortgage_principal')
+            %p.text-xs.text-gray-500.mt-1= t('.mortage_principal_hint')
+            = f.text_field :mortgage_principal, class: "deal-creator-input-text "
+          .flex-1
+            = f.label :lenders_fee, t('.lenders_fee'), class: "deal-creator-label" do
+              = t('.lenders_fee')
+              = ai_badge(f.object.lenders_fee, 'terms.lenders_fee')
+            = f.text_field :lenders_fee, class: "deal-creator-input-text ", "data-terms-target": "lendersFee"
+          .flex-1
+            = f.label :interest_rate, t('.interest_rate'), class: "deal-creator-label" do
+              = t('.interest_rate')
+              = ai_badge(f.object.interest_rate, 'terms.interest_rate')
+            = f.text_field :interest_rate, class: "deal-creator-input-text", "data-terms-target": "interestRate"
+        .flex.flex-col.sm:flex-row.gap-6
+          .flex-1
+            = f.label :type, t('.type'), class: "deal-creator-label" do
+              = t('.type')
+              = ai_badge(f.object.type, 'terms.type')
+            = f.select :type, options_for_select(SelectOptions::MORTAGE_TYPE, f.object.type), {}, {class: 'deal-creator-select'}
+          .flex-1
+            = f.label :terms, t('.terms'), class: "deal-creator-label" do
+              = t('.terms')
+              = ai_badge(f.object.terms, 'terms.terms')
+            = f.number_field :terms, class: "deal-creator-input-text "
+          .flex-1
+            = f.label :amortization_period, t('.amortization_period'), class: "deal-creator-label" do
+              = t('.amortization_period')
+              = ai_badge(f.object.amortization_period, 'terms.amortization_period')
+            = f.select :amortization_period, options_for_select(SelectOptions::AMORTIZATION_PERIOD, f.object.amortization_period), {}, {class: 'deal-creator-select'}
+    %section.mb-2
+      %h2.deal-creator-section-title
+        = t('.prepayment_penalty')
+      %p.deal-creator-step-description
+        This period in months indicates when the mortgage can be prepaid without incurring a penalty. The penalty for prepayment in all Levitas mortgages is the interest due up to the month when the mortgage becomes eligible for prepayment.
+      .flex.flex-col.sm:flex-row.gap-6.mb-6
+        .flex-1
+          = f.label :prepayment_term, t('.prepayment_term'), class: "deal-creator-label" do
+            = t('.prepayment_term')
+            = ai_badge(f.object.prepayment_term, 'terms.prepayment_term')
+          = f.text_field :prepayment_term, class: "deal-creator-input-text "
+        .flex-1
+          = f.label :payment_frecuency, t('.prepayment_term'), class: "deal-creator-label" do
+            = t('.prepayment_term')
+            = ai_badge(f.object.payment_frecuency, 'terms.payment_frecuency')
+          = f.select :payment_frecuency, options_for_select(SelectOptions::PAYMENT_FRECUENCY, f.object.payment_frecuency), {}, {class: 'deal-creator-select'}
+        .flex-1
+
+    = render partial: 'deals/partials/action_bar', locals: { f: f, back_action_path: deal_property_index_path, show_save_action: true, skip_action_path: nil, submit: false }

@@ -1,0 +1,1478 @@
+---
+en:
+  after_signups:
+    completed:
+      account_completed: Account setup completed!
+      congratulations: Congratulations! You are ready to start. Check your Prospective
+        Deals.
+      open_dashboard: Open Dashboard
+      view_profile: View Profile
+    approval_request:
+      thanks_for_signing_up: Thanks for signing up
+      approval_request_message: We'll be in touch soon to verify your details and get you ready to start.
+    information:
+      information: Information
+      profile: Profile
+      title: Title
+      first_name: First Name
+      middle_name: Middle name (optional)
+      last_name: Last Name
+      birth_date: Birth Date
+      contact_information: Contact Information
+      email: Email
+      message_under_email: All relevant communication will be sent to this email.
+      phone_number: Phone Number
+      corporation: Corporation
+      corporation_name: Corporation Name
+      address: Address
+      street: Street
+      unit: 'Unit #'
+      optional: '(Optional)'
+      city: City
+      province: Province
+      country: Country
+      postal_code: Postal Code
+      accredited_investor: Accredicted Investor
+      accept_accredited_investor: Are you an Accredited Investor under Canadian Law?
+  brokers:
+    form:
+      profile: Profile
+      title: Title
+      first_name: First Name
+      middle_name: Middle Name
+      last_name: Last Name
+      birth_date: Birth Date
+      contact_information: Contact Information
+      email: Email
+      message_under_email: Message Under Email
+      phone_number: Phone Number
+      role: Role
+      address: Address
+      street: Street
+      unit: 'Unit #'
+      optional: '(Optional)'
+      city: City
+      province: Province
+      country: Country
+      postal_code: Postal Code
+      cancel: Cancel
+      save_changes: Save Changes
+    edit:
+      back_to_profile: Back To Profile
+      edit: Edit
+    index:
+      no_brokers: No Brokers
+      start_adding_brokers: Start adding brokers
+      invite_brokers: Invite Brokers
+      brokers: Brokers
+      full_name: Full Name
+      email: Email
+      status: Status
+      edit: Edit
+      delete: Delete
+      impersonate: Impersonate
+    lenders_pool:
+      back_to_brokers: Back To Brokers
+      profile: Profile
+      lender_pool: Lender Pool
+      lenders: Lenders
+      full_name: Full Name
+      email: Email
+      status: Status
+      remove_from_pool: Remove From Pool
+    new:
+      new_broker: New broker
+    show:
+      back_to_brokers: Back To Brokers
+      profile: Profile
+      lender_pool: Lender Pool
+      "#{current_userrole}_information": "#{Current Userrole} Information"
+      contact_information: Contact Information
+      edit_profile: Edit Profile
+  dashboard:
+    stats:
+      total_mortgage_value: Total Mortgage Value
+      deals_closing: Deals closing (30d)
+      fees_generated: Fees Generated
+      total_active_deals: Total Active Deals
+      total_invested_capital: Total Invested Capital
+      total_commited_capital: Total Commited Capital
+      total_ROI: Total ROI
+      monthly_cashflow: Monthly Cashflow
+    table_view:
+      deal: Deal
+      mls: Mls
+      status: Status
+      interest_rate: Interest Rate
+      fee: Fee
+      closing_date: Closing Date
+      amount: Amount
+      borrower: Borrower
+    index:
+      greeting: Hello, %{name}
+      create_deal: Create Deal
+      no_active_deals: No Active Deals
+      my_deals: My Deals
+      borrower: Borrower
+      closing_date: Closing date
+      deal: DEAL
+      mls: MLS
+      status: STATUS
+      interest_rate: Interest Rate
+      fee: Fee
+      mortgage_rank: Mortgage Rank
+      lender_fee: Lender Fee
+      rate: Rate
+      ltv: LTV
+      performance: Performance
+      active_deals: Active Deals
+      deal_progress:
+        committed: Commited
+        pending: Pending
+        draft: Draft
+        submitted: Submitted
+        unfunded: Unfunded
+      deals_filter:
+        all: All
+        active: Active
+        closed: Closed
+        draft: Draft
+        finished: Finished
+        sort:
+          asc:
+            closing_date: Sort by Closing Date (Asc)
+            amount: Sort by Amount (Asc)
+          desc:
+            closing_date: Sort by Closing Date (Desc)
+            amount: Sort by Amount (Desc)
+      deal_status:
+        draft: Drafts
+        review: Review
+        funding: Funding
+        signatures: Signatures
+        notary: Notary
+        disbursement: Disbursement
+        paying: Paying
+      you_funded_this_deal_with: You funded this Deal with
+  deals:
+    signing_complete: You have signed the deal.
+    viewing_complete: You have already signed the deal.
+    edit_complete: Deal has been updated successfully.
+    applicant_form:
+      information: Information
+      title: Title
+      first_name: First Name
+      last_name: Last Name
+      date_of_birth: Date Of Birth
+      social_insurance_number: Social Insurance Number
+      credit_score: Credit Score
+      credit_score_source: Source (Rating agency)
+      credit_score_report_date: Date of Report
+      contact_information: Contact Information
+      email: Email
+      email_footer: Email Footer
+      phone_number: Phone Number
+      street: Street
+      unit: 'Unit #'
+      optional: '(Optional)'
+      city: City
+      province: Province
+      country: Country
+      postal_code: Postal Code
+      employer_information: Employer Information
+      employer_name: Employer Name
+      job_title: Job Title
+      industry_type: Industry Type
+      employment_type: Employment Type
+      duration_of_employment: Duration Of Employment
+      years: Years
+      months: Months
+      income_type: Income Type
+      period: Period
+      amount: Amount
+      income: Income
+      add_other_income: Add Other Income
+      employer_contact: Employer Contact
+      ext: Ext
+      fax: Fax
+      email_address: Email Address
+      add_asset: Add Asset
+      taxes_owned: Taxes Owned
+      child_support: Child Support
+      enter_zero: Enter Zero
+      bankrupcty: Bankrupcty
+      'yes': 'Yes'
+      'no': 'No'
+      bankrupcty_status: Bankrupcty Status
+      active: Active
+      resolved: Resolved
+      expected_release_date: Expected Release Date
+      enter_approximate_date: Enter Approximate Date
+      cost_of_release: Cost Of Release
+      enter_approximate_cost: Enter Approximate Cost
+      loan_type: Loan Type
+      monthly_payment: Monthly Payment
+      debt_related_obligations: Debt Related Obligations
+      add_liability: Add Liability
+    deal:
+      terms: Terms
+      applicant_information: Applicant Information
+      documents: Documents
+      signatures: Signatures
+      payments: Payments
+      make_it_public: Need a boost? Make it public
+      main_applicant: Main Applicant
+      secondary_applicant: Secondary Applicant
+      download: Download
+      loan_purpose: Loan purpose
+      deal_narrative: Deal Narrative
+      exit_strategy: Exit Strategy
+      property_mortgage_rank: Property Mortgage Rank
+      rank: Rank
+      institution: institution
+      amount_due: Amount Due
+      monthly_payment: Monthly Payment
+      mortgage_maturity_date: Mortgage Maturity Date
+      blocked_applicant: Information related the main and secondary applicants, credit score, employment, income, assets and liabilities are available to accredited investors only.
+      blocked_property_mortgage: Information related to current mortgages in the property is available to accredited investors only.
+      blocked_documents: All documents related to the property and the borrower are available to accredited investors only.
+      please_sign_up: Please Sign up or Log in to view
+      log_in: "Log In / Sign Up to View"
+      information: Information
+      title_check: Title Check
+      fraud_check: Fraud Check
+      file_completion: File Completion
+      details: Details
+      hide: Hide
+    applicant:
+      assets:
+        title: Assets
+        leading: List the borrower's assets, such as savings, investments, real estate
+          properties, and other valuable possessions. Including this information provides
+          a comprehensive view of the borrower's financial standing.
+        add_asset: Add Asset
+      income:
+        title: Income
+        leading: Provide comprehensive information about the borrower's income sources,
+          including employment, self-employment, rental income, and any other relevant
+          sources. This information helps assess the borrower's financial capacity to
+          meet mortgage obligations.
+        employer_information: Employer Information
+        employer_name: Employer name
+        job_title: Job Title
+        industry_type: Industry Type
+        employment_type: Employment type
+        duration_of_employment: Duration of employment
+        years: Years
+        months: Months
+        income_type: Income type
+        period: Period
+        amount: Amount
+        add_other_income: Add other income
+        street: Street
+        unit: 'Unit #'
+        optional: '(Optional)'
+        city: City
+        province: Province
+        country: Country
+        postal_code: Postal Code
+        employer_contact: Employer Contact
+        phone_number: Phone number
+        ext: Ext.
+        fax: Fax
+        email_address: Email address
+      information:
+        borrower_information: Borrower Information
+        leading: Gather essential details about the borrower to initiate the Mortgage
+          Deal. Fill in the necessary information such as name, contact details, address,
+          and other relevant borrower details.
+        information: Information
+        title: Title
+        first_name: First Name
+        last_name: Last Name
+        date_of_birth: Date of Birth
+        social_insurance_number: Social Insurance Number
+        contact_information: Contact Information
+        email: Email
+        email_footer: All important information will send to this email.
+        phone_number: Phone Number
+        street: Street
+        unit: 'Unit #'
+        optional: "(Optional)"
+        city: City
+        province: Province
+        country: Country
+        postal_code: Postal Code
+      liabilities:
+        title: Liabilities
+        leading: List the borrower's assets, such as savings, investments, real estate
+          properties, and other valuable possessions. Including this information provides
+          a comprehensive view of the borrower's financial standing.
+        taxes_owned: Do you owe taxes to the government (FED and/or Prov)?
+        child_support: Do you pay child support?
+        enter_zero: Enter 0 or the amount of it
+        bankrupcty: Have you ever declared a bankruptcy or a consumer proposition in
+          the last 7 years?
+        'yes': 'Yes'
+        'no': 'No'
+        bankrupcty_status: Bankrupcty Status
+        active: Active
+        resolved: Resolved
+        expected_release_date: Expected Release Date
+        enter_approximate_date: Enter an approximate date for bankrupcty release
+        cost_of_release: Cost of release
+        enter_approximate_cost: Enter the required settlement amount for the release
+        loan_type:
+        balance_remaining: Balance Remaining
+        monthly_payment: Monthly Payment
+        debt_related_obligations: Debt Related Obligations
+        add_liability: Add Liability
+    broker_fees:
+      index:
+        title: Broker Fee
+        leading: Enter your broker fee for facilitating the Mortgage Deal. If applicable,
+          you can also include any additional broker fees. This step allows you to clearly
+          outline your compensation structure, ensuring transparency for both you and
+          the borrower.
+        add_another_broker_fee: Add another Broker fee
+    credit_check:
+      index:
+        title: Credit Check Authorization
+        leading: Authorize Levitas to request a credit check for the borrower by accepting
+          the terms below. This check helps assess the borrower's creditworthiness,
+          aiding in the lending decision. Ensure you have obtained necessary consents
+          from the borrower as required.
+        terms_of_service: |-
+          <div class="max-w-2xl mx-auto p-8">
+            <h1 class="text-2xl font-bold mb-6 text-center">Levitas Check Authorization Credit Terms of Service</h1>
+            <section>
+                <h2 class="text-lg font-bold mb-4">1. Introduction</h2>
+                <p>Welcome to Levitas's Check Authorization Credit Terms of Service. This document outlines the terms and conditions governing the use of our check authorization services. By using our services, you agree to comply with and be bound by the following terms. Please read them carefully.</p>
+            </section>
+            <section>
+                <h2 class="text-lg font-bold mb-4">2. Definitions</h2>
+                <ul class="list-disc pl-6">
+                  <li><strong>User:</strong> Any individual or entity utilizing Levitas's check authorization services.</li>
+                  <li><strong>Service:</strong> Levitas's check authorization service that allows users to authorize and process checks.</li>
+                  <li><strong>Merchant:</strong> A business entity accepting checks as a form of payment.</li>
+                  <li><strong>Bank:</strong> The financial institution involved in processing and verifying checks.</li>
+                </ul>
+            </section>
+            <section>
+                <h2 class="text-lg font-bold mb-4">3. Use of Service</h2>
+                <p class="mb-2">3.1. By using our check authorization service, you warrant that you are authorized to accept checks on behalf of your business and that you will abide by all applicable laws and regulations.</p>
+                <p>3.2. You agree to provide accurate and up-to-date information when using the service. Levitas is not responsible for any losses resulting from inaccurate or incomplete information provided.</p>
+            </section>
+            <section>
+                <h2 class="text-lg font-bold mb-4">4. Authorization Process</h2>
+                <p class="mb-2">4.1. The service enables merchants to electronically authorize and verify checks presented for payment.</p>
+                <p>4.2. The authorization process is subject to verification by the user's bank and is contingent on available funds in the payer's account.</p>
+            </section>
+            <section>
+                <h2 class="text-lg font-bold mb-4">5. Fees and Charges</h2>
+                <p class="mb-2">5.1. Levitas may charge fees for using the check authorization service. These fees will be clearly communicated to the user.</p>
+                <p>5.2. Any additional charges imposed by banks or financial institutions involved in the authorization process are the responsibility of the user.</p>
+            </section>
+            <section>
+                <h2 class="text-lg font-bold mb-4">6. Security and Data Protection</h2>
+                <p class="mb-2">6.1. Levitas employs industry-standard security measures to protect user information. However, Levitas is not liable for any unauthorized access or breaches.</p>
+                <p>6.2. Users are responsible for safeguarding their login credentials and should notify Levitas immediately of any unauthorized use.</p>
+            </section>
+            <section>
+                <h2 class="text-lg font-bold mb-4">7. Limitation of Liability</h2>
+                <p class="mb-2">7.1. Levitas is not liable for any indirect, consequential, or punitive damages arising from the use of the check authorization service.</p>
+                <p>7.2. Levitas is not responsible for any losses resulting from errors or delays in the authorization process.</p>
+            </section>
+            <section>
+                <h2 class="text-lg font-bold mb-4">8. Termination</h2>
+                <p>8.1. Levitas reserves the right to terminate or suspend access to the check authorization service at any time, with or without cause.</p>
+            </section>
+            <section>
+                <h2 class="text-lg font-bold mb-4">9. Governing Law</h2>
+                <p>9.1. This agreement shall be governed by the laws of [Jurisdiction], without regard to its conflict of law principles.</p>
+            </section>
+            <section>
+                <h2 class="text-lg font-bold mb-4">10. Amendments</h2>
+                <p>10.1. Levitas may update or modify these terms of service at any time. Users will be notified of such changes, and continued use of the service constitutes acceptance of the updated terms.</p>
+            </section>
+          </div>
+        accept_terms: I accept the terms and authorize Levitas to request a credit check
+          for the borrower
+    edit:
+      secondary_applicant: Secondary Applicant
+      title: Title
+      first_name: First Name
+      last_name: Last Name
+      email: Email
+      phone_number: Phone Number
+      street: Street
+      unit: 'Unit #'
+      optional: '(Optional)'
+      city: City
+      province: Province
+      country: Country
+      postal_code: Postal Code
+      type: Type
+      mls: Mls
+      property_price: Property Price
+      approximate_closing_deal: Approximate Closing Deal
+      property_picture: Property Picture
+      property_address: Property Address
+      mortage_terms: Mortgage Terms
+      mortage_principal: Requested Loan Amount
+      mortage_principal_hint: Amount borrower will receive (excluding fees)
+      total_mortgage_principal: Total Mortgage Principal
+      total_mortgage_principal_hint: Including lender fee, broker fees, and notary costs
+      requested_amount: Requested Loan Amount
+      requested_amount_hint: Amount borrower will receive (excluding fees)
+      terms: Terms
+      amortization_period: Amortization Period
+      prepayment_penalty: Prepayment Penalty
+      prepayment_term: Prepayment Term
+      add_another_broker_fee: Add Another Broker Fee
+      save: Save
+    guarantors:
+      index:
+        information: Information
+        title: Title
+        first_name: First Name
+        last_name: Last Name
+        email: Email
+        phone_number: Phone Number
+        street: Street
+        unit: 'Unit #'
+        optional: '(Optional)'
+        city: City
+        province: Province
+        country: Country
+        postal_code: Postal Code
+    partials:
+      filters:
+        filters: Filters
+        deal_amount: Deal Amount
+        min: Min
+        max: Max
+        closing_date: Closing Date
+        within_next_days: Within next %{days} days
+        interest_rate: Interest Rate
+        lenders_fee: Lenders Fee
+        provinces: Provinces
+        show_deals: Show Deals
+        clear_all: Clear All
+      payments:
+        not_ready: Not ready
+        not_ready_msg: Once the distribution process is complete, you will be able to
+          track payments.
+        next_due_payment: Next Due Payment
+        no_: NO.
+        payment: Payment
+        payment_date: Payment date
+        balance: Balance
+        status: Status
+        paid: Paid
+      score:
+        excellent: Excellent
+        average: Average
+        bad: Bad
+      score_gauge:
+        gross_service_ratio: Gross Service Ratio
+        loan_to_value_ratio: Loan to Value Ratio
+        total_debt_service_ratio: Total Debt Service Ratio
+      signatures:
+        review_in_progress: Review in progress
+        review_in_progress_msg: This feature will be enabled once the full amount of funding for the project is committed. Please check back soon to start collecting signatures from the involved parties.
+        lender: Lender
+        name: Name
+        role: Role
+        status: Status
+        pending_to_sign: Pending to sign
+        signed_days_ago: Signed %{count}d ago
+        signed_today: Signed today
+        waiting_for_lenders: Waiting for Lenders
+        send_reminder: Send Reminder
+        sent_days_ago:
+          one: Sent 1 day ago
+          other: "Sent %{count} days ago"
+      terms_form:
+        mortage_principal: Mortgage Principal
+        terms: Terms
+        interest_rate: Interest Rate
+        amortization_period: Amortization Period
+        broker_fee: Broker Fee
+        type: Type
+      topbar:
+        back_to_deals: Back to Deals
+        invite_lenders: Invite Lenders
+        edit_deal: Edit Deal
+        delete: Delete
+        mortgage: Mortgage
+        property_value: Property Value
+        stage: Stage
+        "#{@dealstate}": "#{@Dealstate}"
+        broker: Agent
+        borrower: Borrower
+        closing_date: Closing date
+        share: 'Share'
+        copy_link: 'Copy link'
+        copy_link_description: "Copy this link to share with interested parties such as lenders or brokers:"
+      deal_cycle:
+        admin_accepted:
+          mortgage_principal: Total Mortgage Principal
+          lenders_fee: Lenders Fee
+          interest_rate: Interest Rate
+          amortization: Amortization
+          terms: Terms
+          type: Type
+        admin_funding:
+          mortgage_principal: Total Mortgage Principal
+          terms: Terms
+          interest_rate: Interest Rate
+          lenders_fee: Lenders Fee
+          amortization: Amortization
+          broker_fee: Broker Fee
+          type: Type
+        admin_payments:
+          mortgage_principal: Total Mortgage Principal
+          terms: Terms
+          interest_rate: Interest Rate
+          lenders_fee: Lenders Fee
+          amortization: Amortization
+          broker_fee: Broker Fee
+          type: Type
+        admin_rejected:
+          mortgage_principal: Total Mortgage Principal
+          lenders_fee: Lenders Fee
+          interest_rate: Interest Rate
+          amortization: Amortization
+          terms: Terms
+          type: Type
+        admin_reviewed:
+          mortgage_principal: Total Mortgage Principal
+          lenders_fee: Lenders Fee
+          interest_rate: Interest Rate
+          amortization: Amortization
+          terms: Terms
+          type: Type
+          reject: Reject
+          change_deal_terms: Change Deal Terms
+        admin_signatures:
+          mortgage_principal: Total Mortgage Principal
+          terms: Terms
+          interest_rate: Interest Rate
+          lenders_fee: Lenders Fee
+          amortization: Amortization
+          broker_fee: Broker Fee
+          type: Type
+        admin_submitted:
+          mortage_principal: Mortgage Principal
+          lenders_fee: Lenders Fee
+          interest_rate: Interest Rate
+          amortization_period: Amortization Period
+          terms: Terms
+          type: Type
+          reject: Reject
+          send_deal_terms: Send Deal Terms
+        broker_accepted:
+          mortgage_principal: Total Mortgage Principal
+          terms: Terms
+          interest_rate: Interest Rate
+          lenders_fee: Lenders Fee
+          amortization: Amortization
+          broker_fee: Broker Fee
+          type: Type
+        broker_funding:
+          mortgage_principal: Total Mortgage Principal
+          terms: Terms
+          interest_rate: Interest Rate
+          lenders_fee: Lenders Fee
+          amortization: Amortization
+          broker_fee: Broker Fee
+          type: Type
+        broker_payments:
+          mortgage_principal: Total Mortgage Principal
+          terms: Terms
+          interest_rate: Interest Rate
+          lenders_fee: Lenders Fee
+          amortization: Amortization
+          broker_fee: Broker Fee
+          type: Type
+        broker_reviewed:
+          mortgage_principal: Total Mortgage Principal
+          terms: Terms
+          interest_rate: Interest Rate
+          lenders_fee: Lenders Fee
+          amortization: Amortization
+          broker_fee: Broker Fee
+          type: Type
+          reject: Reject
+          accept_terms: Accept Terms
+        broker_signatures:
+          mortgage_principal: Total Mortgage Principal
+          terms: Terms
+          interest_rate: Interest Rate
+          lenders_fee: Lenders Fee
+          amortization: Amortization
+          broker_fee: Broker Fee
+          type: Type
+        broker_closed:
+          mortgage_principal: Total Mortgage Principal
+          terms: Terms
+          interest_rate: Interest Rate
+          lenders_fee: Lenders Fee
+          amortization: Amortization
+          broker_fee: Broker Fee
+          type: Type
+        admin_closed:
+          mortgage_principal: Total Mortgage Principal
+          terms: Terms
+          interest_rate: Interest Rate
+          lenders_fee: Lenders Fee
+          amortization: Amortization
+          broker_fee: Broker Fee
+          type: Type
+      deal_flow:
+        admin_accepted:
+          stage: Stage
+          accepted: Accepted
+          proceed_to_funding: Proceed to Funding
+        admin_distribution:
+          stage: Stage
+          fund_distribution: Fund distribution
+          business_days: business days
+          fund_is_distributed: Fund is distributed
+          capital_commited: Capital commited
+          target: Target
+          commited: Commited
+          progress: Progress
+          investors_commited: investors commited
+        admin_finalized:
+          stage: Stage
+          deal_finalized: Deal Finalized
+          capital_commited: Capital commited
+          target: Target
+          commited: Commited
+          progress: Progress
+          investors_commited: investors commited
+        admin_funding:
+          stage: Stage
+          funding: Funding
+          request_signatures: Request Signatures
+          capital_commited: Capital commited
+          target: Target
+          commited: Commited
+          progress: Progress
+          investors_commited: investors commited
+          funding_is_completed: Funding is completed!
+        admin_notary:
+          stage: Stage
+          notary: Notary
+          business_days: business days
+          approved_by_notary: Approved by Notary
+          capital_commited: Capital commited
+          target: Target
+          commited: Commited
+          progress: Progress
+          investors_commited: investors commited
+        admin_payments:
+          stage: Stage
+          payments: Payments
+          business_days: business days
+          next_payment: Next payment
+          amount: Amount
+          view_payments: View payments
+          capital_commited: Capital commited
+          target: Target
+          commited: Commited
+          progress: Progress
+          investors_commited: investors commited
+        admin_signatures:
+          stage: Stage
+          signature_request: Signature request
+          signatures_collected: signatures collected
+          approve_signatures: Approve signatures
+          capital_commited: Capital commited
+          target: Target
+          commited: Commited
+          progress: Progress
+          investors_commited: investors commited
+        admin_submitted:
+          stage: Stage
+          review: Review
+          not_funded_msg: This deal is not ready for funding yet.
+        broker_accepted:
+          stage: Stage
+          accepted: Accepted
+          accepted_msg: Waiting for Levitas to start funding.
+        broker_distribution:
+          stage: Stage
+          fund_distribution: Fund distribution
+          business_days: business days
+          capital_commited: Capital commited
+          target: Target
+          commited: Commited
+          progress: Progress
+          lenders_commited: Lenders commited
+          investors_commited: investors commited
+          you_funded_this_deal_with: You funded this Deal with
+        broker_finalized:
+          stage: Stage
+          deal_finalized: Deal Finalized
+          capital_commited: Capital commited
+          target: Target
+          commited: Commited
+          progress: Progress
+          lenders_commited: Lenders commited
+          investors_commited: investors commited
+          you_funded_this_deal_with: You funded this Deal with
+        broker_funding:
+          stage: Stage
+          view_all: View All
+          funding: Funding
+          capital_commited: Capital commited
+          target: Target
+          commited: Commited
+          progress: Progress
+          investors_commited: investors commited
+          funding_msg: Start inviting your Lenders to fund this deal!
+          invite_lenders: Invite Lenders
+          funding_is_completed: Funding is completed!
+        broker_notary:
+          stage: Stage
+          notary: Notary
+          business_days: business days
+          capital_commited: Capital commited
+          target: Target
+          commited: Commited
+          progress: Progress
+          lenders_commited: Lenders commited
+          investors_commited: investors commited
+          you_funded_this_deal_with: You funded this Deal with
+        broker_payments:
+          stage: Stage
+          payments: Payments
+          next_payment: Next payment
+          amount: Amount
+          view_payments: View payments
+          capital_commited: Capital commited
+          target: Target
+          commited: Commited
+          progress: Progress
+          investors_commited: investors commited
+        broker_signatures:
+          stage: Stage
+          signature_request: Signature request
+          signatures_collected: signatures collected
+          capital_commited: Capital commited
+          target: Target
+          commited: Commited
+          progress: Progress
+          lenders_commited: Lenders commited
+          investors_commited: investors commited
+          funding_is_completed: Funding is completed!
+          you_funded_this_deal_with: You funded this Deal with
+        broker_submitted:
+          stage: Stage
+          review: Review
+          not_funded_msg: This deal is not ready for funding yet.
+        broker_unfunded:
+          stage: Stage
+          unfunded: Unfunded
+          unfunded_msg: This deal didn't receive enough funding.
+        lender_unfunded:
+          stage: Stage
+          unfunded: Unfunded
+          unfunded_msg: This deal didn't receive enough funding from you.
+        lender_funding:
+          stage: Stage
+          funding: Funding
+          capital_commited: Capital commited
+          target: Target
+          commited: Commited
+          progress: Progress
+          lenders_commited: Lenders commited
+          commit_capital: Commit Capital
+          you_funded_this_deal_with: You funded this Deal with
+          add_more_capital: Add more capital
+    properties:
+      index:
+        title: Mortgage Deal
+        leading: These details contribute to the accurate documentation of the mortgage
+          agreement, facilitating a streamlined process for all parties involved.
+        type: Type
+        mls: 'MLS #'
+        property_price: Property Price
+        approximate_closing_deal: Approximate Closing Date
+        property_address: Property Address
+        street: Street
+        unit: 'Unit #'
+        optional: '(Optional)'
+        city: City
+        province: Province
+        country: Country
+        postal_code: Postal code
+        has_mortgages: Has Mortgages
+        mortgages_description: List the existing mortgages in order of priority. Start with the first ranking mortgage and list them in descending order of priority.
+        institution: Institution
+        monthly_payment: Monthly payment
+        amount_due: Amount due
+        add_mortgages: Add Mortgages
+        end_date: End Date
+    submit:
+      index:
+        title: Mortgage Deal Submitted Successfully!
+        leading: Congratulations! Our team will review the details provided and process
+          your application promptly. We appreciate your trust in Levitas for your lending
+          needs.
+        open_dashboard: Open Dashboard
+        view_deals: View Deals
+    summary:
+      index:
+        title: Summary
+        leading: Take a moment to carefully review all entered information and ensure
+          its clarity and accuracy. Once you have verified that everything is correct,
+          you can proceed to submit the deal for approval. This final step allows you
+          to double-check all details before finalizing the Mortgage Deal submission.
+        applicant_information: Applicant Information
+        main_applicant: Main Applicant
+        not_available: Not available
+        unpaid_taxes: Unpaid Taxes
+        fed_and_or_prov: Federal and/or Provincial
+        monthly_obligations: Monthly Obligations
+        average: Average
+        poor: Poor
+        excellent: Excellent
+        available_upon_funding: Available upon funding
+    terms:
+      index:
+        title: Deal Terms
+        leading: If you want to keep your deal private, you can set the terms of the
+          deal yourself. However, if you want to make a public deal, Levitas Staff will
+          review the deal and suggest the interest and fee.
+        make_it_public: Make it public and let Levitas make a suggestion on the terms.
+        mortage_terms: Mortgage Terms
+        mortage_principal: Requested Loan Amount
+        mortage_principal_hint: Amount borrower will receive (excluding fees)
+        lenders_fee: Lenders Fee (%)
+        interest_rate: Interest Rate (%)
+        type: Type
+        terms: Terms(Months)
+        amortization_period: Amortization Period
+        prepayment_penalty: Prepayment Penalty
+        prepayment_term: Prepayment Term
+        terms_in_words:
+          years:
+            zero: ""
+            one: "%{count} year"
+            other: "%{count} years"
+          months:
+            zero: ""
+            one: "%{count} month"
+            other: "%{count} months"
+    loan_purpose:
+      index:
+        title: Loan Purpose
+        leading: Provide details on how the borrower intends to use the loan funds and their plan for repayment. This information is crucial for evaluating the deal. Be concise yet thorough to ensure clarity and transparency in the decision-making process.
+        use_of_funds: Describe Intended Use of Funds
+        use_of_funds_placeholder: "Example: Renovate the property, enhance its market value, and attract potential buyers or tenants..."
+        use_of_funds_desc: Provide context for the lender by outlining the borrower's intentions and the intended use of the loan proceeds. What motivates the borrower's request? Are there specific objectives or unique circumstances influencing this decision?
+        exit_strategy: Outline the Exit Strategy
+        exit_strategy_placeholder: "Example: Borrower plans to switch to A-Lender, Borrower plans to sell after term."
+        exit_strategy_desc: Offer insight into how the borrower intends to repay the loan at the end of its term. Clear communication of the exit strategy helps establish confidence in the borrower's ability to fulfill their financial obligations.
+    documents:
+      index:
+        ai_title: Upload Your Documents for Faster Processing
+        ai_leading: Let our AI ✨ handle the heavy lifting. Upload your documents to automatically fill out most of the information for your deal.
+        ai_description: |
+          The more complete your document set, the less manual input will be required. Upload the following documents for a smoother process:
+        ai_description_p2: |
+          These documents are suggested, but not required. You can upload as many or as few as you have available.
+        title: Documents
+        leading: Add any relevant document that is relevant for this deal.
+        click_to_upload: Click to upload
+        or_drag_and_drop: or drag and drop
+        max_file_size: "Max. File Size: 10MB"
+        browse_fiel: Browse File
+      document:
+        make_it_private: "Make it private"
+        make_it_public: "Make it public"
+        edit: "Edit"
+        delete: "Delete"
+        download: Download
+    view:
+      index:
+        terms: Terms
+  devise:
+    confirmations:
+      new:
+        resend_confirmation_instructions: Resend Confirmation Instructions
+        email: Email
+    invitations:
+      edit:
+        set_your_password: Set Your Password
+        password: Password
+        password_confirmation: Password Confirmation
+        create_account: Create Account
+    passwords:
+      edit:
+        change_your_password: Change Your Password
+        password: Password
+        password_confirmation: Password Confirmation
+        change_my_password: Change My Password
+      new:
+        forgot_your_password: Forgot Your Password
+        email: Email
+        send_me_reset_password_instructions: Send Me Reset Password Instructions
+    registrations:
+      edit:
+        edit_profile: Edit Profile
+        title: Title
+        first_name: First Name
+        middle_name: Middle Name
+        last_name: Last Name
+        birth_date: Birth Date
+        contact_information: Contact Information
+        phone_number: Phone Number
+        corporation: Corporation
+        corporation_name: Corporation Name
+        address: Address
+        street: Street
+        unit: 'Unit #'
+        optional: '(Optional)'
+        city: City
+        province: Province
+        country: Country
+        postal_code: Postal Code
+        cancel: Cancel
+        save: Save
+      new:
+        create_an_account: Create an account
+        select_profile: Please select profile and enter your details to create your account
+        broker: Agent
+        lender: Lender
+        email: Email
+        password: Password
+        password_confirmation: Password confirmation
+        continue: Continue
+        already_have_an_account: Already have an account?
+        sign_in: Sign in
+        lender_registration_disabled: Applications are currently being approved on a case-by-case basis. If you’re interested in becoming a lender at Levitas, please reach out to us at hello@levitas.ai
+    sessions:
+      new:
+        welcome_back: Welcome Back
+        please_enter_details: Please enter your details to sign in
+        email: Email
+        password: Password
+        remember_me: Remember me
+        forgot_password: "Forgot passowrd?"
+        sign_in: Sign in
+        don_you_have_account: Don't have an account?
+        create_account: Create an account
+    unlocks:
+      new:
+        resend_unlock_instructions: Resend Unlock Instructions
+        email: Email
+  errors:
+    '404':
+      page_not_found: Page not found
+      page_not_found_msg: The page you are looking for does not exist.
+      back_to_home: Back to Home
+      contact_support: Contact support
+      help_center: Help center
+    '500':
+      something_went_wrong: Oops! Something went wrong
+      something_went_wrong_msg: We're on it and should have things up and running again
+        soon. Thanks for your patience!
+      back_to_home: Back to Home
+      contact_support: Contact support
+      help_center: Help center
+  layouts:
+    confirm_email:
+      confirm_email_msg: Please verify your email to secure your Levitas account and
+        access our services without interruption. Email verification is essential to
+        confirm your identity and protect your account.
+      resend_confirmation_email: Resend confirmation email
+    navigation:
+      view_profile: View Profile
+      logout: Logout
+    after_signup:
+      sidebar:
+        lets_start: Let's get you started
+        information: Information
+        account_created: Account Created
+    devise:
+      about: About
+      team: Team
+      contact_us: Contact Us
+      support: Support
+  lender:
+    brokers:
+      index:
+        no_brokers: No Brokers
+        start_adding_brokers: Start Adding Brokers
+        invite_brokers: Invite Brokers
+        brokers: Brokers
+        full_name: Full Name
+        email: Email
+        prospect_deals: Prospect Deals
+        commited_deals: Commited Deals
+        edit: Edit
+        reject: Reject
+        accept_invitation: Accept Invitation
+        remove_pool: Remove Pool
+  lenders:
+    form:
+      profile: Profile
+      title: Title
+      first_name: First Name
+      middle_name: Middle Name
+      last_name: Last Name
+      birth_date: Birth Date
+      contact_information: Contact Information
+      email: Email
+      message_under_email: Message Under Email
+      phone_number: Phone Number
+      role: Role
+      address: Address
+      street: Street
+      unit: 'Unit #'
+      optional: '(Optional)'
+      city: City
+      province: Province
+      country: Country
+      postal_code: Postal Code
+      cancel: Cancel
+      save_changes: Save Changes
+    edit:
+      back_to_profile: Back To Profile
+      edit: Edit
+    index:
+      no_lenders: No lenders
+      start_adding_lenders: Start adding lenders
+      invite_lenders: Invite Lenders
+      lenders: Lenders
+      full_name: Full Name
+      email: Email
+      status: Status
+      resend_invite: Resend invite
+      edit: Edit
+      delete: Delete
+      remove_from_pool: Remove From Pool
+      impersonate: Impersonate
+    new:
+      new_lender: New Lender
+  marketplace:
+    index:
+      marketplace: Marketplace
+      deal_type: "%{visibility} Deals"
+  notifications:
+    deal_reviewed: "Levitas has sent you deal terms"
+    deal_rejected: "Deal terms were rejected"
+    deal_destroyed: "Your deal %{name} has been deleted or rejected. If you have any concerns please feel free to contact us at support@levitas.ai"
+    lender_signature_reminder: "Your commitment lender for your investment of %{amount} in %{deal_name} is ready to sign"
+    deal_funding: "Deal is ready for funding"
+    deal_expired: "Deal has expired"
+    invited_deal: "You have been invited to a Deal"
+    sidebar:
+      notifications: Notifications
+      clear_all: Clear All
+      delete_all: Delete All
+      cancel: Cancel
+      last_24_hours: Last 24 hours
+      last_7_days: Last 7 days
+      older: Older
+      delete: Delete
+      you_dont_have_new_notifications: You don't have new notifications
+      no_notifications_msg: You are currently up to date. Please revisit later to view forthcoming updates.
+      delete_all_msg: This action will delete all notifications and cannot be undone.
+      distance_in_words:
+        about_x_hours:
+          one: "%{count} hour ago"
+          other: "%{count} hours ago"
+        about_x_months:
+          one: "%{count} month ago"
+          other: "%{count} months ago"
+        about_x_years:
+          one: "%{count} year ago"
+          other: "%{count} years ago"
+        almost_x_years:
+          one: "almost %{count} year"
+          other: "almost %{count} years"
+        half_a_minute: 30s ago
+        less_than_x_seconds:
+          one: "less than %{count} second"
+          other: "less than %{count} seconds"
+        less_than_x_minutes:
+          one: Now
+          other: "less than %{count} minutes"
+        over_x_years:
+          one: "%{count} year ago"
+          other: "%{count} years ago"
+        x_seconds:
+          one: "%{count}s"
+          other: "%{count}s"
+        x_minutes:
+          one: "%{count}m"
+          other: "%{count}m"
+        x_days:
+          one: "%{count}D"
+          other: "%{count}D"
+        x_months:
+          one: "%{count}M"
+          other: "%{count}M"
+        x_years:
+          one: "%{count}Y"
+          other: "%{count}Y"
+  partials:
+    modals:
+      invite_lenders:
+        add: Add
+        invite_lenders: Invite Lenders
+        invite_lenders_msg: Invite existing Lenders from your pool or type their email if they are not on your Pool to join.
+        search_lenders: Search Lenders
+        send_invites: Send Invites
+        lender_email: Lender Email
+        remove: Remove
+        not_registered: Not registered
+        lenders_selected:
+          zero: No Lenders selected
+          one: 1 Lender selected
+          other: "%{count} Lenders selected"
+        invite_success:
+          invitations_sent: Invitations sent!
+          success_msg: Congratulations! Our team will review the details provided and
+            process your application promptly. We appreciate your trust in Levitas for
+            your lending needs.
+          finish: Finish
+        non_registered_invite:
+          invite_lenders: Invite Lenders
+          invite_lenders_msg: Invite Lenders by typing their email to join your Pool.
+          search_lenders: Search Lenders
+          send_invites: Send Invites
+          lender_email: Lender Email
+          remove: Remove
+        view_all:
+          capital_commited: Capital Commited
+          target: Target
+          commited: Commited
+          closing_date: Closing date
+          progress: Progress
+          resend_invite: Resend invite
+          funding_is_completed: Funding is completed!
+          invite_lenders: Invite Lenders
+      make_deal_public:
+        make_public_deal: Make public deal
+        make_public_deal_msg:
+          html: |
+            Typically, when the broker hasn't gathered the required funds, you have the option to open the deal to the public. If you proceed, please note:
+            <br />
+            <ul class="list-disc list-inside">
+                <li>The deal will not be paused.</li>
+                <li>It will undergo a validation process by our experts before being shared with potential investors in the public domain.</li>
+                <li>Your investors can continue to add capital during this validation process.</li>
+                <li>This action cannot be undone.</li>
+            </ul>
+            <br />
+            We're here to ensure a smooth process for you and your investors. Please make your choice, and we'll take it from there.
+        checkbox_label: I understand and want to proceed.
+        cancel: Cancel
+      reject_terms:
+        reject_deal: Reject Deal
+        enter_reject_details: Enter Reject Details
+        cancel: Cancel
+      terms_success:
+        deal_terms_rejected: Deal Terms Rejected
+        close: Close
+      deal_terms:
+        confirm_terms:
+          confirm_and_accept_terms: Confirm and Accept Terms
+          review: Review
+          confirm: Confirm
+          deal_terms_policy:
+            html: |
+              <p class="text-xl font-bold"><a id="_eqbc57vjw2ew"></a>Terms of Service</p>
+              <p>The use of this Site for any purpose is subject to these Terms of Use for the Website (the <strong>“Terms”</strong>). The Terms and the Privacy Policy (the <strong>”Privacy Policy”</strong>) constitute a binding legal agreement between you, and Levitas Marketplace Inc. (“<strong>LEVITAS</strong>”), its subsidiaries and affiliated companies (collectively, the <strong>”Levitas Entities”</strong>), governing your access to and use of the Site and use of the services as these terms are defined herein. Access to and use of the Site is conditional on your acceptance of and compliance with the Terms and the Privacy Policy. Please read the Terms and the Privacy Policy carefully before browsing or using this Site or becoming a “User”, “Lender” or “Broker” as these terms are defined herein. By using this Site, you unconditionally agree to follow and be bound by the Terms and the Privacy Policy. Where you are acting on behalf of any other party, you hereby confirm that you have the authority to, and hereby, bind such other party to the Terms and the Privacy Policy. All references to “you” and “your” herein include references to each and every party that you are acting on behalf of, except where the context otherwise requires.</p>
+              <p><strong>IF YOU DO NOT ACCEPT THESE TERMS AND THE PRIVACY POLICY, YOU SHOULD NOT USE THIS SITE.</strong></p>
+              <p>The contents of the Site include, without limitation, all information, data, products, materials, services, software Loan Requests and tools, design elements, text, images, photographs, illustrations, audio and video contents, artwork and graphics contained therein or otherwise made available to you in connection therewith (collectively the <strong>“Contents”</strong>) and, unless the context clearly requires otherwise, or explicitly stated in writing, the Site includes all the Contents.</p>
+              <p>You are encouraged to frequently review the Terms and the Privacy Policy.</p>
+              <p>If you have not reached the age of majority in your province or territory of residence, you must refrain from using the Site. You are solely responsible for ensuring that you are legally accessing the Site, and that the Contents available therein or thereby is legal in every jurisdiction where you access or view the Site or the Contents, as well as in any intermediary jurisdiction by which you do so.</p>
+              <p><strong>Use of the Site</strong></p>
+              <p>You may not reproduce information or materials posted on the Site in any form or download, republish, display, publicly perform, distribute, sell, transfer, modify or use any such information or materials for any public or commercial purpose. Any unauthorized use of any such information or materials may violate copyright laws, trademark laws, laws of privacy and other laws and regulations. The portions of Site and the Contents that can be downloaded are protected by copyright laws, trademark laws and other laws and can only be used in accordance with the Terms or with prior written consent of the owner of such material.</p>
+              <p>You cannot use the Site for any purpose that is illegal, unlawful or that is prohibited by the Terms. You may use or access the Site only to review general information made available to you and/or to sign in or log in to the private mortgage lending platform (<strong>“Levitas Lending Platform”</strong>), operated by LEVITAS. Use of the Site for any other purpose, including for commercial purposes, is expressly prohibited. Accessing the Site using third party Loan Requests, other than a browser is prohibited. All rights reserved.</p>
+              <p><strong>THE FRAMING, MIRRORING, SCRAPING OR DATA-MINING OF THE SITE OR ANY OF ITS CONTENTS IN ANY FORM AND BY ANY METHOD IS STRICTLY PROHIBITED.</strong></p>
+              <p><strong>Protection of Personal Information</strong></p>
+              <p>You confirm that you have read the Privacy Policy and agree that it is reasonable. You agree that Levitas Entities may use your personal information, in accordance with these Terms and Privacy Policy and for the stated purposes contained therein.</p>
+              <p><strong>User Communications</strong></p>
+              <p>Other than personal information subject to the Privacy Policy, all communications or information, as well as all material, suggestions, ideas, concepts, know-how, techniques, questions, comments, or other communications from or to you, made in any manner, to Levitas Entities, their respective officers, directors, employees, consultants, representatives, agents, successors and assigns (the <strong>“Communications”</strong>) are and will be considered non-confidential and non-proprietary. You grant to Levitas Entities a perpetual, royalty-free, irrevocable, transferable, unrestricted, sub-licensable right to use the Communications, for any purpose whatsoever, including without limitation, reproduction, transmission, disclosure, publication, broadcast, display, development, adaptation, translation, creation of derivative works or marketing, in any manner whatsoever, for any or all commercial or non-commercial purpose, without restriction and without any compensation. You represent and warrant that you have the right to distribute and reproduce the Communications and the right to grant the licence granted above. You hereby waive all moral rights in the Communications.</p>
+              <p>Levitas Entities may, but are not obligated to, monitor, edit, remove or review any Communications, including questions and answers on the Q &amp; A forum section (<strong>“Q &amp; A content”</strong>) of the Brokers’ mortgage request pages (each a <strong>”Mortgage Request Page”</strong>), and is under no obligation, unless and then only to the extent prescribed by law, to use, return, review or respond to any Communications. Q &amp; A content is a direct communication between Brokers and Lenders, should not be considered as statements of any of the Levitas Entities.</p>
+              <p>LEVITAS ENTITIES SHALL HAVE NO LIABILITY RELATED TO THE CONTENT OF ANY COMMUNICATIONS, WHETHER OR NOT ARISING UNDER THE LAWS OF COPYRIGHT, DEFAMATION OR LIBEL, PRIVACY, OBSCENITY OR OTHERWISE.  Levitas Entities reserve the right to remove any or all Communications that contain material deemed inappropriate or unacceptable. Levitas Entities, their respective officers, directors, employees, consultants, representatives, agents, successors and assigns take no responsibility and assume no liability for the Communications.</p>
+              <p>LEVITAS will deliver documents to you by either emailing them to the email address you have provided or by posting the documents on your account and will be deemed to be delivered to you, whether or not you elect to open or view the documents. Account statements, transaction confirmations, and other documents (“<strong>My Documents</strong>”) relating to the activities and status of your account will be posted to your account and by using the Site you hereby acknowledge that it is your obligation to monitor your account to view “My Documents” on a regular basis (at least monthly). There is no requirement that you consent to electronic delivery of documents. We may, in our discretion, send a notice to the email address you have provided that a document has been posted to your account. It is your responsibility to ensure the email address remains operational and you will immediately inform us of any changes to your email address. Every transaction confirmation, account statement or other communication delivered by us to you shall be deemed to have been acknowledged as correct, approved and consented to by you unless we shall have received written notice to the contrary within fifteen days after it was delivered to you. You may request a paper copy of any documents delivered electronically for a fee by contacting us. We reserve the right to charge you for preparation and delivery of documents by means other than electronic. You are responsible for all costs expenses incurred by you in accessing the Site.</p>
+              <p><strong>Username and Password</strong></p>
+              <p>The sections of the Site granting you access to Levitas Lending Platform require you to have a username and a password (<strong>“Credentials”</strong>) which you must request. Should you decide to register on the Site as a broker (a <strong>“Broker”</strong>) and/ or a lender (a <strong>”Lender”</strong>) (with a Broker or Lender being generally referred to, where applicable, as a “<strong>User</strong>”), you agree to provide accurate and up-to-date information about yourself and/or any party on whose behalf you are acting during the registration process (the <strong>”User Registration”</strong>) and to promptly update this information, including but not limited to email addresses, as necessary to ensure it is accurate and complete at all times. Your Credentials will not change, if and when, you become a Lender and/or a Broker.</p>
+              <p>Levitas Entities reserve the right to cancel or suspend your Credentials and to suspend, cancel or terminate your account, your use and/or your access to the Site, or any services, as well as remove and delete any information or content related to this Site or one of the services (and terminate your use thereof), for any reason whatsoever and at any time at their sole discretion, without notice and without liability to you in accordance with the Terms.</p>
+              <p>Levitas Entities are under no obligation to verify the actual identity or authority of any party using the Credentials to access or use the Site. Any Levitas Entity may, at its sole discretion and at any time, require proof of identity of any party seeking access to and use of the Site and may deny such access, in whole or in part, if the Levitas Entity is not satisfied.</p>
+              <p>You are fully responsible and liable for the confidentiality and security of your Credentials as well as for any activity resulting from the use of your Credentials, including any and all use or misuse of the Credentials which may result from your disclosure of the Credentials. <strong>You assume sole responsibility for any activity resulting from the use of your Credentials by anyone including, but not limited to, any of your principals, partners, employees, representatives or agents or any other person who may have obtained the Credentials by any means.</strong> After accessing the Site using the Credentials, you are responsible for closing the browser, clearing the browser’s cache and/or closing the session so that the Credentials cannot be accessed by a subsequent user. If you suspect that the Credentials are lost, stolen and/or known to be used by an authorized party, you shall immediately notify LEVITAS. Levitas Entities assume no responsibility or liability, and cannot be held liable, for any damages arising from or related to your failure to keep your Credentials confidential and secure.</p>
+              <p>Should you experience dissatisfaction with the Site or one of its services, Terms and/or Privacy Policy, you may discontinue using the Site or the service in accordance with the Terms.</p>
+              <p><strong>Services</strong></p>
+              <p><strong>Although parties from all jurisdictions may complete the User Registration to access the Site where permitted by law, the Site is directed only to parties residing or having their principal place of business in one of the provinces or territories of Canada. As such, only parties residing or having their principal place of residence in one of the provinces or territories of Canada may be eligible to become a Broker or a Lender. The Site is not directed to any party in any jurisdiction where, due to that party's residence, principal place of business or otherwise, the publication or availability of the Site is prohibited. Parties in respect of whom such prohibitions apply must not access the Site and may not become a User.</strong></p>
+              <p>Levitas Entities make no representations or warranties regarding the completeness, accuracy or currency of any information of the Site. Levitas Entities shall not be liable for any omission, error, inaccuracy or failure to update such information.</p>
+              <p><strong>Legal Disclaimer</strong></p>
+              <p><strong>UNDER NO CIRCUMSTANCES SHOULD ANY INFORMATION ON THIS SITE BE CONSTRUED AS A PUBLIC OFFERING OF SECURITIES OF LEVITAS MARKETPLACE INC. IN ANY JURISDICTION OF CANADA OR OUTSIDE CANADA. THE CONTENTS ARE PROVIDED SOLELY FOR INFORMATION PURPOSES AND SHOULD NOT BE INTERPRETED AS A RECOMMENDATION OR AS GENERAL OR SPECIFIC FINANCIAL, LEGAL, TAX, INVESTMENT OR PROFESSIONAL ADVICE APPLICABLE TO ANY USER, BROKER OR LENDER’S SPECIFIC CIRCUMSTANCES. LEVITAS ENTITIES MAKE NO REPRESENTATION OR WARRANTY AS TO THE SUCCESS OF ANY SECURITIES OFFERED BY LEVITAS.THE CONTENTS MAY NOT BE RELIED UPON FOR INVESTMENT PURPOSES.</strong></p>
+              <p><strong>WE RECOMMEND THAT YOU CONSULT YOUR OWN PROFESSIONAL ADVISORS REGARDING USE OF THE SITE FOR ANY PURPOSE.</strong></p>
+              <p><strong>Trademarks and copyrights</strong></p>
+              <p>All logos, trademarks, service marks and trade names used or displayed on the Site are the registered or unregistered trademarks of Levitas Entities or their respective owners. Nothing on the Site grants or may be construed as granting, by implication or otherwise, any license or right to use any logos, trademarks, service marks and trade names displayed on the Site without the written permission of Levitas Entities or such other owner.</p>
+              <p>In addition, the Contents may not be copied, reproduced, republished, downloaded, posted, transmitted, distributed or modified, in part or in whole, in any form whatsoever, whether in text, audio, video or executable format, without prior written consent of LEVITAS. Nothing in the Site may be construed as conferring any right to use the Contents in any manner that is protected under the Copyright Act (Canada).</p>
+              <p><strong>Internet Browser</strong></p>
+              <p>The Site was developed for optimal display on the following browsers: Google Chrome Version 51+ and Safari Version 8+. You are advised to use these internet browsers to enjoy optimal use of the Site. Levitas Entities shall not be held liable for any damages relating to the use of the Site and problems with the display caused by your internet browser. You agree to access the Site using hardware that does not contain viruses and with an up-to-date browser.</p>
+              <p><strong>Hypertext Links</strong></p>
+              <p>The Site may contain hyperlinks to other websites that are not owned, operated or controlled by Levitas Entities, such as hyperlinks to Brokers’ websites. The hyperlinks are provided solely for convenience. To use the hyperlinks, you must leave the Site. Levitas Entities will not and cannot verify the content, material or any other information on the other websites visited by you. Levitas Entities do not endorse, guarantee, or make any representations or warranties regarding any other websites or any of the content, material or information that may or may not be on such websites. If you decide to access any other website from a hyperlink on the Site, you do so at your own risk. Levitas Entities assume no responsibility and shall not be liable for any damages arising from the use of such other websites.</p>
+              <p><strong>Cookies</strong></p>
+              <p>Navigation on the Site is likely to cause the installation of cookies on your computer or device. A cookie is a small file which does not identify a user, but which records the information about the navigation of a computer or device on a website. The data obtained is used to facilitate subsequent browsing on the Site and allows tracking of certain statistical data which helps Levitas Entities improve the Site. Refusing the installation of a cookie may prevent you from accessing certain services or parts of the Site. You may configure your computer or device to accept or deny the installation of cookies.</p>
+              <p><strong>Forums and Social Networks</strong></p>
+              <p>Levitas Entities can communicate information and news concerning Levitas Lending Platform and related services on social networks. However, if the content on social networks differs from the Contents, the latter shall prevail.</p>
+              <p>Levitas Entities encourage Users to publish comments regarding Levitas Lending Platform or to ask questions on social networks. However, Levitas Entities do not verify or confirm the accuracy of the comments made by Users or any other parties about Levitas Entities or Levitas Lending Platform and their services. Levitas Entities do not endorse any of the opinions expressed in such comments nor does it ensure compliance with the Terms and/or the Privacy Policy of social networks. However, Levitas Entities reserve the right to monitor activities concerning Levitas Entities and Levitas Lending Platform on social networks and to censor any comments deemed inappropriate, inaccurate or unacceptable at any time and at its sole discretion.</p>
+              <p><strong>What Happens if one of the Levitas Entities Becomes Bankrupt?</strong></p>
+              <p>In the event any of the Levitas Entities cease operating for any reason whatsoever, everything will be done in their power to ensure the proper administration of outstanding Mortgages.</p>
+              <p><strong>Amendments to the Terms</strong></p>
+              <p>The Terms may be amended or updated from time to time to comply with law or to meet Levitas Entities’ business requirements. Levitas Entities may not always be able to give you advanced notice of such amendments or updates, but the Terms that are in effect at any given time will always be posted on the Site so that you can review them when you next log in. Any amendment or update will be effective immediately and automatically bind all Users, Lenders and Brokers to the extent permitted by law.</p>
+              <p><strong>How to Become a Broker</strong></p>
+              <p><strong>The following describes how to become a Broker. </strong></p>
+              <p>To become and remain a Broker, a Broker must meet LEVITAS’ requirements, as they may be amended from time, without notice.</p>
+              <p><strong>Minimum Requirements to be a Broker</strong></p>
+              <ul class="list-disc">
+                <li><strong>Have a valid email account;</strong></li>
+                <li><strong>Have a principal place of business in one of the provinces or territories of Canada;</strong></li>
+                <li>Have the authority to bind yourself, or such other party which you may be representing, to our Terms</li>
+                <li>Must be a registered broker with an active license in good standing within your province of business</li>
+              </ul>
+              <p>To be approved as a Broker, you must meet such other criteria and provide all information and documentation that may be required by LEVITAS. Satisfaction of any or all of LEVITAS’ criteria does not guarantee approval as a Broker. </p>
+              <p>If you are using the Levitas Lending Platform on behalf of an organization, you agree to our Terms on behalf of an organization, and represent that you have the authority to bind that organization to the terms contained herein. </p>
+              <p><strong>Loan Requests</strong></p>
+              <p>You can leverage the Levitas Lending Platform for the purposes of assembling and submitting to Lenders the information packages as required for mortgage loan request (the “<strong>Loan Request</strong>”) of prospective borrowers (each a “<strong>Borrower</strong>”). You and your Borrowers continue to be responsible for compliance with any applicable laws and rules generally set out by a governmental and regulatory authority. </p>
+              <p>Levitas Entities provide the Levitas Lending Platform in their own personal or corporate capacities and the Levitas Entities should not be considered an agent or representative for you, a Borrower or a Lender. </p>
+              <p>To confirm that the Borrower that you are acting on behalf of is eligible and to verify its existence, and for underwriting purposes, LEVITAS requires the provision of certain information and documents prior to accepting any Loan Request submitted on behalf of the Borrower. Information and documents requested must be provided in satisfactory form prior to acceptance.</p>
+              <p>In the event any information and/or document provided is deemed deficient for any reason, LEVITAS may invite you to address the deficiencies. Please note that LEVITAS may at any time request additional information and documents regarding you, the Borrower, Guarantors, and other individuals associated with the Borrower, including its shareholders, partners, officers and directors. If any of information and documents requested by LEVITAS is not provided in satisfactory form in a timely manner in LEVITAS’ sole and unfettered discretion, the Loan Request will be rejected.</p>
+              <p>You hereby represent and warrant to LEVITAS and all Lenders that the information and documents provided in support of a Loan Request and to obtain a loan or loans from LEVITAS and any and all additional information and/or documents submitted to or received by Levitas Entities are true, complete and accurate in all respects.</p>
+              <p><strong>YOU REPRESENT AND WARRANT THAT NO SUCH INFORMATION OR DOCUMENT, INCLUDING ANY INFORMATION WITH RESPECT TO THE DESCRIPTION OF THE BORROWER’S REAL PROPERTY CONTAINS ERRORS, MISLEADING INFORMATION, OMISSIONS OR MISREPRESENTATIONS THAT WOULD BE REASONABLY MATERIAL TO A LENDER’S DECISION TO COMMIT FUNDS TO ANY LOAN REQUEST THAT THE BORROWER MAKES.</strong></p>
+              <p>In the event of a change in any information or document provided to LEVITAS, you agree to immediately notify LEVITAS in a manner specified by LEVITAS from time to time of such change and provide it with the appropriate information or document, as the case may be.</p>
+              <p>Information and documentation submitted to LEVITAS may be included in a disclosure document (a <strong>“Disclosure Document”</strong>), which will be posted on the Site and made available to Lenders. There will be one Disclosure Document for each Loan Request. </p>
+              <p><strong>BY SUBMITTING AN LOAN REQUEST YOU REPRESENT AND WARRANT THAT YOU HAVE DISCLOSED TO LEVITAS ALL CIRCUMSTANCES THAT YOU ARE AWARE OF AND WHICH COULD OR MIGHT RESULT IN A MATERIAL ADVERSE CHANGE IN RESPECT OF ASSETS OR FINANCIAL AFFAIRS OF THE BORROWER OR GUARANTORS, INCLUDING WITHOUT LIMITATION ANY CLAIMS, UNDISCLOSED LIABILITIES, LITIGATION, ARBITRATION, COURT PROCEEDINGS OR INVESTIGATIONS, INCLUDING ANY INVESTIGATION BY ANY GOVERNMENTAL ENTITY, AGENCY OR OTHER SIMILAR ENTITY, WHICH ARE CURRENT, THREATENED, PENDING OR OTHERWISE REASONABLY LIKELY TO OCCUR BY ANY THIRD PARTY.</strong></p>
+              <p>You agree that you will promptly notify LEVITAS upon you or the Borrower becoming aware of or suspecting that one of the aforementioned events has occurred or may occur and will provide LEVITAS with any information as it may reasonably require from time to time.</p>
+              <p>If you are, or at any time become, aware of any current or future claim (or potential claim) by the Canada Revenue Agency (or any other governmental agency, entity or public body) against the Borrower, or its Guarantors, you must contact LEVITAS Inc. immediately.</p>
+              <p>You acknowledge that the Levitas Entities may and will use information provided by you and the Borrower to display it on the Broker’s Mortgage Request Page and that such information will be made available to Lenders as described in the Privacy Policy. Please refer to the Privacy Policy for a list of the information which may be made available. <strong>IF YOU DO NOT AGREE WITH THE PRIVACY POLICY, DO NOT SUBMIT AN LOAN REQUEST.</strong></p>
+              <p><strong>Disclosure of Information</strong></p>
+              <p>By requesting that a Loan Request be approved you understand that information pertaining to the Borrower will be shared with Levitas Entities, Lenders and other Brokers. You acknowledge being aware of intellectual property laws and having taken the necessary measures to protect the information you share with Levitas Entities, Lenders and other Brokers. Levitas Entities will not be held responsible for any loss or damage incurred by you in respect of any loss of intellectual property as a result of any disclosure of information by you to Levitas Entities. You hereby waive all rights of claim, action or demand against Levitas Entities.</p>
+              <p>By submitting to Levitas Entities any information, as well as any visual and/or auditory material, (collectively, the <strong>“Materials”</strong>) to be displayed or accessed to on a Mortgage Request Page, you represent that you are the sole legal and beneficial owner of such Materials or that you own or hold a valid license or are otherwise legally authorized to use the Materials and that such license or authority is not being contested, in whole or in part, by anyone whomsoever at any time during which the Materials shall be displayed on a Mortgage Request Page. You represent that you are entitled to use the Materials and do not violate intellectual property rights of any third party. The use of any Materials shall be at your own risk. You will be solely responsible for any breach of any intellectual property laws and you shall indemnify and hold the Levitas Entities harmless of any loss or damages suffered as a result of any breach of this provision. While LEVITAS reserves the right to remove any portion of the Materials from any Mortgage Request Page at any time and at its sole discretion, it has no obligation to do so.</p>
+              <p><strong>Consent to Obtaining Credit Report</strong></p>
+              <p>By submitting a Loan Request, you irrevocably represent that you have the authority to authorize LEVITAS to communicate with the Borrower and Guarantor(s) for the purposes of requesting from the Borrower(s) and Guarantor(s), as applicable, consent to obtain a credit report (the “<strong>Information</strong>”) from Equifax Canada Inc. and/or TransUnion of Canada, Inc., (each a <strong>”Credit Agency”</strong>), whether directly from such Credit Agency or through one or more third-party services which LEVITAS may utilize from time to time.</p>
+              <p>You understand that the Information will be obtained by LEVITAS for the purposes of reviewing the Loan Request and/or guaranteeing obligations under any mortgage loan agreement. </p>
+              <p><strong>Borrowing Process</strong></p>
+              <p>If your Loan Request is accepted you will be provided with a summary of the terms of the Loan Request (the <strong>“Loan Terms”</strong>), which LEVITAS, if accepted, will publish as a Mortgage Request Page,</p>
+              <p>Loan Terms include the principal amount of the loan, the interest rate, the term, the mortgage type, the fees payable, if any, to you, LEVITAS and the Lenders and the amount of the monthly repayments.</p>
+              <p>Once a Mortgage Request Page is displayed, Lenders will be able to commit to invest into a Mortgage corresponding to the Loan Request (the “<strong>Corresponding Mortgage</strong>”). The Loan Request will be funded solely with the proceeds of any Lender Commitment and a loan will only be extended to the Borrower if and when the Loan Request will have received Lender Commitment in aggregate to invest into the Corresponding Mortgage equal to the amount of the Loan Request (or such lesser amount that the Broker and Borrower agrees to) and thereby will be deemed “fully funded”.</p>
+              <p>The acceptance of Lender Commitment for a Corresponding Mortgage for a Loan Request will end on the earlier of (a) when the Loan Request is fully funded or (b) the 30th day after the Mortgage Request Page was first displayed on Levitas Lending Platform (the <strong>“Funding Period”</strong>). LEVITAS may extend the Funding Period for any Loan Request at any time at its sole discretion.</p>
+              <p><strong>Limitation of Liability</strong></p>
+              <p>Levitas Entities make no guarantee, representation or advice as whether any Loan Request will be fully funded. Publishing a Mortgage Request Page does not constitute in any way an obligation of LEVITAS to procure funding or any warranty that funding will be available. You understand that your Loan Request may not become fully funded.</p>
+              <p><strong>LEVITAS ENTITIES MAKE NO REPRESENTATIONS OR WARRANTIES OF ANY KIND, EITHER EXPRESS OR IMPLIED, REGARDING ANY LOAN REQUEST. THE SERVICES OFFERED BY THE LEVITAS ENTITIES ARE NOT INTENDED AS A SUBSTITUTE FOR PROFESSIONAL ADVICE. PLEASE BE AWARE OF THE LAWS OF YOUR PROVINCE OR TERRITORY OR THAT OTHERWISE APPLY TO YOU WITH RESPECT TO ANY LOAN DOCUMENT THAT IS PROVIDED. YOU ACKNOWLEDGE THAT YOU ARE ACCESSING THE SITE OF YOUR OWN INITIATIVE, AND ARE RESPONSIBLE FOR COMPLIANCE WITH THE LAWS THAT ARE APPLICABLE IN YOUR JURISDICTION, INCLUDING APPLICABLE SECURITIES LAWS. YOU ACKNOWLEDGE AND HEREBY ACCEPT THE CONSEQUENCES THAT MAY ARISE FROM SENDING AN LOAN REQUEST AND THE POSTING OF A MORTGAGE REQUEST PAGE.</strong></p>
+              <p>You agree to indemnify, hold harmless and defend the Levitas Entities from and against all expenses, costs, fees, losses, claims, actions, damages, obligations and liabilities of any kind, including, in particular any legal fees and disbursements, (collectively <strong>”Losses”</strong>) that may be incurred in investigating, defending and/or settling any action, suit, proceeding, investigation or claim that may be made or threatened against them or to which they may become subject or otherwise involved in any capacity insofar, including Losses directly or indirectly incurred as a result of your breach of the Terms and the Privacy Policy. You agree to cooperate with the Levitas Entities in the contestation of any such claim, action, demand or investigation.</p>
+              <p>Furthermore, you hereby renounce to and give to the Levitas Entities complete and final release and discharge from, and with respect to, any and all claims, rights and recourses, present or future, of any nature or cause whatsoever related to borrowing on the borrowing section of Levitas Lending Platform or related to any misrepresentation, as defined under applicable securities laws, inaccurate or misleading information or any material facts unclearly presented on your Mortgage Request Page. Levitas Entities will not be liable for any information relating to any Broker or Borrower made available on the Site. LEVITAS may from time to time, but is not obliged to, update or modify a Disclosure Documents. You are solely responsible for the information displayed on your Mortgage Request Page.</p>
+              <p><strong>YOU UNDERSTAND THAT YOU MAY BE SUBJECT TO PENALTIES UNDER APPLICABLE SECURITIES LAWS SHOULD YOU FAIL TO COMPLY WITH ANY APPLICABLE LAWS. YOU AGREE THAT NONE OF THE LEVITAS ENTITIES WILL BE HELD LIABLE FOR ANY LOSSES WHICH MAY BE CAUSED BY ANY ACTION, DECISION OR ORDER OF ANY APPLICABLE REGULATORY AUTHORITY OR REGULATOR AND YOU WAIVE ALL CLAIMS, RIGHTS AND RECOURSES, PRESENT OR FUTURE, YOU MAY HAVE AGAINST ANY OF THE LEVITAS ENTITIES IN RELATION TO ANY LOSS OR DAMAGE SUFFERED BY YOU AS A RESULT OF THE USE OF THE SITE, INCLUDING, BUT NOT LIMITED, TO ANY LOSS AND DAMAGE RELATED TO ANY ACTION OR DECISION TAKEN AGAINST YOU BY ANY REGULATORY AUTHORITY OR REGULATOR AND ANY LOSS OR DAMAGE CAUSED BY A CEASE TRADE ORDER ISSUED AGAINST ONE OF THE LEVITAS ENTITIES HAVING TO CEASE ITS ACTIVITIES AND/OR CLOSE THE SITE. YOU AGREE TO USE THE SITE AT YOUR OWN RISK.</strong></p>
+              <p><strong>Closing Your Account as a Broker</strong></p>
+              <p>If you no longer wish to be a Broker, you may close your account by sending us an email at <a href="mailto:borrowers@lendingloop.ca">info@levitas.ai</a>. </p>
+              <p>LEVITAS may close your Broker’s account at any time at its sole discretion, including but not limited to any of the following:</p>
+              <ul class="list-disc">
+                <li>you are in breach of the Terms;</li>
+                <li>you are in breach of any term or condition contained in the Loan Documents;</li>
+                <li>LEVITAS suspects that you have committed fraud, been involved in money laundering or other criminal activities;</li>
+                <li>you are using the Site for the purpose of soliciting or enticing any person away from the Site;</li>
+                <li>a Levitas Entity believes in good faith that you are using the Site in any of the following ways:</li>
+                <li>in any way that causes, or is likely to cause, the Site or access to the Site to be interrupted or damaged in any way;</li>
+                <li>for fraudulent purposes or in connection with a criminal offence;</li>
+                <li>to send, use or reuse any material that is illegal, offensive, abusive, indecent, defamatory, obscene or menacing; or in breach of copyright, trademark, confidence, privacy or any other right; or is otherwise injurious to third parties; or objectionable; or which consists of or contains software viruses, political campaigning, commercial solicitation, chain letters, mass mailings or any spam; or</li>
+                <li>to cause annoyance, inconvenience or needless anxiety.</li>
+              </ul>
+              <p><strong>Representations of Brokers</strong></p>
+              <p>You hereby confirm that you agree to use the Site only for lawful purposes and in a way which does not infringe the rights of any other User.  </p>
+              <p>You warrant that the Materials that you upload is free from viruses or anything else which may affect the functionality of the Site.</p>
+              <p>You are responsible for all costs incurred by you in accessing Levitas Lending Platform.</p>
+              <p>The information published on Levitas Lending Platform may refer Lenders and Users to third party websites, including your website. LEVITAS is not responsible for any material or information displayed on such website or on any other website linked thereto. You agree that you are solely responsible for the information and material available on your website, as applicable.</p>
+              <p>The invalidity or unenforceability of any of the provisions of the Terms will not affect the validity of any other provision and such invalid provision will be deemed to be severable. No waiver of any breach of the Terms will be effective or binding unless made in writing and signed by one of the Levitas Entities, and such waiver will be limited to the specific breach waived unless otherwise provided.</p>
+              <p>Your obligations pursuant to the Terms shall survive the termination and/or the closing of your Broker’s account.</p>
+              <p>The Terms will be governed by and construed in accordance with the laws of the Province of Ontario and the federal laws of Canada applicable therein.</p>
+              <p><strong>How to become a Lender</strong></p>
+              <p>The following describes how to apply to open an account as a lender (a <strong>”Lender”</strong>) with Levitas Marketplace Inc. how to use the lending section of the Site to lend money secured by mortgages and/or hypothecs (<strong>“Mortgages”</strong>).</p>
+              <p><strong>IF YOU DO NOT AGREE TO THE TERMS, YOU SHOULD NOT REGISTER TO BECOME A LENDER.</strong></p>
+              <p><strong>Credentials</strong></p>
+              <p>As a User of the Site you have been provided Credentials. Your Credentials will remain the same after you become a Lender.</p>
+              <p><strong>Eligibility to become a Lender</strong></p>
+              <p>To become and remain a Lender, you must meet the following criteria:</p>
+              <ol class="list-decimal">
+                <li><strong>For natural persons:</strong></li>
+                <li>reside in Canada;</li>
+                <li>be of the legal age of majority in your province or territory of residence;</li>
+                <li>have the legal capacity to contract; and</li>
+                <li>have a valid deposit account with a regulated Canadian financial institution.</li>
+                <li><strong>For other entities:</strong></li>
+                <li>be a corporation, a partnership, a public body, a charity, a trust or a co-operative;</li>
+                <li>have existed for at least one year;</li>
+                <li>have a valid deposit account with a regulated Canadian financial institution; and</li>
+                <li>at least 50% of the directors of the corporation or partners of the partnership must be Canadian residents.</li>
+              </ol>
+              <p><strong>Information and Documents</strong></p>
+              <p>To confirm that you are eligible to be a Lender and to verify your identity, LEVITAS requires that you provide certain information and documents. To become a Lender, you must provide all the information and documents noted as required in the Lender registration form found on the Site and any other additional information and/or documents that LEVITAS may require.</p>
+              <p>You hereby represent and warrant to LEVITAS that the information and documents you have provided and/or will provide to LEVITAS, and any and all additional information and/or documents that will be submitted to or received by LEVITAS at any time are true, complete and accurate in all respects, as of the date submitted or received. In the event of a change in any information or document provided to LEVITAS, you agree to immediately notify LEVITAS of such change and provide LEVITAS with the correct information or document, as applicable.</p>
+              <p>You represent and warrant that you have disclosed to LEVITAS all circumstances that you are aware of which could or might result in a material adverse change in your financial condition, including without limitation any claims, undisclosed liabilities, litigation, arbitration, court proceedings or investigations, including any investigation by any governmental entity, agency or other similar entity, which are current, threatened, pending or otherwise reasonably likely to occur by any third party.</p>
+              <p>You hereby acknowledge that LEVITAS may and will use the information provided by you in accordance with the Privacy Policy.</p>
+              <p><strong>Acceptance as a Lender</strong></p>
+              <p>The decision to accept you as a Lender is made within 5-business days of receipt of all requested documentation and information. However, various factors may result in a delay in the decision, including, but are not limited to, delays in receipt of identity verification. In the event LEVITAS decides not to accept you as a Lender LEVITAS will notify you and may inform you of the reason. If LEVITAS’s decision not to accept you as a Lender is based on erroneous information, you may contact LEVITAS by by e-mail at <a href="mailto:lenders@lendingloop.ca">[compliance@levitas.ai]</a> and submit the correct information and/or documents, as applicable. </p>
+              <p>Please note that LEVITAS has complete discretion as to whether to accept as any person or entity as a Lender.</p>
+              <p><strong>Lending Process</strong></p>
+              <p><strong>General Lending Process</strong></p>
+              <p>LEVITAS will inform you by email that have been you are accepted as a Lender and you will have full access to the lending section of the Site when logging into your account.</p>
+              <p>On the lending section of the Site, you will have the opportunity to commit to invest into Mortgages. Each Mortgage is issued in connection with a corresponding Loan Request.  </p>
+              <p>You will be able to browse through Mortgage Request Pages and view all of the information displayed on such pages, including, but not limited to, financial and security information regarding the Loan Requests.</p>
+              <p>Lender Commitments may be accepted by LEVITAS in connection with a Loan Request until the earlier of (a) the time the Loan Request becomes fully funded, and (b) the 30th day from the day the Loan Request was first posted on the Site (the <strong>“Loan Request Expiry Date”</strong>). LEVITAS may with the approval of the Broker, reduce the amount of the Loan Request and/or extend, at its sole discretion, the Loan Request Expiry Date by up to 15 days. LEVITAS will notify you by email of the details of any extension of a Loan Request Expiry Date that exceeds 15 days in connection with a Loan Request to which you have submitted a Mortgage commitment for which you will then be provided with an option to revoke your commitment. After you have acknowledged reviewing the Disclosure Document with regard to a specific Mortgage, you may, by clicking the “Fund Deal” button commit to investment in a Mortgage in an amount you have selected and agree to be bound by all the terms and conditions set forth under the lender commitment (the “<strong>Lender Commitment</strong>”), which you will be required to enter into prior to being granted a right to invest into a Mortgage. If your commitment to invest is accepted, the amount you committed will be added to the aggregate amount of the funds committed to the Loan Request, as indicated on the Mortgage Request Page.</p>
+              <p>You understand that clicking on the “Fund Deal” button does not automatically confirm acceptance of your commitment to fund a Loan Request, nor does it grant you any right of priority over the commitment of any other Lender. It is only once your commitment to fund a Loan Request is received and accepted that your commitment will be deemed committed to the specific Loan Request. Accordingly, you understand that other Lenders could commit to invest into a Loan Request simultaneously with you and that this could result in either (i) the amount you wished to commit being greater than the amount of the Loan Request available to be funded, or (ii) the Loan Request becoming fully funded, in which case your commitment would may rejected. You understand that in such circumstances, you will have no recourse against Levitas Entities, the Broker or any other person with respect to the rejection of your commitment to invest.  </p>
+              <p><strong>Subject to applicable securities laws, all Lender Commitments are final. Once your Lender Commitment is submitted you may not revoke your commitment except only as may be provided for under applicable laws. You will be able to view the amount committed to each Loan Request in your Levitas Lending Platform account under the “Commitments” category.</strong></p>
+              <p><strong>In the event a prospective Broker or Borrower fails to comply with closing requirements applicable to the Loan Request, your commitment will be cancelled. </strong></p>
+              <p><strong>Once a Lender Commitment is accepted, the Lender will be required to coordinate directly with the Broker and Borrower for the preparation of appropriate security documents to fund and process Mortgage. Communications between the Lender, Borrower and Broker may take place using the Levitas Lending Platform but LEVITAS is in no way responsible for any documents or communications that are exchanged between the parties.   </strong></p>
+              <p><strong>No Secondary Market</strong></p>
+              <p><strong>You understand that no secondary market for Mortgages currently exists. Consequently, the Mortgages are illiquid and you should be prepared to hold them for their term which ranges from 1 month to 1 year. Your rights and obligations under a Mortgage may not be assigned or transferred to any other party, except as may be permitted by applicable law. </strong></p>
+              <p><strong>Warning and Limitation of Liability</strong></p>
+              <p><strong>Levitas Entities make no representations or warranties of any kind, either express or implied, regarding any Mortgage or Loan Application. Lenders have complete control and discretion over whether or not to invest into a Mortgage pertaining to a specific Loan Application. Nothing any of the Levitas Entities does and nothing on the Site is intended to operate or be construed as the provision of advice by any of the Levitas Entities to invest into a particular Mortgage.</strong></p>
+              <p>The financial information published on the Mortgage Request Pages is not audited in the vast majority of cases and are provided by the Brokers. </p>
+              <p>Lenders should carefully consider the risk factors related to each Loan Application. Lenders are urged to carefully consider such factors before deciding to commit funds to invest into Mortgages.  </p>
+              <p><strong>You should form your own opinion on the creditworthiness of any Borrower and undertake your own research, analysis and assessment of each Borrower before committing to invest into a Mortgage and, where necessary, seek independent professional advice.</strong></p>
+              <p>Although Brokers represent and warrant that the information they provide on behalf of their Borrowers is true, complete and accurate in all respects, and that such information does not contain information, omissions or misrepresentations likely to affect a Lender’s investment decision, such information could prove to be false, inaccurate or contain misleading information or omissions or misrepresentations. You understand that the Levitas Entities make no representation or warranty with respect to the accuracy or completeness of the information published on Mortgage Request Pages. Levitas Entities disclaim all liability for any such information and for any material supplied by or contained on any external website linked to from a Mortgage Request Page. You hereby renounce to and give Levitas Entities complete and final release and discharge from, and with respect to, any and all claims, rights and recourses, present or future, of any nature or cause whatsoever, directly or indirectly, related to or resulting from your investment into any Mortgage, accessing or use of the Site or related to any misrepresentation, omission, inaccurate or misleading information or any material fact presented on any Mortgage Request Pages.</p>
+              <p><strong>Please be aware of the laws of your jurisdiction or that otherwise apply to you with respect to any Mortgage investment. You acknowledge that you are accessing the lending section of the Site of your own initiative, and are responsible for compliance with the laws that are applicable in your jurisdiction, including applicable securities laws. You hereby acknowledge and accept the consequences that may arise from investing into Mortgages.</strong></p>
+              <p>You agree to indemnify, hold harmless and defend each of the Levitas Entities from and against all expenses, costs, fees, losses, claims, actions, damages, obligations and liabilities of any kind, including, in particular any legal fees and disbursements, (collectively, the <strong>”Losses”</strong>) that may be incurred as a direct or indirect consequence of investing into any Mortgage. You agree to cooperate with each of the Levitas Entities in the contestation of any such claim, action, demand or investigation.</p>
+              <p>You agree that the Levitas Entities will not be held liable for any Losses which may be caused by any action, decision or order of any securities regulatory authority or regulator and you waive all claims, rights and recourses, present or future, you may have against any of the Levitas Entities in relation to any Losses suffered by you as a result of investing into any Mortgage, including, but not limited to, any Losses and damage related to investing into any Mortgage, LEVITAS and any affiliated entity thereof having to cease their activities and/or close Levitas Lending Platform. You agree to use the lending section of Levitas Lending Platform at your own risk.</p>
+              <p><strong>Confidentiality</strong></p>
+              <p><strong>You understand that by becoming a Lender, you will be granted full access to the information published about Borrowers, including sensitive information pertaining to their income and assets. You are permitted to download and print the Contents only for your own records and personal use. You agree not to copy, reproduce or disclose any of the Contents without LEVITAS and the applicable party’s express written consent and acknowledge being aware of applicable intellectual property laws and agree to comply with such laws.</strong></p>
+              <p>In addition, you hereby agree not to make any unauthorized use of the Loan Documents or use any of these documents to engage in any other activities which may be similar to the activities engaged in by any of the Levitas Entities.</p>
+              <p><strong>You will be responsible for any breach of this provision, including any breach of intellectual property laws, and will indemnify and hold each of the Levitas Entities harmless of any loss or damages suffered by them as a result of any breach of this provision.</strong></p>
+              <p><strong>Closing your Levitas Lending Platform Account</strong></p>
+              <p>If you no longer want to be a Lender on Levitas Lending Platform, you may close your account by sending us an email at <a href="mailto:lenders@lendingloop.ca">[info@levitas.ai]</a>. <strong>However, please note that you may NOT close your account if (a) you have committed to invest into a Mortgage corresponding to a Loan Request which has not expired, or (b) you are still receiving repayments in connection with a Mortgage you have previously invested in.</strong></p>
+              <p>Without prejudice to any of its rights and remedies, LEVITAS may close your account at any time at its sole discretion, including, but not limited to, for reason of any of the following events:</p>
+              <ul class="list-disc">
+                <li>you are in breach of the Terms;</li>
+                <li>you are in breach of any term or condition provided for in the [levitas.ai/terms];</li>
+                <li>you have used or are using automated scripts or third-party Loan Requests to access Levitas Lending Platform;</li>
+                <li>your account has been inactive for more than 30 days;</li>
+                <li>LEVITAS suspects that the person logged into your Levitas Lending Platform account is not authorized;</li>
+                <li>LEVITAS suspects that you have committed fraud, are involved in money laundering activities or other criminal activities;</li>
+                <li>you are using or have used Levitas Lending Platform to solicit or entice away any person from Levitas Lending Platform; or</li>
+                <li>you are using or have used Levitas Lending Platform in any of the following ways:</li>
+                <li>to publish, send, use or provide a link to material that is illegal, offensive, indecent, libelous or obscene;</li>
+                <li>in breach of any copyright, trademark, privacy or any other right;</li>
+                <li>in any way that is injurious to any other user of Levitas Lending Platform or to any other third party;</li>
+                <li>in any way that causes, or is likely to cause, Levitas Lending Platform or access to Levitas Lending Platform to be interrupted or damaged in any way;</li>
+                <li>for advertisement purposes or in any way that would be in violation of the provisions contained in Canada's anti-spam legislation (CASL); or</li>
+                <li>in any way that causes annoyance, inconvenience or that would otherwise disturb the ordinary lending activities taking place on Levitas Lending Platform.</li>
+              </ul>
+              <p>Furthermore, each of the Levitas Entities thereof reserve the right to take any action or measure against you to recover any and all damages incurred as a result of your actions. </p>
+              <p><strong>Privacy</strong></p>
+              <p>You agree that any and all personal and non-personal information you provide to Levitas Entities, including, but not limited to, any and all information you have submitted and/or will submit to LEVITAS during the process to become a Lender, may and will be collected, stored, processed and used in accordance with the Privacy Policy.</p>
+              <p><strong>Questions and Complaints</strong></p>
+              <p>If you have any questions about the Terms, the Privacy Policy, the Site or any other aspect of our operations or if you wish to make a complaint, please contact us by e-mail at <a href="mailto:compliance@lendingloop.ca">[privacy@levitas.ai]</a>.</p>
+              <p>If you elect to make a written complaint, please review the process outlined at [levitas.ai/privacy]</p>
+              <p>While all complaints and claims receive fair consideration, the filing of a complaint alone does not guarantee a satisfactory response or conclusion.</p>
+              <p>With respect to complaints, please note that you are responsible for all actions taken with your Credentials and you are bound by the Terms, the Loan Documents and the [levitas.ai/terms], as may be applicable.</p>
+              <p>While Levitas Entities will use all reasonable efforts to ensure the functionality of the Site and uninterrupted access to the Site, access may be suspended, restricted or terminated at any time. Levitas Entities will not be responsible for any loss or damage suffered by any person, including any Broker or Lender, because of any such suspension, restriction or termination, as well as for any technical problem. You hereby agree that you will use the Site only for lawful purposes and in a way which does not infringe the rights of any other Lender or Broker.</p>
+              <p>The invalidity or unenforceability of any of the provisions of the Terms will not affect the validity of any other provision and such invalid provision will be deemed to be severable. No waiver of any breach of these terms and conditions will be effective or binding unless made in writing and signed by LEVITAS, and such waiver will be limited to the specific breach waived unless otherwise provided.</p>
+              <p>The Terms will constitute the entire agreement between you and the Levitas Entities with respect to all of the matters herein.</p>
+              <p>Your obligations pursuant to Terms shall survive the closing of your account.</p>
+              <p>The validity, interpretation and enforcement of the Terms are governed by the laws of the Province of Quebec and the applicable laws of Canada. You hereby consent and submit to the exclusive jurisdiction of the courts located in the City of Montreal in the Province of Quebec, Canada, in all disputes arising out of or relating to the use of the Site, the Terms and/or the Privacy Policy.</p>
+              <p><strong>Waiver of Recourse</strong></p>
+              <p>You release and hold harmless Levitas Entities, their respective officers, directors, employees, consultants, representatives, agents, successors and assigns from and against any claim, cause of action or demand of any nature whatsoever arising from your use of the Site.</p>
+              <p><strong>Warranty Disclaimer</strong></p>
+              <p>UNLESS OTHERWISE SPECIFICALLY PROVIDED FOR UNDER APPLICABLE LAW YOUR USE OF THE SITE IS PROVIDED TO YOU “AS IS” AND “AS AVAILABLE”. LEVITAS ENTITIES EXPRESSLY DISCLAIM ALL OTHER REPRESENTATIONS, WARRANTIES, AND CONDITIONS, EXPRESS OR IMPLIED, INCLUDING, WITHOUT LIMITATION, ANY REPRESENTATION, WARRANTY OR CONDITION OF MERCHANTABILITY, FITNESS FOR ANY PURPOSE, TITLE, OR NON-INFRINGEMENT, OR ANY WARRANTY ARISING FROM A COURSE OF DEALING, PERFORMANCE, OR TRADE USAGE. YOUR SOLE AND EXCLUSIVE REMEDY, AND LEVITAS ENTITIES’ SOLE OBLIGATION TO YOU OR ANY THIRD PARTY FOR ANY CLAIM ARISING OUT OF YOUR USE OF THE SITE, IS THAT YOU ARE FREE TO DISCONTINUE YOUR USE OF THE SITE AT ANY TIME.</p>
+              <p><strong>Limitations of Liability</strong></p>
+              <p>UNLESS OTHERWISE SPECIFICALLY PROHIBITED BY LAW YOU EXPRESSLY UNDERSTAND AND AGREE THAT LEVITAS ENTITIES SHALL NOT BE LIABLE TO YOU FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL CONSEQUENTIAL OR EXEMPLARY DAMAGES WHICH MAY BE INCURRED BY YOU REGARDING YOUR USE OF THE SITE, HOWEVER CAUSED AND UNDER ANY THEORY OF LIABILITY INCLUDING, BUT NOT LIMITED TO, ANY LOSS OF PROFIT, LOST OPPORTUNITIES, LOSS OF DATA SUFFERED, OR OTHER INTANGIBLE LOSS.</p>
+              <p>LEVITAS ENTITIES SHALL NOT BE LIABLE FOR DELAYS, INTERRUPTIONS, SERVICE FAILURES OR OTHER PROBLEMS INHERENT IN THE USE OF THE INTERNET, SOCIAL NETWORKS, ELECTRONIC COMMUNICATIONS, TELECOMMUNICATIONS NETWORKS OR OTHER SYSTEMS OR NETWORKS.</p>
+              <p>THE LIMITATIONS ON LEVITAS ENTITIES’ LIABILITY TO YOU IN THIS SECTION SHALL APPLY WHETHER OR NOT ANY LEVITAS ENTITY HAS BEEN ADVISED OF OR SHOULD HAVE BEEN AWARE OF THE POSSIBILITY OF ANY SUCH LOSSES ARISING.</p>
+              <p><strong>Indemnification</strong></p>
+              <p>You and every party for whom you act agree to indemnify, hold harmless and defend Levitas Entities, as well as their respective officers, directors, employees, agents, consultants, representatives, agents, successors and assigns, from and against any and all claims, demands, liabilities, costs or expenses of any kind, including, in particular, legal fees and disbursements resulting directly or indirectly from: (i) your breach of these Terms or the Privacy Policy; (ii) your access to, use or inability to access or use the Site; (iii) your use of or reliance on publications, communications, distributions or downloads of any nature; and/or (iv) your violation of any law or applicable regulation. You agree to cooperate with Levitas Entities in the contestation of any such claim, demand, liability, cost or expenses.</p>
+              <p><strong>Void or Unenforceable Provisions</strong></p>
+              <p>If any provision of the Terms is deemed unlawful, void or unenforceable for any reason, that provision shall be severed, and the remaining provisions will remain in force and be fully enforceable.</p>
+              <p>The Terms apply for the benefit of Levitas Entities, their officers, directors, employees, consultants, representatives, agents, successors and assigns. You cannot assign the Terms or the rights and obligations granted to you thereunder without the express prior written consent of LEVITAS, which LEVITAS may refuse at its discretion. Levitas Entities may assign the Agreement and the rights and obligations granted thereunder without your consent.</p>
+              <p>No consent or waiver by a party of any breach or default by another party under the Agreement shall be construed as consent to or waiver of a continuing breach or default or any other breach or default of these obligations or any other obligation of that party, or shall be enforceable unless it is given in writing and signed by all parties.</p>
+              <p>All rights not expressly granted by the Terms or the Privacy Policy are reserved by Levitas Entities.</p>
+          checkbox_label_html: I accept <strong>Policy and Terms</strong> from Levitas.
+          close: Close
+          enter_full_name: Enter full name
+          confirm_deal: Confirm Deal
+        confirm_terms_success:
+          deal_terms_accepted: Deal Terms Accepted!
+          success_msg: Congratulations on accepting the deal terms! The next vital step
+            is to secure funding for the deal. Head over to the funding section, where
+            you'll find the necessary steps to ensure a smooth and successful funding
+            process. Your dedication is valued, and we are eager to see this deal come
+            to fruition.
+          go_to_deal_details: Go to Deal Details
+        review_terms:
+          review_terms: Review Terms
+          review: Review
+          confirm: Confirm
+          mortgage_principal: Total Mortgage Principal
+          term: Term
+          interest_rate: Interest Rate
+          lenders_fee: Lenders Fee
+          amortization: Amortization
+          broker_fee: Broker Fee
+          type: Type
+          close: Close
+          continue: Continue
+      lender_funding:
+        confirm_investment:
+          confirm_and_fund_deal: Confirm and Fund Deal
+          investment: Investment
+          confirm: Confirm
+          lender_fund_user_agreement:
+            html: |
+              <h2>Terms and Conditions</h2>
+              <p>Terms of Service The use of this Site for any purpose is subject to these Terms of Use for the Website (the “Terms”). The Terms and the Privacy Policy (the ”Privacy Policy”) constitute a binding legal agreement between you, and Levitas Marketplace Inc. (“LEVITAS”), its subsidiaries and affiliated companies (collectively, the ”Levitas Entities”), governing your access to and use of the Site and use of the services as these terms are defined herein. Access to and use of the Site is conditional on your acceptance of and compliance with the Terms and the Privacy Policy. Please read the Terms and the Privacy Policy carefully before browsing or using this Site or becoming a “User”, “Lender” or “Broker” as these terms are defined herein. By using this Site, you unconditionally agree to follow and be bound by the Terms and the Privacy Policy. Where you are acting on behalf of any other party, you hereby confirm that you have the authority to, and hereby, bind such other party to the Terms and the Privacy Policy. All references to “you” and “your” herein include references to each and every party that you are acting on behalf of, except where the context otherwise requires. IF YOU DO NOT ACCEPT THESE TERMS AND THE PRIVACY POLICY, YOU SHOULD NOT USE THIS SITE. The contents of the Site include, without limitation, all information, data, products, materials, services, software Loan Requests and tools, design elements, text, images, photographs, illustrations, audio and video contents, artwork and graphics contained therein or otherwise made available to you in connection therewith (collectively the “Contents”) and, unless the context clearly requires otherwise, or explicitly stated in writing, the Site includes all the Contents. You are encouraged to frequently review the Terms and the Privacy Policy. If you have not reached the age of majority in your province or territory of residence, you must refrain from using the Site. You are solely responsible for ensuring that you are legally accessing the Site, and that the Contents available therein or thereby is legal in every jurisdiction where you access or view the Site or the Contents, as well as in any intermediary jurisdiction by which you do so. Use of the Site You may not reproduce information or materials posted on the Site in any form or download, republish, display, publicly perform, distribute, sell, transfer, modify or use any such information or materials for any public or commercial purpose. Any unauthorized use of any such information or materials may violate copyright laws, trademark laws, laws of privacy and other laws and regulations. The portions of Site and the Contents that can be downloaded are protected by copyright laws, trademark laws and other laws and can only be used in accordance with the Terms or with prior written consent of the owner of such material. You cannot use the Site for any purpose that is illegal, unlawful or that is prohibited by the Terms. You may use or access the Site only to review general information made available to you and/or to sign in or log in to the private mortgage lending platform (“Levitas Lending Platform”), operated by LEVITAS. Use of the Site for any other purpose, including for commercial purposes, is expressly prohibited. Accessing the Site using third party Loan Requests, other than a browser is prohibited. All rights reserved. THE FRAMING, MIRRORING, SCRAPING OR DATA-MINING OF THE SITE OR ANY OF ITS CONTENTS IN ANY FORM AND BY ANY METHOD IS STRICTLY PROHIBITED. Protection of Personal Information You confirm that you have read the Privacy Policy and agree that it is reasonable. You agree that Levitas Entities may use your personal information, in accordance with these Terms and Privacy Policy and for the stated purposes contained therein. User Communications Other than personal information subject to the Privacy Policy, all communications or information, as well as all material, suggestions, ideas, concepts, know-how, techniques, questions, comments, or other communications from or to you, made in any manner, to Levitas Entities, their respective officers, directors, employees, consultants, representatives, agents, successors and assigns (the “Communications”) are and will be considered non-confidential and non-proprietary. You grant to Levitas Entities a perpetual, royalty-free, irrevocable, transferable, unrestricted, sub-licensable right to use the Communications, for any purpose whatsoever, including without limitation, reproduction, transmission, disclosure, publication, broadcast, display, development, adaptation, translation, creation of derivative works or marketing, in any manner whatsoever, for any or all commercial or non-commercial purpose, without restriction and without any compensation. You represent and warrant that you have the right to distribute and reproduce the Communications and the right to grant the licence granted above. You hereby waive all moral rights in the Communications. Levitas Entities may, but are not obligated to, monitor, edit, remove or review any Communications, including questions and answers on the Q & A forum section (“Q & A content”) of the Brokers’ mortgage request pages (each a ”Mortgage Request Page”), and is under no obligation, unless and then only to the extent prescribed by law, to use, return, review or respond to any Communications. Q & A content is a direct communication between Brokers and Lenders, should not be considered as statements of any of the Levitas Entities. LEVITAS ENTITIES SHALL HAVE NO LIABILITY RELATED TO THE CONTENT OF ANY COMMUNICATIONS, WHETHER OR NOT ARISING UNDER THE LAWS OF COPYRIGHT, DEFAMATION OR LIBEL, PRIVACY, OBSCENITY OR OTHERWISE. Levitas Entities reserve the right to remove any or all Communications that contain material deemed inappropriate or unacceptable. Levitas Entities, their respective officers, directors, employees, consultants, representatives, agents, successors and assigns take no responsibility and assume no liability for the Communications...</p>
+          checkbox_label_html: I accept <strong>Policy and Terms</strong> from Levitas.
+          cancel: Cancel
+          change_investment: Change Investment
+          enter_full_name: Enter full name
+        review_investment:
+          enter_your_investment_amount: Enter your Investment Amount
+          investment: Investment
+          confirm: Confirm
+          terms: Terms
+          mortgage_principal: Total Mortgage Principal
+          term: Term
+          interest_rate: Interest Rate
+          lenders_fee: Lender Fee
+          amortization: Amortization
+          closing_date: Closing Date
+          type: Type
+          investment_amount: Investment Amount
+          minimum_investment: Minimum investment
+          funds_distribution_msg: Funds will be distributed once capital is completed
+            and the notary stage is completed.
+          cancel: Cancel
+          continue: Continue
+        success_investment:
+          your_investment_of:
+            html: "Your investment of %{amount} has been successfully funded for the deal."
+          success_msg:
+            html: '<p>Thank you for your trust and commitment to Levitas. Your contribution plays a vital role in making this deal possible. We appreciate your support and look forward to the positive impact it will have. If you have any questions or need assistance, please don''t hesitate to contact our <a href="#">support team</a>.</p>'
+          view_deal_details: View Deal Details
+    impersonation_banner:
+      impersonate_msg: "You are signed in as %{username}"
+  profiles:
+    show:
+      profile: Profile
+      back_to_dashboard: Back To Dashboard
+      edit: Edit
+      lender_pool: Lender Pool
+      "#{current_userrole}_information": "#{Current Userrole} Information"
+      contact_information: Contact Information
+      edit_profile: Edit Profile
+  time:
+    formats:
+      devise:
+        mailer:
+          invitation_instructions:
+            accept_until_format: "%B %d, %Y %I:%M %p"

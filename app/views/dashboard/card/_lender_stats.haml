@@ -1,0 +1,30 @@
+.grid.grid-cols-3.grid-flow-row-dense.text-xs.text-gray-600{class: "gap-2.5"}
+
+  .flex.flex-col
+    %p.self-stretch.font-normal.text-gray-400
+      = t('dashboard.index.broker')
+
+    - if user_signed_in?
+      %p.font-bold.mt-auto
+        = deal.user.full_name
+    - else
+      %p.font-bold.mt-auto.blur-sm
+        = t('.sign_up')
+
+  .flex.flex-col
+    %p.self-stretch.font-normal.text-xs.text-gray-400
+      = t('dashboard.index.closing_date')
+    %p.font-bold.mt-auto
+      = deal.property.approximate_closing_date
+  .flex.flex-col
+    %p.self-stretch.font-normal.text-xs.text-gray-400= t('dashboard.index.mortgage_rank')
+    %p.font-bold.mt-auto= mortgage_rank(deal)
+  .flex.flex-col
+    %p.self-stretch.font-normal.text-xs.text-gray-400= t('dashboard.index.lender_fee')
+    %p.font-bold.mt-auto= number_to_percentage(deal.terms.lenders_fee, precision: 2, strip_insignificant_zeros: true)
+  .flex.flex-col
+    %p.self-stretch.font-normal.text-xs.text-gray-400= t('dashboard.index.rate')
+    %p.font-bold.mt-auto= number_to_percentage(deal.terms.interest_rate, precision: 2, strip_insignificant_zeros: true)
+  .flex.flex-col
+    %p.self-stretch.font-normal.text-xs.text-gray-400= t('dashboard.index.ltv')
+    %p.font-bold.mt-auto= number_to_percentage(deal.LVR, precision: 0)

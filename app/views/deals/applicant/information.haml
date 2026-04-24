@@ -1,0 +1,94 @@
+%div
+  %h1.deal-creator-step-title
+    = t('.borrower_information')
+  %p.deal-creator-step-description
+    = t('.leading')
+  = render 'devise/shared/error_messages', resource: @applicant
+  = form_for @applicant, url: wizard_path, method: :put, data: { turbo: false} do |f|
+    %section.mb-8
+      %h2.deal-creator-section-title
+        = t('.information')
+      .py-6
+        .flex.flex-col.sm:flex-row.gap-6.mb-6
+          %div
+            = f.label :title, class: "deal-creator-label" do
+              = t('.title')
+            = f.select :title, options_for_select(SelectOptions::PROFILE_TITLES, f.object.title), {}, {class: 'deal-creator-select' }
+          .flex-1
+            = f.label :first_name, t('.first_name'), class: "deal-creator-label" do
+              = t('.first_name')
+              = ai_badge(f.object.first_name, 'applicant.first_name')
+            = f.text_field :first_name, class: "deal-creator-input-text "
+          .flex-1
+            = f.label :last_name, class: "deal-creator-label" do
+              = t('.last_name')
+              = ai_badge(f.object.last_name, 'applicant.last_name')
+            = f.text_field :last_name, class: "deal-creator-input-text "
+        .flex.flex-col.sm:flex-row.gap-6
+          .flex-1
+            = f.label :birth_date, class: "deal-creator-label" do
+              = t('.date_of_birth')
+              = ai_badge(f.object.birth_date, 'applicant.birth_date')
+            = f.text_field :birth_date, class: "deal-creator-input-text datepicker", placeholder: "YYYY-MM-DD"
+          .flex-1
+            = f.label :social_insurance_number, class: "deal-creator-label" do
+              = t('.social_insurance_number')
+              = ai_badge(f.object.social_insurance_number, 'applicant.social_insurance_number')
+            = f.text_field :social_insurance_number, class: "deal-creator-input-text "
+    %section.mb-8
+      %h2.deal-creator-section-title
+        = t('.contact_information')
+      .flex.flex-col.sm:flex-row.gap-6.py-6
+        .flex-1
+          = f.label :email, class: "deal-creator-label" do
+            = t('.email')
+            = ai_badge(f.object.email, 'applicant.email')
+          = f.email_field :email, class: "deal-creator-input-text "
+          %p.text-sm.leading-5.text-gray-500{:class => "mt-[6px]"}
+            = t('.email_footer')
+        .flex-1
+          = f.label :phone_number, class: "deal-creator-label" do
+            = t('.phone_number')
+            = ai_badge(f.object.phone_number, 'applicant.phone_number')
+          = f.telephone_field :phone_number, class: "deal-creator-input-text "
+    %section.mb-8
+      %h2.deal-creator-section-title Address
+      = f.fields_for :address, @applicant.address do |address_fields|
+        .py-6
+          .flex.gap-6.mb-6
+            .flex-1
+              = address_fields.label :street, class: "deal-creator-label" do
+                = t('.street')
+                = ai_badge(f.object.address.street, 'applicant.address.street')
+              = address_fields.text_field :street, class: "deal-creator-input-text "
+            %div{:class => "max-w-[125px]"}
+              = address_fields.label :unit, class: "deal-creator-label" do
+                = t('.unit')
+                = ai_badge(f.object.address.unit, 'applicant.address.unit')
+                %span.font-thin.text-xs
+                  = t('.optional')
+              = address_fields.number_field :unit, class: "deal-creator-input-text "
+          .flex.flex-col.sm:flex-row.gap-6
+            .flex-1
+              = address_fields.label :city, class: "deal-creator-label" do
+                = t('.city')
+                = ai_badge(f.object.address.city, 'applicant.address.city')
+              = address_fields.text_field :city, class: "deal-creator-input-text "
+            .flex-1
+              = address_fields.label :province, class: "deal-creator-label" do
+                = t('.province')
+                = ai_badge(f.object.address.province, 'applicant.address.province')
+              = address_fields.select :province, options_for_select(SelectOptions::CANADIAN_PROVIENCES, address_fields.object.province), {}, {class: 'deal-creator-select'  }
+            .flex-1
+              = address_fields.label :country, class: "deal-creator-label" do
+                = t('.country')
+                = ai_badge(f.object.address.country, 'applicant.address.country')
+              = address_fields.select :country, options_for_select(["Canada"], selected: 'Canada'), {}, { class: 'deal-creator-select', disabled: true}
+              = address_fields.hidden_field :country, value: "Canada"
+            .flex-1
+              = address_fields.label :postal_code, class: "deal-creator-label" do
+                = t('.postal_code')
+                = ai_badge(f.object.address.postal_code, 'applicant.address.postal_code')
+              = address_fields.text_field :postal_code, class: "deal-creator-input-text "
+
+    = render partial: 'deals/partials/action_bar', locals: { f: f, back_action_path: nil, show_save_action: true, skip_action_path: nil, submit: false}

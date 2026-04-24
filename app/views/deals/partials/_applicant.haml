@@ -1,0 +1,196 @@
+%section.flex.flex-col.gap-3.text-gray-600.font-sans
+  .deal-summary-grid
+    .deal-summary-cell.max-md:col-span-2.order-first
+      .flex.items-center.justify-center.bg-purple-500.rounded-full.text-white.text-sm.font-bold.uppercase{class:'min-h-[44px] min-w-[44px] h-[44px] w-[44px]'}
+        = blur_content(applicant.short_full_name)
+      .flex.flex-col
+        %p.font-bold
+          = blur_content(applicant.full_name)
+        %p.text-sm.opacity-70= applicant&.employer&.job_title
+    .deal-summary-cell.flex-col.order-1
+      %p.text-sm.opacity-70
+        = t('deals.summary.index.total_income')
+      %p.font-bold
+        = blur_content(number_to_currency_without_cents(applicant&.employer&.income&.total, precision: 0))
+    .deal-summary-cell.flex-col.order-2.lg:order-3
+      %p.text-sm.opacity-70
+        = t('deals.summary.index.total_liabilities')
+      %p.font-bold
+        = blur_content(number_to_currency_without_cents(applicant&.liabilities_total, precision: 0))
+    .deal-summary-cell.flex-col.order-3.lg:order-4
+      %p.text-sm.opacity-70
+        = t('deals.summary.index.total_assets')
+      %p.font-bold
+        = blur_content(number_to_currency_without_cents(applicant&.assets.total, precision: 0))
+    - unless applicant.credit_score.to_i.zero?
+      .deal-summary-cell.max-lg:col-span-2.flex-col.order-4.lg:order-2.lg:row-span-2
+        = render partial: 'deals/partials/credit_score', locals: { applicant: applicant }
+    .deal-summary-cell.max-lg:col-span-2.flex-col{class: "#{applicant.credit_score.to_i.zero? ? 'order-5 lg:order-2' : 'order-5'}"}
+      %p.text-sm.opacity-70= t('deals.summary.index.social_insurance_number')
+      - if current_user&.lender? && !current_user&.funded?(@deal)
+        %p.text-xs= t('deals.summary.index.available_upon_funding')
+      - else
+        = render 'deals/partials/reveal_paragraph', text: blur_content(applicant&.social_insurance_number)
+    .deal-summary-cell.max-lg:col-span-2.flex-col.order-6
+      %p.text-sm.opacity-70
+        = t('deals.summary.index.date_of_birth')
+      %p.font-bold
+        = blur_content(Time.parse(applicant&.birth_date).strftime("%d/%m/%Y"))
+    .deal-summary-cell.max-lg:col-span-2.flex-col.order-7
+      %p.text-sm.opacity-70
+        = t('deals.summary.index.address')
+      %p.font-bold
+        = blur_content(applicant.address.full_address)
+    .deal-summary-cell.flex-col.order-8
+      %p.text-sm.opacity-70
+        = t('deals.summary.index.email')
+      %p.font-bold.break-words
+      - if current_user&.lender? && !current_user&.funded?(@deal)
+        %p.text-xs= t('deals.summary.index.available_upon_funding')
+      - else 
+        = blur_content(applicant.email)
+    .deal-summary-cell.flex-col.order-9
+      %p.text-sm.opacity-70
+        = t('deals.summary.index.phone')
+      %p.font-bold.break-words
+      - if current_user&.lender? && !current_user&.funded?(@deal)
+        %p.text-xs= t('deals.summary.index.available_upon_funding')
+      - else
+        = blur_content(number_to_phone(applicant.phone_number, delimiter: ' '))
+- if applicant.has_employer?
+  %section.flex.flex-col.gap-3.text-gray-600.font-sans
+    %h2.font-serif.font-bold= t('deals.summary.index.employer_information')
+    .deal-summary-grid
+      .deal-summary-cell.flex-col
+        %p.text-sm.opacity-70
+          = t('deals.summary.index.employer')
+        %p.font-bold
+          = blur_content(applicant.employer.name)
+      .deal-summary-cell.flex-col
+        %p.text-sm.opacity-70
+          = t('deals.summary.index.job_title')
+        %p.font-bold
+          = blur_content(applicant.employer.job_title)
+      .deal-summary-cell.max-lg:col-span-2.flex-col
+        %p.text-sm.opacity-70
+          = t('deals.summary.index.duration')
+        %p.font-bold
+          = blur_content(applicant.employer.duration)
+      .deal-summary-cell.flex-col
+        %p.text-sm.opacity-70= t('deals.summary.index.employment_type')
+        %p.font-bold
+          = blur_content(applicant.employer.employment_type)
+      .deal-summary-cell.flex-col
+        %p.text-sm.opacity-70= t('deals.summary.index.industry')
+        %p.font-bold
+          = blur_content(applicant.employer.industry_type)
+      .deal-summary-cell.flex-col
+        %p.text-sm.opacity-70= t('deals.summary.index.phone')
+        %p.font-bold.break-words
+        - if current_user&.lender? && !current_user&.funded?(@deal)
+          %p.text-xs= t('deals.summary.index.available_upon_funding')
+        - else
+          = blur_content(number_to_phone(applicant.employer.phone_number, delimiter: ' '))
+      .deal-summary-cell.max-lg:col-span-2.flex-col
+        %p.text-sm.opacity-70= t('deals.summary.index.email')
+        - if applicant.employer.email.present?
+          %p.font-bold.break-words
+            = blur_content(applicant.employer.email.presence)
+        - else
+          %p.text-gray-400.break-words
+            = t("deals.summary.index.not_available")
+
+      .deal-summary-cell.col-span-2.flex-col
+        %p.text-sm.opacity-70= t('deals.summary.index.employment_address')
+        %p.font-bold= applicant.employer.address.full_address
+.grid.grid-cols-1.md:grid-cols-2.gap-y-6.gap-x-3.text-gray-600.font-sans
+  - if applicant.has_employer?
+    .flex.flex-col.gap-3
+      %h2.font-serif.font-bold= t('deals.summary.index.income')
+      .flex.flex-col.gap-3
+        - applicant.employer.income.items.each do |income|
+          .flex.flex-wrap.items-center.justify-between.gap-3.p-3.w-full.bg-gray-100.border.border-gray-200.rounded-lg
+            .flex.gap-2
+              .flex.items-center.justify-center.gap-1.w-10.h-10.bg-lime-600.rounded-full{class: "min-w-[2.5rem]"}
+                = image_tag(iconize(income.type, "incomes"))
+              .flex.flex-col
+                %p.font-bold
+                  = blur_content(income.type)
+                %p.text-xs.opacity-70
+                  = blur_content(income.period)
+            %p.ml-12.font-bold= number_to_currency_without_cents(income.amount, precision: 0)
+  - unless applicant.assets.items.empty?
+    .flex.flex-col.gap-3
+      %h2.font-serif.font-bold
+        = t('deals.summary.index.assets')
+      .flex.flex-col.gap-3
+        - applicant.assets.items.each do |asset|
+          .flex.flex-wrap.items-center.justify-between.gap-3.p-3.w-full.bg-gray-100.border.border-gray-200.rounded-lg
+            .flex.gap-2
+              .flex.items-center.justify-center.gap-1.w-10.h-10.bg-lime-600.rounded-full{class: "min-w-[2.5rem]"}
+                = image_tag(iconize(asset.type, "assets"))
+              .flex.flex-col
+                %p.font-bold
+                  = blur_content(asset.type)
+                %p.text-xs.opacity-70
+                  = blur_content(asset.description)
+            %p.ml-12.max-md:w-full.font-bold
+              = blur_content(number_to_currency_without_cents(asset.amount, precision: 0))
+  - if applicant.has_liabilities?
+    .flex.flex-col.gap-3
+      %h2.font-serif.font-bold= t('deals.summary.index.liabilities')
+      .flex.flex-col.gap-3
+        .flex.flex-wrap.items-center.justify-between.gap-3.p-3.w-full.bg-gray-100.border.border-gray-200.rounded-lg
+          .flex.gap-2
+            .flex.items-center.justify-center.gap-1.w-10.h-10.bg-gray-600.rounded-full{class: "min-w-[2.5rem]"}
+              = image_tag("icons/receipt-tax.svg")
+            .flex.flex-col
+              %p.font-bold= t('deals.summary.index.support_payments')
+          %p.ml-12.max-md:w-full.font-bold
+            = blur_content(number_to_currency_without_cents(applicant.liabilities.child_support, precision: 0))
+        .flex.flex-wrap.items-center.justify-between.gap-3.p-3.w-full.bg-gray-100.border.border-gray-200.rounded-lg
+          .flex.gap-2
+            .flex.items-center.justify-center.gap-1.w-10.h-10.bg-gray-600.rounded-full{class: "min-w-[2.5rem]"}
+              = image_tag("icons/receipt-tax.svg")
+            .flex.flex-col
+              %p.font-bold= t('deals.summary.index.unpaid_taxes')
+              %p.text-xs.opacity-70
+                = t('deals.summary.index.fed_and_or_prov')
+          %p.ml-12.max-md:w-full.font-bold
+            = blur_content(number_to_currency_without_cents(applicant.liabilities.taxes, precision: 0))
+        - applicant.assets.real_state_with_mortage.each do |asset|
+          .flex.flex-wrap.items-center.justify-between.gap-3.p-3.w-full.bg-gray-100.border.border-gray-200.rounded-lg
+            .flex.gap-2
+              .flex.items-center.justify-center.gap-1.w-10.h-10.bg-gray-600.rounded-full{class: "min-w-[2.5rem]"}
+                = image_tag("icons/receipt-tax.svg")
+              .flex.flex-col
+                %p.text-sm.font-medium
+                  = blur_content(asset.description)
+                %p.text-xs.opacity-70
+                  = blur_content(asset.property_type)
+            %p.ml-12.max-md:w-full.text-sm.font-bold
+              = blur_content(number_to_currency_without_cents(asset.balance_remaining, precision: 0))
+
+      - unless applicant.liabilities.bankruptcy?
+        .flex.flex-wrap.items-center.justify-between.gap-3.p-3.w-full.bg-gray-100.border.border-gray-200.rounded-lg
+          .flex.gap-2
+            .flex.items-center.justify-center.gap-1.w-10.h-10.bg-lime-600.rounded-full{class: "min-w-[2.5rem]"}
+              = image_tag("icons/check.svg")
+            .flex.flex-col
+              %p.font-bold
+                = blur_content(t('deals.summary.index.no_declared_bankruptcy'))
+
+  - if applicant.has_debt_obligations?
+    .flex.flex-col.gap-3
+      %h2.font-serif.font-bold= t('deals.summary.index.monthly_obligations')
+      .flex.flex-col.gap-3
+        - applicant.liabilities.debt_obligations.each do |debt_obligation|
+          .flex.flex-wrap.items-center.justify-between.gap-3.p-3.w-full.bg-gray-100.border.border-gray-200.rounded-lg
+            .flex.gap-2
+              .flex.items-center.justify-center.gap-1.w-10.h-10.bg-gray-600.rounded-full{class: "min-w-[2.5rem]"}
+                = image_tag(iconize(debt_obligation.type, "loans"))
+              .flex.flex-col
+                %p.text-sm.font-medium
+                  = blur_content(debt_obligation.type)
+            %p.ml-12.max-md:w-full.text-sm.font-bold
+              = blur_content(number_to_currency_without_cents(debt_obligation.monthly_payment, precision: 0))

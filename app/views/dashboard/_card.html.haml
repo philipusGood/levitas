@@ -1,0 +1,40 @@
+.flex.flex-col.items-start.gap-3.p-4.rounded-lg.border.border-gray-200.bg-white.justify-between.h-full
+  .grid.grid-cols-deal-card.pb-4.gap-3.self-stretch.border-b.border-gray-100
+    - if deal.property_picture.attached?
+      .aspect-w-1.aspect-h-1
+        = image_tag(deal.property_picture.variant(:thumb), class: "rounded-xl w-full h-full object-center object-cover", height: "160", width: "160")
+    .flex.flex-col.items-start.grow.min-w-0{:class => "gap-[5px] #{deal.property_picture.attached? ? '' : 'col-span-2'}"}
+      .flex.items-center.self-stretch.justify-between.font-sans.font-normal.text-sm{:class => "gap-[3px]"}
+        - if deal.property.mls_number.present?
+          %p.text-gray-500= "##{deal.property.mls_number}"
+        - else
+          %p
+        .badge{class: "badge-#{deal.state}"}
+          = deal.state.humanize
+      %p.font-serif.font-bold.text-base.text-gray-600.truncate.w-full
+        = deal.property.address.full_address
+      %p.self-stretch.text-blue-600.font-sans.font-bold
+        = number_to_currency_without_cents(deal.target)
+  .flex.flex-col.items-start.gap-3.self-stretch.font-sans
+    .flex.items-start.gap-1.self-stretch.justify-between
+      .flex.flex-col.items-start
+        - if current_user.lender? || current_user.admin?
+          %p.self-stretch.font-normal.text-xs.text-gray-600.opacity-70= t('dashboard.index.broker')
+          %p.font-medium.text-sm.text-gray-600
+            = deal.user.full_name
+        - else
+          %p.self-stretch.font-normal.text-xs.text-gray-600.opacity-70= t('dashboard.index.borrower')
+          %p.font-medium.text-sm.text-gray-600
+            = deal.applicant.full_name
+      .flex.flex-col.items-start{:class => "w-[6.25rem]"}
+        %p.self-stretch.font-normal.text-xs.text-gray-600.opacity-70 ROI
+        %p.font-medium.text-sm.text-gray-600
+          = "#{number_to_percentage(deal.terms.interest_rate, precision: 2, strip_insignificant_zeros: true)} + #{number_to_percentage(deal.terms.lenders_fee, precision: 2, strip_insignificant_zeros: true)}"
+      .flex.flex-col.items-start
+        %p.self-stretch.font-normal.text-xs.text-gray-600.opacity-70= t('dashboard.index.closing_date')
+        %p.font-medium.text-sm.text-gray-600
+          = deal.property.approximate_closing_date
+    = render 'dashboard/progress-bar', progress: deal.progress
+  - if deal.lender_commited? current_user
+    .flex.items-center.py-3.px-4.rounded-lg.bg-emerald-50.w-full
+      %p.font-bold.text-sm.text-emerald-500= t('dashboard.index.you_funded_this_deal_with') + " #{number_to_currency(current_user.becomes(Lender).commited_capital(deal))}"

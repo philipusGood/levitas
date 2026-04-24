@@ -1,0 +1,16 @@
+.flex.flex-col.items-start.gap-3.p-6.md:px-10
+  Top Header
+.flex.p-6
+  = levitas_modal "reject_terms"
+.flex.flex-col.gap-16.px-6.py-10.md:px-10.bg-gray-50
+  .flex.flex-col.self-stretch.gap-8.md:gap-6
+    %h2.section-title
+      = t('.terms')
+    = render "deals/partials/terms_empty_state"
+
+    = render partial: "deals/partials/terms_critical_banner", locals: {title: "Review Terms", description: "Make sure you understand and accept these terms proposed by Levitas."}
+    = render partial: "deals/partials/terms_success_banner", locals: {title: "Review Terms", description: "Make sure you understand and accept these terms proposed by Levitas."}
+
+
+    = render "deals/partials/terms"
+    = render "deals/partials/terms_form"

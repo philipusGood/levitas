@@ -1,0 +1,78 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title Levitas
+    %meta{:content => "width=device-width,initial-scale=1", :name => "viewport"}/
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload"
+    = stylesheet_link_tag "application", "data-turbo-track": "reload"
+    %link{href: "https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css", rel: "stylesheet"}
+    = javascript_importmap_tags
+    = hotwire_livereload_tags if Rails.env.development?
+  %body
+    %div{"data-controller" => "layout"}
+      .hidden.lg:fixed.lg:inset-y-0.lg:z-50.lg:flex.lg:w-80.lg:flex-col
+        .flex.grow.flex-col.gap-y-6.overflow-y-auto.bg-gray-50.px-10.py-6.border-r.border-gray-200
+          %div
+            = link_to "Cancel", root_path, class:"inline-block py-2 px-3 rounded-lg border border-gray-200 text-gray-600 bg-white"
+          .flex.h-16.shrink-0.items-center
+            %svg{:fill => "none", :height => "40", :viewbox => "0 0 109 40", :width => "109", :xmlns => "http://www.w3.org/2000/svg"}
+              %path{:d => "M19.3902 24.3937V31.6987H0.269371V31.1264C1.71668 31.1264 2.65872 29.6457 2.65872 27.3567V11.5688C2.65872 9.51579 1.4473 8.57223 0 8.57223V8H10.6699V8.57223C9.22257 8.57223 7.53938 9.14445 7.53938 11.5688V31.1264H8.75079C8.75079 31.1264 17.6705 31.1264 18.815 24.3937H19.3902Z", :fill => "#0C2340"}
+              %path{:d => "M37.7333 23.6186H27.0284C27.2978 26.918 28.981 28.6347 31.2364 29.14C33.0536 29.5433 35.7473 28.8706 36.5889 27.2878L37.1611 27.5907C36.6223 29.3408 34.6363 31.9996 30.1255 31.9996C25.7151 31.9996 22.6865 27.927 22.6865 23.9884C22.6865 19.2417 25.9175 15.8418 30.5638 15.8418C35.4444 15.8433 37.7333 18.3681 37.7333 23.6186ZM33.6258 23.0464C33.6258 18.8049 32.2454 16.4155 30.3948 16.4155C28.4088 16.4155 27.0284 19.8154 27.0284 23.0464H33.6258Z", :fill => "#0C2340"}
+              %path{:d => "M55.6737 16.1461V16.7183C54.8991 16.7183 53.4518 16.7518 51.2983 21.9353L47.2928 31.9994H46.754C40.7959 19.0726 40.493 18.5004 40.493 18.5004C39.6849 16.7168 38.8098 16.7168 38.2041 16.7168V16.1445H46.1483V16.7168C44.2627 16.7168 45.5091 19.2416 45.5091 19.2416L48.842 26.3776L50.6941 21.7998C50.6941 21.7998 52.7806 16.7168 49.1114 16.7168V16.1445H55.6737V16.1461Z", :fill => "#0C2340"}
+              %path{:d => "M63.8852 31.1265V31.6987H56.985V31.1265C58.2634 30.7232 58.3319 29.3094 58.3319 27.5927V20.1203C58.3319 18.9758 57.9956 18.504 56.6152 17.7644V17.1922L62.5064 15.8453V27.5927C62.5049 29.4768 62.6738 30.7886 63.8852 31.1265ZM60.0805 13.1501C58.8022 13.1501 57.7916 12.1411 57.7916 10.8612C57.7916 9.58127 58.8022 8.57227 60.0805 8.57227C61.3604 8.57227 62.4029 9.58127 62.4029 10.8612C62.4045 12.1411 61.3604 13.1501 60.0805 13.1501Z", :fill => "#0C2340"}
+              %path{:d => "M76.2388 28.4324L76.7441 28.7352C76.0714 30.318 74.0169 31.9997 71.7614 31.9997C69.1027 31.9997 67.52 30.9222 67.52 26.8496V16.717H65.8368L65.7363 16.1447H67.52V11.6339L71.728 10.9277V16.1447H75.7335L75.5996 16.717H71.7279V26.7476C71.7279 28.6333 72.5361 29.6088 74.2193 29.6088C75.1948 29.6103 75.9359 28.9376 76.2388 28.4324Z", :fill => "#0C2340"}
+              %path{:d => "M107.44 30.1824C107.44 30.1824 106.16 31.9995 102.726 31.9995C98.6538 31.9995 96.6343 30.4518 96.6343 30.4518V26.2103H97.2065C97.7118 27.5237 98.7892 31.4273 102.728 31.4273C105.117 31.4273 105.522 28.3973 102.964 26.7141L99.5639 24.6611C96.2995 22.675 95.4228 19.9478 97.275 17.525C97.275 17.525 98.5534 15.8418 101.92 15.8418C105.791 15.8418 107.475 16.8523 107.475 16.8523V20.622H106.902C106.464 19.4441 105.388 16.414 101.921 16.414C99.7328 16.414 98.7908 19.0058 101.719 20.8579L105.119 22.9779C108.112 24.83 109.123 27.7596 107.44 30.1824Z", :fill => "#0C2340"}
+              %path{:d => "M93.9428 31.5943H77.6191V19.5775L86.7702 11.6973L95.2333 18.9855L92.6507 21.9867L86.7702 16.9234L81.5791 21.3931V27.6344H93.9428V31.5943Z", :fill => "#4682B4"}
+          %h2.text-3xl.font-bold.text-gray-700.font-serif{:class => "leading-[45px]"} Deal Creator
+          %nav{"aria-label" => "Progress"}
+            %ol.list{:role => "list"}
+              - @step_builder.steps.each do |step|
+                %li{:class => "step #{'active' if step == @active_step} #{'done' if @step_builder.before_current_step?(step)}"}
+                  %a.step-row
+                    %span.step-icon{class: "#{'after:!content-none' if @step_builder.last_item?(step) } #{'after:!h-5' if @step_builder.step_index(step) == 1}"}
+                      %span
+                        = @step_builder.step_index(step)
+                      %svg{:fill => "none", :height => "10", :viewbox => "0 0 14 10", :width => "14", :xmlns => "http://www.w3.org/2000/svg"}
+                        %path{"clip-rule" => "evenodd", :d => "M13.7064 0.292787C13.8939 0.480314 13.9992 0.734622 13.9992 0.999786C13.9992 1.26495 13.8939 1.51926 13.7064 1.70679L5.70643 9.70679C5.5189 9.89426 5.2646 9.99957 4.99943 9.99957C4.73427 9.99957 4.47996 9.89426 4.29243 9.70679L0.292431 5.70679C0.110272 5.51818 0.00947813 5.26558 0.0117566 5.00339C0.014035 4.74119 0.119204 4.49038 0.304612 4.30497C0.49002 4.11956 0.740832 4.01439 1.00303 4.01211C1.26523 4.00983 1.51783 4.11063 1.70643 4.29279L4.99943 7.58579L12.2924 0.292787C12.48 0.105316 12.7343 0 12.9994 0C13.2646 0 13.5189 0.105316 13.7064 0.292787Z", :fill => "#22C55E", "fill-rule" => "evenodd"}
+                    %span.step-text
+                      = step.to_s.humanize 
+                  - if @step_builder.sub_steps?(step) && @step_builder.show_sub_steps
+                    %ol.sublist{:role => "list"}
+                      - @step_builder.subitems_for(step).each do |subitem|
+                        %li{:class => "substep #{'active' if subitem == @active_sub_step} #{'done' if @step_builder.before_current_sub_step?(subitem)}"}
+                          %a.substep-row
+                            %span.substep-icon{:class => "#{'after:!h-5' if @step_builder.last_step_subitem?(step, subitem) }"}
+                              %svg{:fill => "none", :height => "6", :viewbox => "0 0 8 6", :width => "8", :xmlns => "http://www.w3.org/2000/svg"}
+                                %path{"clip-rule" => "evenodd", :d => "M7.35322 0.646393C7.44695 0.740157 7.49961 0.867311 7.49961 0.999893C7.49961 1.13248 7.44695 1.25963 7.35322 1.35339L3.35322 5.35339C3.25945 5.44713 3.1323 5.49979 2.99972 5.49979C2.86713 5.49979 2.73998 5.44713 2.64622 5.35339L0.646215 3.35339C0.555136 3.25909 0.504739 3.13279 0.505878 3.00169C0.507017 2.87059 0.559602 2.74519 0.652306 2.65248C0.74501 2.55978 0.870416 2.5072 1.00151 2.50606C1.13261 2.50492 1.25891 2.55531 1.35322 2.64639L2.99972 4.29289L6.64622 0.646393C6.73998 0.552658 6.86713 0.5 6.99972 0.5C7.1323 0.5 7.25945 0.552658 7.35322 0.646393Z", :fill => "white", "fill-rule" => "evenodd"}
+                            %span.substep-text
+                              = subitem.to_s.humanize 
+
+      .lg:pl-80
+        .sticky.top-0.z-20.flex.flex-col.shrink-0.gap-3.border-b.border-gray-200.bg-gray-50.px-6.py-4.shadow-sm.sm:gap-x-6.sm:px-6.lg:px-8.lg:hidden{class: "#{'invisible md:block' if @active_step == :summary }"}
+          .block
+            = link_to "Cancel", root_path, class:"inline-block py-2 px-3 rounded-lg border border-gray-200 text-gray-600 bg-white"
+          %h2.text-xl.font-bold.text-gray-700.font-serif{:class => "leading-[30px]"} Mortage Deal Creator
+          %div
+            .mb-2
+              - @step_builder.steps.each do |step|
+                %div{:class => "mobile-step #{'active' if step == @active_step} #{'done' if @step_builder.before_current_step?(step)}"}
+                  %p.text-sm.mb-2.text-blue-600.font-medium
+                    = "Step #{@step_builder.step_index(step)}/#{@step_builder.steps.count}"
+                  .mobile-step-text
+                    %span
+                      = step.to_s.humanize 
+                    - if @step_builder.sub_steps?(step)
+                      - @step_builder.subitems_for(step).each do |subitem|
+                        %div
+                          %span{:class => "mobile-substep #{'active' if subitem == @active_sub_step} #{'done' if @step_builder.before_current_sub_step?(subitem)}"}
+                            = subitem.to_s.humanize
+
+            .flex.h-2.steps-progress-bar
+              - @step_builder.steps.each do |step|
+                %span{:class => "step #{'active' if step == @active_step} #{'done' if @step_builder.before_current_step?(step)}"}
+        %main.pt-6.pb-20.lg:pt-20.lg:pb-28
+          .px-6.pb-6.lg:px-20.lg:pb-10.xl:px-32.h-full
+            = yield

@@ -1,0 +1,42 @@
+- if deal.signatures? || deal.payments?
+  .flex.flex-col.gap-8
+    %table.rounded-table.table-fixed.w-full.select-text
+      %thead
+        %tr
+          %th= t('.name').upcase
+          %th.w-20
+            = t('.role').upcase
+          %th= t('.status').upcase
+          %th
+      %tbody
+        - deal.deal_lenders.each do |deal_lender|
+          %tr
+            %td.text-blue-500.py-2.px-1
+              - if deal_lender.lender.pending_account_setup?
+                = deal_lender.lender.email
+              - else
+                = deal_lender.lender.full_name
+            %td{class: "py-2 px-1"}
+              = t('.lender')
+            %td.py-2.px-1
+              - if deal_lender.signed_at.nil?
+                .badge.badge-base.max-w-min.text-wrap Pending to sign
+              - else
+                .badge.badge-green.max-w-min.text-wrap Signed #{time_ago_in_words(deal_lender.signed_at)}
+            %td.py-2.px-1
+              - if !current_user.lender? && deal_lender.signed_at.nil? 
+                .flex.flex-col
+                  = link_to send_signature_reminder_deal_lender_path(deal, deal_lender.lender), class: "text-sm text-blue-600 font-bold", data: { turbo_method: :post } do
+                    = t('.send_reminder')
+                  - if deal_lender.signature_sent_at
+                    %span.text-xs.text-gray-500= time_ago_in_words(deal_lender.signature_sent_at)
+              -# - if current_user.id == deal_lender.lender.id && deal_lender.signed_at.nil?
+                -# = form_with(id: "reject-deal", method: :post, url: sign_deal_deal_lender_path(deal, deal_lender.lender), data: { turbo: false }) do |f|
+                -#   = f.submit "Sign Now", class: "text-sm text-blue-600 font-bold hover:cursor-pointer"
+- else
+  .flex.items-center.p-6.gap-6.bg-blue-50.border.border-blue-200.rounded-xl
+    .flex.items-center.justify-center.p-5.md:p-9.border.border-2.rounded-full.bg-blue-100.border-blue-400.select-none{class: "w-[100px] h-[100px] min-w-[100px] min-h-[100px] max-w-[100px] max-h-[100px] md:w-[120px] md:h-[120px] md:min-w-[120px] md:min-h-[120px] md:max-w-[120px] md:max-h-[120px]"}
+      = image_tag "icons/pencil-blue.svg", class: "w-8 h-8 md:w-12 md:h-12"
+    .flex.flex-col.gap-2.text-gray-600
+      %h4.font-serif.font-bold= t('.review_in_progress')
+      %p.text-sm= t('.review_in_progress_msg')

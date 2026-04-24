@@ -1,0 +1,35 @@
+= turbo_frame_tag :modal do
+  .relative.z-40{ "aria-labelledby": "modal-title", "role": "dialog", "aria-modal": "true"}
+    .fixed.inset-0.bg-gray-500.bg-opacity-75
+    .fixed.inset-0.z-10.p-6.md:p-10.overflow-y-auto
+      .flex.min-h-full.items-center.justify-center.max-w-5xl.mx-auto
+        = form_with url: accept_deal_path(@deal), method: :post, class: "levitas-modal", data: {controller: "modal, deal-terms", action: "turbo:submit-end->modal#submitEnd"} do |f|
+          .header.max-md:flex-col
+            %span.title= t('.confirm_and_accept_terms')
+            .flex.gap-4
+              .step.completed
+                .flex.items-center.justify-center.rounded-full.bg-green-50.w-8.h-8{class: "p-1.5"}
+                  = image_tag "icons/check-green.svg"
+                = t('.review')
+              .step.current
+                .number.rounded-full 2
+                = t('.confirm')
+          .body.relative
+            .absolute.left-0.bottom-0.h-16.w-full.bg-gradient-to-t.from-white
+            .flex.flex-col.gap-3.overflow-y-auto.max-h-full
+              = t('.deal_terms_policy.html')
+          .footer.flex-col
+            .flex.gap-2.items-center
+              = f.check_box :accept_policy, class: "rounded border-gray-400 text-blue-500", data: { "deal-terms-target": "checkbox", action: "change->deal-terms#check" }
+              = f.label :accept_policy, t('.checkbox_label_html'), class: "text-sm text-gray-700"
+            .flex.md:flex-1.justify-between.items-start.max-md:flex-col.gap-4
+              %span.max-md:hidden{data: {action: "click->modal#close"}}
+                = levitas_button :button, t('.close'), nil, nil, :large
+              .flex.gap-3.md:items-center.max-md:flex-col.max-md:w-full
+                = f.label :confirm_name, t('.confirm_name', name: current_user.full_name), class: "text-sm text-gray-700"
+                = f.hidden_field :full_name, value: current_user.full_name, data: { "deal-terms-target": "name" }
+                = f.text_field :confirm_name, placeholder: t('.enter_full_name'), class: "levitas-form-input", data: { "deal-terms-target": "nameInput", action: "input->deal-terms#check" }
+                .flex.self-end.gap-3
+                  = button_tag t('.close'), type: :button, class: "levitas-button large md:hidden", data: {action: "click->modal#close"}
+                  = f.submit t('.confirm_deal'), disabled: :disabled, class: "levitas-button primary large", data: { "deal-terms-target": "submit" }
+

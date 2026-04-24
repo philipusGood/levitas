@@ -1,0 +1,56 @@
+.flex.flex-col.gap-y-12.text-gray-700.mb-
+  .flex.flex-col.gap-3
+    .flex.items-start.justify-between.text-gray-600
+      = link_to brokers_path, class: "flex items-center max-w-max gap-2 px-1 py-2" do
+        = image_tag "icons/arrow-left.svg", class: "p-1"
+        %span.font-medium= t('.back_to_brokers')
+    %h2.font-serif.text-2xl.leading-9.font-bold
+      = @broker.full_name
+    .profile-navigation
+      %ul
+        %li
+          = link_to t('.profile'), "#", class: "selected"
+        %li
+          = link_to t('.lender_pool'), lenders_pool_broker_path
+
+  .flex.flex-col.gap-8
+    %h3.col-span-full.col-span-full.text-xl.font-serif.leading-8.font-bold.text-gray-600= t(".#{current_user.role}_information")
+    .grid.grid-cols-1.md:grid-cols-3.gap-x-3.gap-y-6
+      .flex.flex-col.gap-1.p-2
+        %h4.top-text-label First Name
+        %p.font-bold.text-gray-600
+          = current_user.first_name
+      .flex.flex-col.gap-1.p-2
+        %h4.top-text-label Middle Name
+        %p.font-bold.text-gray-600
+          = current_user.middle_name
+      .flex.flex-col.gap-1.p-2
+        %h4.top-text-label Last Name
+        %p.font-bold.text-gray-600
+          = current_user.last_name
+      .flex.flex-col.gap-1.p-2
+        %h4.top-text-label Date of Birth
+        %p.font-bold.text-gray-600
+          = Date.parse(current_user.birth_date).strftime("%m/%d/%Y")
+      .flex.flex-col.gap-1.p-2
+        %h4.top-text-label Gender
+        %p.font-bold.text-gray-600
+          N/A
+    %h3.col-span-full.col-span-full.text-xl.font-serif.leading-8.font-bold.text-gray-600= t('.contact_information')
+    .grid.grid-cols-1.md:grid-cols-2.gap-x-3.gap-y-6
+      .flex.flex-col.gap-1.p-2
+        %h4.top-text-label Email
+        %p.font-bold.text-gray-600
+          = current_user.email
+      .flex.flex-col.gap-1.p-2
+        %h4.top-text-label Phone
+        %p.font-bold.text-gray-600
+          = number_to_phone(current_user.phone_number, delimiter: ' ')
+      .col-span-full.flex.flex-col.gap-1.p-2
+        %h4.top-text-label Address
+        %p.font-bold.text-gray-600
+          = current_user.full_address
+    - unless current_user.admin?
+      .flex
+        %a.levitas-button.large{href: edit_profile_path }
+          = t('.edit_profile')

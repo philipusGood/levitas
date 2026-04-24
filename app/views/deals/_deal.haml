@@ -1,0 +1,252 @@
+- if user_signed_in? && !deal.terms.is_public? && current_user.lender? && !current_user.as_lender.deal_available?(deal)
+  = content_for :banners do
+    .bg-yellow-100.w-full.text-yellow-700.flex.items-center{class: "min-h-[64px]"}
+      %span.inline-block.align-middle.text-center.w-full
+        Before investing in this deal you need to accept the invitation to join the Broker's Investment Pool. Please see
+        = link_to "Invitations", lender_brokers_path, class: "underline cursor:hover"
+
+.flex.flex-col{id: dom_id(deal)}
+  = render partial: "deals/partials/topbar"
+  .profile-navigation.-mx-6.pt-3.px-6.lg:-mx-10.lg:px-10.sticky.top-16.z-30.lg:top-0
+    %ul.overflow-x-auto
+      %li.whitespace-nowrap
+        = link_to t('.terms'), "#terms", class: "selected", data: { action: "click->profile-navigation#highlight", "profile-navigation-target": "link"}
+      %li.whitespace-nowrap
+        = link_to t('.loan_purpose'), "#loan_purpose", data: { action: "click->profile-navigation#highlight", "profile-navigation-target": "link"}
+      %li.whitespace-nowrap
+        = link_to t('.applicant_information'), "#applicant", data: { action: "click->profile-navigation#highlight", "profile-navigation-target": "link"}
+      %li.whitespace-nowrap
+        = link_to t('.documents'), "#documents_section", data: { action: "click->profile-navigation#highlight", "profile-navigation-target": "link"}
+      %li.whitespace-nowrap
+        = link_to t('.signatures'), "#signatures", class: "#{'disabled' unless deal.signatures?}", data: { action: "click->profile-navigation#highlight", "profile-navigation-target": "link"}
+      %li.whitespace-nowrap
+        = link_to t('.payments'), "#payments", class: "#{'disabled' unless deal.accepted?}", data: { action: "click->profile-navigation#highlight", "profile-navigation-target": "link"}
+  .flex.pt-11.justify-between.md:gap-x-14.lg:gap-x-28.items-start
+    .flex.flex-col.gap-y-16
+
+      - if deal.under_criminal_rate?
+        .flex.flex-col.self-stretch.gap-2.border.rounded-lg.p-5.bg-red-100
+          .flex.gap-2
+            = image_tag("icons/ban.svg", width: 18, heigth: 18)
+            %h4.font-bold.text-red-800
+              This deal is over the Criminal Interest Rate
+          %div
+            %p.text-red-700
+              The current deal has exceeded the legally permitted interest rate. Please review the loan terms and adjust the conditions to comply with legal regulations.
+          - if user_signed_in? && current_user.admin?
+            %div.flex
+              = link_to t('.edit_deal'), edit_deal_path(deal), class: "levitas-button critical rounded-lg py-2 px-3 font-light"
+
+      - if deal_cycle_partial.present?
+        .flex.flex-col.self-stretch.gap-8
+          .flex.gap-1.items-center.justify-between
+            %h2.section-title{id: "terms"}
+              = t('.terms')
+            - if !deal.terms.is_public? && (deal.accepted? || deal.funding?) && (current_user.admin? || current_user.id == deal.user.id)
+              = link_to make_public_modal_deal_path, data: { turbo_frame: :modal }, class: "flex items-center gap-1 font-bold text-sm text-blue-600" do
+                = t('.make_it_public')
+                = image_tag('icons/arrow-right.svg')
+          = render partial: "deals/partials/deal_cycle/#{deal_cycle_partial}", locals: { deal: deal }
+
+        .flex.flex-col.self-stretch.gap-8
+          %h2.section-title{id: "loan_purpose"}
+            = t('.loan_purpose')
+          .grid.grid-cols-1.lg:grid-cols-2.gap-3
+            .flex.flex-col.p-4.rounded-lg.border.border-gray-200.bg-white{class: "gap-2.5"}
+              %p.font-bold.text-gray-600= t('.deal_narrative')
+              %p.text-sm.break-words{class: "text-gray-600/60"}= deal.loan_purpose.funds_usage
+            .flex.flex-col.p-4.rounded-lg.border.border-gray-200.bg-white{class: "gap-2.5"}
+              %p.font-bold.text-gray-600= t('.exit_strategy')
+              %p.text-sm.break-words{class: "text-gray-600/60"}= deal.loan_purpose.exit_strategy
+
+        - if deal.property_details.present?
+          .flex.flex-col.self-stretch.gap-2
+            %h2.section-title
+              = t('.property_details')
+            - if deal.parsed_property_details&.dig("information").present?
+              %div
+                .flex.flex-col.p-4.rounded-lg.border.border-gray-200.bg-white{class: "gap-2.5"}
+                  %p.font-bold.text-gray-500
+                    = t('.information')
+                  .p-3.flex.flex-col.gap-5
+                    - deal.parsed_property_details["information"].each do |key, value|
+                      %div
+                        %p.text-sm.break-words{class: "text-gray-600/60"}
+                          = key.titleize
+                        %p.font-bold.text-gray-600
+                          = value
+                          
+            .grid.grid-cols-1.lg:grid-cols-2.gap-3
+              - if deal.parsed_property_details&.dig("file_completion").present?
+                .flex.flex-col.p-4.rounded-lg.border.border-gray-200.bg-white{class: "gap-2.5"}
+                  %p.font-bold.text-gray-500
+                    = t('.file_completion')
+                  .p-3.flex.flex-col.gap-5
+                    - deal.parsed_property_details["file_completion"].each do |key, value|
+                      .grid.grid-cols-5{ data: { controller: 'property-details'} }
+                        .col-span-3
+                          %p.text-sm.break-words{class: "text-gray-600/60"}
+                            = key.titleize
+                        %p.font-bold.break-words{class: "text-gray-700/80"}
+                          = value["status"]
+                        %p.font-bold.break-words.hover:cursor-pointer{class: "text-blue-600", data: { action: "click->property-details#toggle", 'property-details-target': 'toggler', hidden: t('.details'), display: t('.hide')}}
+                          = t('.details')
+                        .col-span-5.mt-2.hidden{data: { 'property-details-target': 'detailsContainer' }}
+                          %p.font-bold.break-words{class: "text-gray-700/60"}
+                            = t('.details')
+                          %p.text-sm.break-words{class: "text-gray-600/60"}
+                            = value&.dig("details")
+              - if deal.parsed_property_details&.dig("fraud_check").present?
+                .flex.flex-col.p-4.rounded-lg.border.border-gray-200.bg-white{class: "gap-2.5"}
+                  %p.font-bold.text-gray-500
+                    = t('.fraud_check')
+                  .p-3.flex.flex-col.gap-5
+                    - deal.parsed_property_details["fraud_check"].each do |key, value|
+                      .grid.grid-cols-5{ data: { controller: 'property-details'} }
+                        .col-span-3
+                          %p.text-sm.break-words{class: "text-gray-600/60"}
+                            = key.titleize
+                        %p.font-bold.break-words{class: fraud_check_text(value["status"])}
+                          = value["status"]
+                        %p.font-bold.break-words.hover:cursor-pointer{class: "text-blue-600", data: { action: "click->property-details#toggle", 'property-details-target': 'toggler', hidden: t('.details'), display: t('.hide')}}
+                          = t('.details')
+                        .col-span-5.mt-2.hidden{data: { 'property-details-target': 'detailsContainer' }}
+                          %p.font-bold.break-words{class: "text-gray-700/60"}
+                            = t('.details')
+                          %p.text-sm.break-words{class: "text-gray-600/60"}
+                            = value&.dig("details")
+
+        - if deal.property.mortgages.any?
+          .flex.flex-col.self-stretch.gap-8
+            %h2.section-title
+              = t('.property_mortgage_rank')
+            .flex.flex-col.self-stretch.gap-2.relative
+              %div{class: blur_style}
+                - deal.property.mortgages.each_with_index do |mortgage, index|
+                  .flex.flex-col.p-4.rounded-lg.border.border-gray-200.bg-white.sm:flex-row
+                    .flex-1.flex-col
+                      %p.text-sm.break-words{class: "text-gray-600/60"}
+                        = t('.rank')
+                      %p.font-bold.text-gray-600
+                        = "#{(index + 1).ordinalize}"
+                    .flex-1
+                      %p.text-sm.break-words{class: "text-gray-600/60"}
+                        = t('.institution')
+                      %p.font-bold.text-gray-600
+                        = blur_content(mortgage.institution)
+                    .flex-1
+                      %p.text-sm.break-words{class: "text-gray-600/60"}
+                        = t('.amount_due')
+                      %p.font-bold.text-gray-600
+                        = blur_content(number_to_currency_without_cents(mortgage.amount_due))
+                    .flex-1
+                      %p.text-sm.break-words{class: "text-gray-600/60"}
+                        = t('.monthly_payment')
+                      %p.font-bold.text-gray-600
+                        = blur_content(number_to_currency_without_cents(mortgage.monthly_payment))
+                    .flex-1
+                      %p.text-sm.break-words{class: "text-gray-600/60"}
+                        = t('.mortgage_maturity_date')
+                      %p.font-bold.text-gray-600
+                        = blur_content(ordinalize_date(mortgage.end_date))
+              - unless user_signed_in?
+                %div.p-2.absolute.top-0.left-0.w-full.h-full.flex.items-center.justify-center.flex-col.max-wd.bg-white.opacity-80.border.border-gray-locale.rounded-lg
+                  .flex.flex-col.items-center
+                    = image_tag("icons/lock.svg")
+                    %div.text-center.mt-3
+                      %div.mb-5
+                        %p= t('.blocked_property_mortgage')
+                        %p= t('.please_sign_up')
+                      = link_to root_path, class: "btn btn-primary" do
+                        = t('.log_in')
+
+        .flex.flex-col.self-stretch.gap-8
+          %h2.section-title{id: "applicant"}
+            = t('.applicant_information')
+          .flex.flex-col.gap-8
+            %section.flex.flex-col.gap-6.relative
+              %div{class: blur_style}
+                .flex.items-center.gap-3
+                  %h2.min-w-fit.text-xl.text-gray-700.font-bold.font-serif{class: "leading-[30px]"}
+                    = t('.main_applicant')
+                  %div.w-full.h-px.bg-gray-200
+                = render partial: 'deals/partials/applicant', locals: { applicant: deal.applicant }
+              - if deal.has_secondary_applicant?
+                %section.flex.flex-col.gap-6{class: blur_style}
+                  .flex.items-center.gap-3
+                    %h2.min-w-fit.text-xl.text-gray-700.font-bold.font-serif{class: "leading-[30px]"}
+                      = t('.secondary_applicant')
+                    %div.w-full.h-px.bg-gray-200
+                  = render partial: 'deals/partials/applicant', locals: { applicant: deal.secondary_applicant }
+              - unless user_signed_in?
+                %div.absolute.top-0.left-0.w-full.h-full.flex.items-center.justify-center.flex-col.max-wd.bg-white.opacity-80.border.border-gray-locale.rounded-lg
+                  .flex.flex-col.items-center
+                    = image_tag("icons/lock.svg")
+                    %div.text-center.mt-3
+                      %div.mb-5
+                        %p= t('.blocked_applicant')
+                        %p= t('.please_sign_up')
+                      = link_to root_path, class: "btn btn-primary" do
+                        = t('.log_in')
+
+        .flex.flex-col.self-stretch.gap-8
+          %h2.section-title{id: "documents_section"}
+            = t('.documents')
+          .flex.flex-col.self-stretch.gap-2.relative
+            - if user_signed_in? && (current_user.admin? || current_user == @deal.user)
+              %div{class: "#{blur_style}"}
+                = form_with(url: rails_direct_uploads_path, data: { turbo: false, controller: 'documents-async', "dropzone-target" => "form", "documents-async-target": "form", "documents-async-deal-id-value": deal.id, "documents-async-form-path": upload_document_deal_path(@deal)}, class: "dropzone") do |f|
+                  .flex.flex-col.self-stretch.gap-8.dz-message.mb-4
+                    .flex.items-center.justify-center.w-full
+                      %label.flex.flex-col.items-center.justify-center.w-full.h-64.border-2.border-gray-300.border-dashed.rounded-lg.cursor-pointer.bg-gray-50.dark:hover:bg-bray-800.dark:bg-gray-700.hover:bg-gray-100.dark:border-gray-600.dark:hover:border-gray-500.dark:hover:bg-gray-600{for: "dropzone-file"}
+                        .hidden.text-center.mt-4{"data-dropzone-target" => "loader"}
+                          %i.fas.fa-spinner.fa-spin.text-2xl.text-base
+                            Uploading...
+                        .flex.flex-col.items-center.justify-center.pt-5.pb-6{"data-dropzone-target" => "container"}
+                          %svg.w-10.h-10.mb-3.text-gray-400{fill: "none", stroke: "currentColor", viewbox: "0 0 24 24", xmlns: "http://www.w3.org/2000/svg"}
+                            %path{d: "M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12", "stroke-linecap" => "round", "stroke-linejoin" => "round", "stroke-width" => "2"}
+                          %p.mb-2.text-sm.text-gray-500.dark:text-gray-400
+                            %span.font-semibold=t('.click_to_upload')
+                            =t('.or_drag_and_drop')
+                          %p.mb-2.text-sm.text-gray-500.dark:text-gray-400
+                            = t('.max_file_size')
+                          %button.btn.btn-primary.flex.gap-1.items-center{type: "button"}
+                            %svg{fill: "none", height: "17", viewbox: "0 0 16 17", width: "16", xmlns: "http://www.w3.org/2000/svg"}
+                              %path{"clip-rule" => "evenodd", d: "M6.39998 3.69998C5.55128 3.69998 4.73735 4.03712 4.13723 4.63724C3.53712 5.23735 3.19998 6.05129 3.19998 6.89998C3.19998 7.74867 3.53712 8.5626 4.13723 9.16272C4.73735 9.76284 5.55128 10.1 6.39998 10.1C7.24867 10.1 8.0626 9.76284 8.66272 9.16272C9.26283 8.5626 9.59998 7.74867 9.59998 6.89998C9.59998 6.05129 9.26283 5.23735 8.66272 4.63724C8.0626 4.03712 7.24867 3.69998 6.39998 3.69998ZM1.59998 6.89998C1.59988 6.14454 1.77809 5.39975 2.12011 4.72617C2.46214 4.0526 2.95831 3.46926 3.56829 3.0236C4.17827 2.57794 4.88483 2.28255 5.63049 2.16144C6.37616 2.04034 7.13988 2.09695 7.85955 2.32666C8.57921 2.55637 9.2345 2.9527 9.77211 3.48342C10.3097 4.01413 10.7145 4.66424 10.9535 5.38088C11.1924 6.09752 11.2589 6.86045 11.1474 7.60762C11.036 8.35479 10.7497 9.0651 10.312 9.68078L14.1656 13.5344C14.3113 13.6853 14.3919 13.8873 14.3901 14.0971C14.3883 14.3069 14.3042 14.5075 14.1558 14.6558C14.0075 14.8042 13.8069 14.8883 13.5971 14.8901C13.3873 14.8919 13.1853 14.8113 13.0344 14.6656L9.18158 10.8128C8.46347 11.3234 7.61865 11.6265 6.73972 11.6889C5.86078 11.7512 4.98163 11.5705 4.19862 11.1664C3.4156 10.7622 2.75892 10.1504 2.30055 9.39786C1.84218 8.64532 1.5998 7.78113 1.59998 6.89998Z", fill: "white", "fill-rule" => "evenodd"}
+                            = t('.browse_file')
+                
+            #documents.grid.lg:grid-cols-2.gap-4
+              - @deal.documents.each do |document|
+                - if user_signed_in? && (current_user.broker? || current_user.admin?) || (current_user&.lender? && document.blob.metadata[:private] == false || document.blob.metadata[:private].nil?)
+                  = render partial: 'deals/documents/document', locals: { document: document }
+              #document-preview{style: "display: none;"}
+                .flex.flex-wrap.items-center.gap-3.p-3.w-full.bg-gray-100.rounded-lg
+                  .flex.items-center.justify-center.gap-1.w-10.h-10.bg-blue-600.rounded-full.gap-2{class: "min-w-[2.5rem]"}
+                    = image_tag("icons/document.svg")
+                  .flex.flex-col.flex-1.truncate
+                    %p.font-bold.flex.items-center.gap-2
+                      %span{"data-dz-name" => ""}
+                    %p.text-xs.opacity-70
+                      %span{"data-dz-name" => ""}
+                  .flex 
+                    %svg.w-8.h-8.text-gray-200.animate-spin.dark:text-gray-600.fill-blue-600{"aria-hidden" => "true", fill: "none", viewbox: "0 0 100 101", xmlns: "http://www.w3.org/2000/svg"}
+                      %path{d: "M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z", fill: "currentColor"}
+                      %path{d: "M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z", fill: "currentFill"}
+            - unless user_signed_in?
+              %div.p-2.absolute.top-0.left-0.w-full.h-full.flex.items-center.justify-center.flex-col.max-wd.bg-white.opacity-80.border.border-gray-locale.rounded-lg{class: "min-h-[200px]"}
+                .flex.flex-col.items-center
+                  = image_tag("icons/lock.svg")
+                  %div.text-center.mt-3
+                    %div.mb-5
+                      %p= t('.blocked_documents')
+                      %p= t('.please_sign_up')
+                    = link_to root_path, class: "btn btn-primary" do
+                      = t('.log_in')
+
+        - if user_signed_in?
+          .flex.flex-col.self-stretch.gap-8
+            %h2.section-title{id: "signatures"}
+              = t('.signatures')
+            = render 'deals/partials/signatures', deal: deal
+    .flex.items-start.w-full.max-w-xs.max-md:hidden.sticky.md:top-32.lg:top-24{class: "md:min-w-[17rem]"}
+      = render "deals/partials/deal_flow/#{deal_flow_partial}"

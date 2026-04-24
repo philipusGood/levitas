@@ -1,0 +1,6 @@
+- if current_user.pending_account_setup? == false && current_user.approved_at.nil? && current_user.lender?
+  = render 'approval_request'
+- elsif current_user.pending_account_setup?
+  = render 'information'
+- else
+  = render 'completed'

@@ -1,0 +1,3 @@
+- if current_user != true_user
+  .levitas-alert.warning
+    %p.justify-center= t('.impersonate_msg', username: current_user.name)

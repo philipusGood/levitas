@@ -1,0 +1,18 @@
+%div
+  %h1.deal-creator-step-title
+    = t('.title')
+  %p.deal-creator-step-description
+    = t('.leading')
+  = render 'devise/shared/error_messages', resource: @broker_fee
+  = form_for @broker_fee, url: deal_broker_fee_index_path(@deal), method: :post, data: { turbo: false, controller: 'form' } do |f|
+    %template{"data-form-target" => "template"}
+      = render partial: 'broker_fee', locals: { fee: Deal::BrokerFee::Item.new, index: "INDEX_TEMPLATE", f: f }
+
+    %div{"data-form-target" => "items"}
+      - @broker_fee.items.each_with_index do |fee, index|
+        = render partial: 'broker_fee', locals: { fee: fee, index: index, f: f }
+    .flex
+      %button.py-2.px-3.border.rounded-lg.border-gray-200.text-gray-600{type: "button", "data-action" => "click->form#add"}
+        = t('.add_another_broker_fee')
+
+    = render partial: 'deals/partials/action_bar', locals: { f: f, back_action_path: deal_documents_path, show_save_action: true, skip_action_path: nil, submit: false }

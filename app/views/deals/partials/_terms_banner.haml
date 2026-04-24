@@ -1,0 +1,9 @@
+.flex.bg-blue-100.text-blue-700{class: "rounded-t-[7px]"}
+  .flex.flex-col.flex-1.py-3.px-4
+    %h4.font-bold= title
+    %p.text-sm= description
+  .relative.flex.items-center.justify-center.overflow-clip.max-md:hidden.z-0.select-none{class: "min-w-[11.25rem]"}
+    = image_tag "icons/search.svg", class: "w-12 h-12"
+    .absolute.flex.w-4.h-4.bg-blue-200.rounded-full.top-8.left-6.-z-10
+    .absolute.flex.w-4.h-4.bg-blue-200.rounded-full.top-5.right-8.-z-10
+    .absolute.flex.bg-blue-200.rounded-full.top-7.-z-10{class: "w-[7.5rem] h-[7.5rem]"}

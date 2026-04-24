@@ -1,0 +1,42 @@
+.flex.flex-col.items-start.self-stretch.select-none{class: "#{'hidden' if @deals_view.present? && @deals_view.eql?('card')}", "data-deals-target": "tableView"}
+  %table.rounded-table.table-fixed.w-full.select-text
+    %thead
+      %tr
+        %th= t('.deal')
+        %th= t('.amount')
+        %th= t('.status')
+        %th= t('.borrower')
+        - if current_user.admin?
+          %th= t('.broker')
+        %th= t('.closing_date')
+        - if current_user.admin? || current_user.broker?
+          %th
+    %tbody
+      - @deals.each do |deal|
+        = turbo_stream_from deal
+        %tr{id: dom_id(deal)}
+          %td.text-blue-500
+            - unless deal.draft?
+              = link_to deal_path(deal) do
+                = deal.property.address.full_address
+            - if deal.draft?
+              = deal.property.address.full_address
+          %td.font-bold= number_to_currency_without_cents(deal.target)
+          %td
+            .badge.max-w-min{class: "badge-#{deal.state}"}= deal.state.humanize
+          %td= deal.applicant.full_name
+          - if current_user.admin?
+            %td
+              - if deal.user.broker?
+                = deal.user.full_name
+              - else
+                "N/A"
+          %td= deal.property.approximate_closing_date
+          - if current_user.admin? || (current_user.broker?)
+            %td.space-x-10
+              - if current_user.admin?
+                = link_to edit_deal_path(deal), class: "text-blue-500 hover:text-blue-400" do
+                  Edit
+              - if current_user.admin? || (current_user.broker? && deal.draft?)
+                = link_to deal_path(deal), class: "text-red-500 hover:text-red-400",  data: { turbo_method: :delete, turbo_confirm: 'Are you sure ?' } do
+                  Delete

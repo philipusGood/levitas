@@ -1,0 +1,512 @@
+{
+  "terms": {
+    "type": {
+      "prompt": "Please provide the mortgage type.",
+      "instructions": "Answer with the exact type as stated in the documents, e.g., 'First Mortgage'. If you are not able to find the mortgage type, please provide 'Unknown'.",
+      "category": ["mortgage_application", "mortgage_statement"]
+    },
+    "terms": {
+      "prompt": "Please provide the mortgage terms.", 
+      "instructions": "Specify the term duration, e.g., '1 Year'. If you are not able to find the mortgage terms, please provide 'Unknown'.",
+      "category": ["mortgage_application"]
+    },
+    "public": {
+      "prompt": "Is the mortgage public?",
+      "instructions": "Answer 'Yes' or 'No' as stated in the documents. If you are not able to find the mortgage type, please provide 'Unknown'.",
+      "category": ["mortgage_application"]
+    },
+    "lenders_fee": {
+      "prompt": "Please provide the lender's fee.",
+      "instructions": "Provide the fee as a percentage, e.g., '2'. If you are not able to find the lender's fee, please provide 'Unknown'.",
+      "category": ["mortgage_application"]
+    },
+    "interest_rate": {
+      "prompt": "Please provide the interest rate.",
+      "instructions": "Provide the rate as a percentage, e.g., '11'. If you are not able to find the interest rate, please provide 'Unknown'.",
+      "category": ["mortgage_application"]
+    },
+    "prepayment_term": {
+      "prompt": "Please provide the prepayment term.",
+      "instructions": "Answer with the term, e.g., 'Interest Only'. If you are not able to find the prepayment term, please provide 'Unknown'.",
+      "category": ["mortgage_application"]
+    },
+    "payment_frequency": {
+      "prompt": "Please provide the payment frequency.",
+      "instructions": "Answer with the frequency, e.g., 'Monthly'. If you are not able to find the payment frequency, please provide 'Unknown'.",
+      "category": ["mortgage_application"]
+    },
+    "mortgage_principal": {
+      "prompt": "Please provide the mortgage principal amount.",
+      "instructions": "Provide the amount, e.g., '1,000,000'. If you are not able to find the mortgage principal amount, please provide 'Unknown'.",
+      "category": ["mortgage_application"]
+    },
+    "amortization_period": {
+      "prompt": "Please provide the amortization period.",
+      "instructions": "Provide the period in months, e.g., '12'. If you are not able to find the amortization period, please provide 'Unknown'.",
+      "category": ["mortgage_application"]
+    }
+  },
+  "property": {
+    "type": {
+      "prompt": "Please provide the property type.",
+      "instructions": "Answer with the property type, e.g., 'Detached Bungalow'. If you are not able to find the property type, please provide 'Unknown'.",
+      "category": ["appraisal"]
+    },
+    "price": {
+      "prompt": "Please provide the property price.",
+      "instructions": "Provide the price, e.g., '1,325,000'.",
+      "category": ["appraisal"]
+    },
+    "address": {
+      "city": {
+        "prompt": "Please provide the city of the property address.",
+        "instructions": "Answer with the city name, e.g., 'Toronto'. If you are not able to find the city, please provide 'Unknown'.",
+        "category": ["appraisal"]
+      },
+      "unit": {
+        "prompt": "Please provide the unit number of the property address.",
+        "instructions": "Provide the unit number, e.g., '10'. If you are not able to find the unit number, please provide 'Unknown'.",
+        "category": ["appraisal"]
+      },
+      "street": {
+        "prompt": "Please provide the street of the property address.",
+        "instructions": "Answer with the street address, e.g., '123 Main Street'.",
+        "category": ["appraisal"]
+      },
+      "country": {
+        "prompt": "Please provide the country of the property address.",
+        "instructions": "Answer with the country, e.g., 'Canada'. If you are not able to find the country, please provide 'Unknown'.",
+        "category": ["appraisal"]
+      },
+      "province": {
+        "prompt": "Please provide the province of the property address.",
+        "instructions": "Answer with the province, e.g., 'Ontario'. If you are not able to find the province, please provide 'Unknown'.",
+        "category": ["appraisal"]
+      },
+      "postal_code": {
+        "prompt": "Please provide the postal code of the property address.",
+        "instructions": "Provide the postal code, e.g., 'A1A 1A1'. If you are not able to find the postal code, please provide 'Unknown'.",
+        "category": ["appraisal"]
+      }
+    },
+    "mortgages": [
+      {
+        "prompt": "Please provide all existing mortgages.",
+        "instructions": "Provide a JSON array of mortgages with 'end_date', 'amount_due', 'institution', and 'monthly_payment'. Format dates as 'YYYY-MM-DD'. Please provide the answer as a JSON array without any additional text or formatting. Do not include markdown, code block syntax, or explanations. If you are not able to find the mortgages, please provide 'Unknown'.",
+        "category": ["mortgage_statement"]
+      }
+    ],
+    "mls_number": {
+      "prompt": "Please provide the MLS number.",
+      "instructions": "Provide the MLS number, e.g., '123456'. If you are not able to find the MLS number, please provide 'Unknown'.",
+      "category": ["appraisal"]
+    },
+    "approximate_closing_date": {
+      "prompt": "Please provide the approximate closing date.",
+      "instructions": "Provide the date in 'YYYY-MM-DD' format, e.g., '2024-11-04'. If you are not able to find the approximate closing date, please provide 'Unknown'.",
+      "category": ["mortgage_application"]
+    }
+  },
+  "applicant": {
+    "email": {
+      "prompt": "Please provide the applicant's email address.",
+      "instructions": "Provide the email address as stated in the documents. If you are not able to find the email address, please provide 'Unknown'.",
+      "category": ["mortgage_application"]
+    },
+    "title": {
+      "prompt": "Please provide the applicant's title.",
+      "instructions": "Provide the title, e.g., 'Mr.', 'Ms.', 'Dr.'. If you are not able to find the title, please provide 'Unknown'.",
+      "category": ["mortgage_application"]
+    },
+    "assets": [
+      {
+        "prompt": "Please provide all assets.",
+        "instructions": "Provide a JSON array of assets with 'type', 'amount', and 'description'. Please provide the answer as a JSON array without any additional text or formatting. Do not include markdown, code block syntax, or explanations. If you are not able to find the assets, please provide 'Unknown'.",
+        "category": ["bank_statement"]
+      }
+    ],
+    "address": {
+      "city": {
+        "prompt": "Please provide the city of the applicant's address.",
+        "instructions": "Answer with the city name. If you are not able to find the city, please provide 'Unknown'.",
+        "category": ["identity_document"]
+      },
+      "unit": {
+        "prompt": "Please provide the unit number of the applicant's address.",
+        "instructions": "Provide the unit number. If you are not able to find the unit number, please provide 'Unknown'.",
+        "category": ["identity_document"]
+      },
+      "street": {
+        "prompt": "Please provide the street of the applicant's address.",
+        "instructions": "Answer with the street address. If you are not able to find the street address, please provide 'Unknown'.",
+        "category": ["identity_document"]
+      },
+      "country": {
+        "prompt": "Please provide the country of the applicant's address.",
+        "instructions": "Answer with the country. If you are not able to find the country, please provide 'Unknown'.",
+        "category": ["identity_document"]
+      },
+      "province": {
+        "prompt": "Please provide the province of the applicant's address.",
+        "instructions": "Answer with the province. If you are not able to find the province, please provide 'Unknown'.",
+        "category": ["identity_document"]
+      },
+      "postal_code": {
+        "prompt": "Please provide the postal code of the applicant's address.",
+        "instructions": "Provide the postal code. If you are not able to find the postal code, please provide 'Unknown'.",
+        "category": ["identity_document"]
+      }
+    },
+    "employer": {
+      "ext": {
+        "prompt": "Please provide the employer's phone extension.",
+        "instructions": "Provide the extension number. If you are not able to find the extension number, please provide 'Unknown'.",
+        "category": ["employment_income"]
+      },
+      "fax": {
+        "prompt": "Please provide the employer's fax number.",
+        "instructions": "Provide the fax number. If you are not able to find the fax number, please provide 'Unknown'.",
+        "category": ["employment_income"]
+      },
+      "name": {
+        "prompt": "Please provide the employer's name.",
+        "instructions": "Provide the name of the employer. If you are not able to find the employer's name, please provide 'Unknown'.",
+        "category": ["employment_income"]
+      },
+      "email": {
+        "prompt": "Please provide the employer's email address.",
+        "instructions": "Provide the email address. If you are not able to find the email address, please provide 'Unknown'.",
+        "category": ["employment_income"]
+      },
+      "income": [
+        {
+          "prompt": "Please provide all income sources.",
+          "instructions": "Provide a JSON array of income sources with 'type', 'amount', and 'period'. If you are not able to find the income sources, please provide 'Unknown'.",
+          "category": ["employment_income"]
+        }
+      ],
+      "address": {
+        "city": {
+          "prompt": "Please provide the city of the employer's address.",
+          "instructions": "Answer with the city name. If you are not able to find the city, please provide 'Unknown'.",
+          "category": ["employment_income"]
+        },
+        "unit": {
+          "prompt": "Please provide the unit number of the employer's address.",
+          "instructions": "Provide the unit number. If you are not able to find the unit number, please provide 'Unknown'.",
+          "category": ["employment_income"]
+        },
+        "street": {
+          "prompt": "Please provide the street of the employer's address.",
+          "instructions": "Answer with the street address. If you are not able to find the street address, please provide 'Unknown'.",
+          "category": ["employment_income"]
+        },
+        "country": {
+          "prompt": "Please provide the country of the employer's address.",
+          "instructions": "Answer with the country. If you are not able to find the country, please provide 'Unknown'.",
+          "category": ["employment_income"]
+        },
+        "province": {
+          "prompt": "Please provide the province of the employer's address.",
+          "instructions": "Answer with the province. If you are not able to find the province, please provide 'Unknown'.",
+          "category": ["employment_income"]
+        },
+        "postal_code": {
+          "prompt": "Please provide the postal code of the employer's address.",
+          "instructions": "Provide the postal code. If you are not able to find the postal code, please provide 'Unknown'.",
+          "category": ["employment_income"]
+        }
+      },
+      "job_title": {
+        "prompt": "Please provide the applicant's job title.",
+        "instructions": "Provide the job title. If you are not able to find the job title, please provide 'Unknown'.",
+        "category": ["employment_income"]
+      },
+      "phone_number": {
+        "prompt": "Please provide the employer's phone number.",
+        "instructions": "Provide the phone number. If you are not able to find the phone number, please provide 'Unknown'.",
+        "category": ["employment_income"]
+      },
+      "industry_type": {
+        "prompt": "Please provide the industry type.",
+        "instructions": "Provide the industry type. If you are not able to find the industry type, please provide 'Unknown'.",
+        "category": ["employment_income"]
+      },
+      "duration_years": {
+        "prompt": "Please provide the duration in years at current employment.",
+        "instructions": "Provide the number of years. If you are not able to find the duration in years, please provide 'Unknown'.",
+        "category": ["employment_income"]
+      },
+      "duration_months": {
+        "prompt": "Please provide the duration in months at current employment.",
+        "instructions": "Provide the number of months. If you are not able to find the duration in months, please provide 'Unknown'.",
+        "category": ["employment_income"]
+      },
+      "employment_type": {
+        "prompt": "Please provide the employment type.",
+        "instructions": "Provide the employment type, e.g., 'Self-Employed Full Time'. If you are not able to find the employment type, please provide 'Unknown'.",
+        "category": ["employment_income"]
+      }
+    },
+    "last_name": {
+      "prompt": "Please provide the applicant's last name.",
+      "instructions": "Provide the last name. If you are not able to find the last name, please provide 'Unknown'.",
+      "category": ["identity_document"]
+    },
+    "birth_date": {
+      "prompt": "Please provide the applicant's birth date.",
+      "instructions": "Provide the date in 'YYYY-MM-DD' format. If you are not able to find the birth date, please provide 'Unknown'.",
+      "category": ["identity_document"]
+    },
+    "first_name": {
+      "prompt": "Please provide the applicant's first name.",
+      "instructions": "Provide the first name. If you are not able to find the first name, please provide 'Unknown'.",
+      "category": ["identity_document"]
+    },
+    "liabilities": {
+      "taxes": {
+        "prompt": "Please provide any outstanding taxes owed.",
+        "instructions": "Provide the amount, or 'None' if not applicable. If you are not able to find the outstanding taxes owed, please provide 'Unknown'.",
+        "category": ["municipal_tax_bill"]
+      },
+      "bankruptcy": {
+        "prompt": "Has the applicant declared bankruptcy?",
+        "instructions": "Answer 'Yes' or 'No'. If you are not able to find the bankruptcy status, please provide 'Unknown'.",
+        "category": ["credit_bureau"]
+      },
+      "child_support": {
+        "prompt": "Please provide the amount of child support payments.",
+        "instructions": "Provide the amount, or 'None' if not applicable. If you are not able to find the amount of child support payments, please provide 'Unknown'.",
+        "category": ["notice_of_assessment"]
+      },
+      "debt_obligations": [
+        {
+          "prompt": "Please provide all debt obligations.",
+          "instructions": "Provide a JSON array of debt obligations with 'type', 'monthly_payment', and 'balance_remaining'. Please provide the answer as a JSON array without any additional text or formatting. Do not include markdown, code block syntax, or explanations.",
+          "category": ["credit_bureau"]
+        }
+      ]
+    },
+    "credit_score": {
+      "prompt": "Please provide the applicant's credit score.",
+      "instructions": "Provide the credit score. If you are not able to find the credit score, please provide 'Unknown'.",
+      "category": ["credit_bureau"]
+    },
+    "phone_number": {
+      "prompt": "Please provide the applicant's phone number.",
+      "instructions": "Provide the phone number. If you are not able to find the phone number, please provide 'Unknown'.",
+      "category": ["mortgage_application"]
+    },
+    "credit_score_source": {
+      "prompt": "Please provide the source of the credit score.",
+      "instructions": "Provide the credit bureau name, e.g., 'Equifax'. If you are not able to find the credit bureau name, please provide 'Unknown'.",
+      "category": ["credit_bureau"]
+    },
+    "social_insurance_number": {
+      "prompt": "Please provide the applicant's Social Insurance Number (SIN).",
+      "instructions": "Provide the SIN as stated in the documents, ensuring compliance with data privacy laws. If you are not able to find the SIN, please provide 'Unknown'.",
+      "category": ["identity_document"]
+    },
+    "credit_score_report_date": {
+      "prompt": "Please provide the date of the credit score report.",
+      "instructions": "Provide the date in 'YYYY-MM-DD' format. If you are not able to find the date of the credit score report, please provide 'Unknown'.",
+      "category": ["credit_bureau"]
+    }
+  },
+  "guarantor": {
+    "email": {
+      "prompt": "Please provide the guarantor's email address.",
+      "instructions": "Provide the email address. If you are not able to find the email address, please provide 'Unknown'.",
+      "category": ["mortgage_application"]
+    },
+    "title": {
+      "prompt": "Please provide the guarantor's title.",
+      "instructions": "Provide the title. If you are not able to find the title, please provide 'Unknown'.",
+      "category": ["mortgage_application"]
+    },
+    "address": {
+      "city": {
+        "prompt": "Please provide the city of the guarantor's address.",
+        "instructions": "Provide the city. If you are not able to find the city, please provide 'Unknown'.",
+        "category": ["identity_document"]
+      },
+      "unit": {
+        "prompt": "Please provide the unit number of the guarantor's address.",
+        "instructions": "Provide the unit number. If you are not able to find the unit number, please provide 'Unknown'.",
+        "category": ["identity_document"]
+      },
+      "street": {
+        "prompt": "Please provide the street of the guarantor's address.",
+        "instructions": "Provide the street address. If you are not able to find the street address, please provide 'Unknown'.",
+        "category": ["identity_document"]
+      },
+      "country": {
+        "prompt": "Please provide the country of the guarantor's address.",
+        "instructions": "Provide the country. If you are not able to find the country, please provide 'Unknown'.",
+        "category": ["identity_document"]
+      },
+      "province": {
+        "prompt": "Please provide the province of the guarantor's address.",
+        "instructions": "Provide the province. If you are not able to find the province, please provide 'Unknown'.",
+        "category": ["identity_document"]
+      },
+      "postal_code": {
+        "prompt": "Please provide the postal code of the guarantor's address.",
+        "instructions": "Provide the postal code. If you are not able to find the postal code, please provide 'Unknown'.",
+        "category": ["identity_document"]
+      }
+    },
+    "last_name": {
+      "prompt": "Please provide the guarantor's last name.",
+      "instructions": "Provide the last name. If you are not able to find the last name, please provide 'Unknown'.",
+      "category": ["identity_document"]
+    },
+    "first_name": {
+      "prompt": "Please provide the guarantor's first name.",
+      "instructions": "Provide the first name. If you are not able to find the first name, please provide 'Unknown'.",
+      "category": ["identity_document"]
+    },
+    "confirmation": {
+      "prompt": "Please provide confirmation status if any.",
+      "instructions": "Provide the confirmation status, or 'None' if not applicable.",
+      "category": ["mortgage_application"]
+    },
+    "phone_number": {
+      "prompt": "Please provide the guarantor's phone number.",
+      "instructions": "Provide the phone number. If you are not able to find the phone number, please provide 'Unknown'.",
+      "category": ["mortgage_application"]
+    }
+  },
+  "broker_fees": [
+    {
+      "prompt": "Please provide all broker fees.",
+      "instructions": "Provide a JSON array of broker fees with 'default', 'amount_fee', and 'broker_name'. Please provide the answer as a JSON array without any additional text or formatting. Do not include markdown, code block syntax, or explanations. If you are not able to find the broker fees, please provide 'Unknown'.",
+      "category": ["mortgage_application"]
+    }
+  ],
+  "loan_purpose": {
+    "funds_usage": {
+      "prompt": "Please provide the usage of funds.",
+      "instructions": "Describe the purpose of the loan, e.g., 'Refinance - Debt consolidation'. If you are not able to find the usage of funds, please provide 'Unknown'.",
+      "category": ["mortgage_application"]
+    },
+    "exit_strategy": {
+      "prompt": "Please provide the exit strategy.",
+      "instructions": "Provide the exit strategy, e.g., 'Interest Only'. If you are not able to find the exit strategy, please provide 'Unknown'.",
+      "category": ["mortgage_application"]
+    }
+  },
+  "underwriting": {
+    "required_documents": {
+      "prompt": "Please verify if we have all the required documents.",
+      "instructions": "Check for: Notice of Assessment of all Applicants, Notice of Assessment Quebec (if applicable), Appraisal of the Property (specify type), Credit Bureau of all applicants, Mortgage Statements for current Mortgage, Municipal Tax Bill, Statement of all Liens in the Property. Answer Yes/No for each document. If you are not able to find the required documents, please provide 'Unknown'.",
+      "category": ["mortgage_application", "notice_of_assessment", "appraisal", "credit_bureau", "mortgage_statement", "municipal_tax_bill"]
+    },
+    "acid_test": {
+      "ltv_over_80": {
+        "prompt": "Is the LTV over 80%?",
+        "instructions": "Answer Yes/No. If Yes, the deal cannot proceed. If you are not able to find the LTV, please provide 'Unknown'.",
+        "category": ["appraisal"]
+      },
+      "criminal_interest_rate": {
+        "prompt": "Would the total of broker fees, lawyer fees, appraisal fee, lender fee (2%) and interest (10%) exceed 35%?",
+        "instructions": "Answer Yes/No. If Yes, the deal cannot proceed due to criminal interest rate. If you are not able to find the criminal interest rate, please provide 'Unknown'.",
+        "category": ["mortgage_application"]
+      },
+      "power_of_sale": {
+        "prompt": "Is the property in power of sale process?",
+        "instructions": "Answer Yes/No. If Yes, the deal cannot proceed due to litigation. If you are not able to find the power of sale, please provide 'Unknown'.",
+        "category": ["mortgage_application"]
+      }
+    },
+    "validation": {
+      "equity_cushion": {
+        "prompt": "What is the equity cushion in the deal?",
+        "instructions": "Provide the equity cushion amount and percentage. If you are not able to find the equity cushion, please provide 'Unknown'.",
+        "category": ["appraisal"]
+      },
+      "occupancy": {
+        "prompt": "Is the property occupied by the mortgagee?",
+        "instructions": "Answer Yes/No and provide details if available. If you are not able to find the occupancy, please provide 'Unknown'.",
+        "category": ["appraisal"]
+      },
+      "mortgage_statement": {
+        "prompt": "Do we have the latest mortgage statement as proof of current mortgage details?",
+        "instructions": "Answer Yes/No and provide the date of the latest statement if available.",
+        "category": ["mortgage_statement"]
+      },
+      "earnings_proof": {
+        "prompt": "What are the borrower's current earnings, with proof?",
+        "instructions": "List all verified income sources with corresponding proof documents (NOA, paystubs, rentals). If you are not able to find the earnings proof, please provide 'Unknown'.",
+        "category": ["notice_of_assessment"]
+      },
+      "total_liens": {
+        "prompt": "What is the total current lien on the property, verified by land registry?",
+        "instructions": "Provide the total amount of verified liens. If you are not able to find the total liens, please provide 'Unknown'.",
+        "category": ["mortgage_statement"]
+      },
+      "market_time": {
+        "prompt": "If the property goes on the market, how long would it take to sell?",
+        "instructions": "Provide estimated time frame based on market analysis. If you are not able to find the market time, please provide 'Unknown'.",
+        "category": ["appraisal"]
+      },
+      "mortgage_standing": {
+        "prompt": "Is the current mortgage in good standing?",
+        "instructions": "Answer Yes/No and list supporting documentation. If you are not able to find the mortgage standing, please provide 'Unknown'.",
+        "category": ["mortgage_statement"]
+      },
+      "valuation_sources": {
+        "prompt": "Is the property valuation accurate and supported by at least two sources?",
+        "instructions": "List valuation sources (e.g., Purview, appraisal) and their respective values. If you are not able to find the valuation sources, please provide 'Unknown'.",
+        "category": ["appraisal"]
+      },
+      "mortgage_position": {
+        "prompt": "Is this a second mortgage, and if so, who holds the first mortgage?",
+        "instructions": "Specify mortgage position and first mortgage holder if applicable. If you are not able to find the mortgage position, please provide 'Unknown'.",
+        "category": ["mortgage_statement"]
+      },
+      "mortgage_replacement": {
+        "prompt": "Is this a new second mortgage, or is it replacing an existing second mortgage?",
+        "instructions": "Specify if new or replacement mortgage. If you are not able to find the mortgage replacement, please provide 'Unknown'.",
+        "category": ["mortgage_statement"]
+      },
+      "payment_ability": {
+        "prompt": "Do we have sufficient proof of the borrower's ability to cover payments?",
+        "instructions": "List all proof documents (bank cash flow, NOA, paystubs, rental income) and their adequacy. If you are not able to find the payment ability, please provide 'Unknown'.",
+        "category": ["bank_statement", "notice_of_assessment"]
+      },
+      "priority_obligations": {
+        "prompt": "Are there other obligations that might take priority over mortgage repayment?",
+        "instructions": "List any government debts, employee salaries, alimony, municipal taxes, or other liens.",
+        "category": ["credit_bureau"]
+      },
+      "credit_explanation": {
+        "prompt": "If the borrower has bad credit, what is the reason behind it?",
+        "instructions": "Provide explanation for poor credit if applicable. If you are not able to find the credit explanation, please provide 'Unknown'.",
+        "category": ["credit_bureau"]
+      },
+      "bank_alternative": {
+        "prompt": "If the borrower has normal credit, why are they not applying through a traditional bank?",
+        "instructions": "Provide explanation for seeking alternative lending. If you are not able to find the bank alternative, please provide 'Unknown'.",
+        "category": ["credit_bureau"]
+      },
+      "exit_strategy": {
+        "prompt": "What's the exit strategy?",
+        "instructions": "Detail the borrower's plan for mortgage exit. If you are not able to find the exit strategy, please provide 'Unknown'.",
+        "category": ["mortgage_application"]
+      }
+    }
+  },
+  "inconsistencies": {
+    "property_name_consistency": {
+      "prompt": "Check if the property name is consistent across all documents. If inconsistent, answer 'true' and provide severity (info, warning, fatal) and reason. If consistent, answer 'false'.",
+      "instructions": "Compare the property name as extracted from all relevant documents. If any discrepancy is found, determine severity based on the degree of discrepancy. For minor formatting differences, choose 'info'. For partial mismatches, choose 'warning'. For completely different names, choose 'fatal'. Return a JSON with the keys 'inconsistent': boolean, 'severity': string (if inconsistent), and 'reason': string (if inconsistent).",
+      "category": ["mortgage_application", "appraisal", "mortgage_statement"]
+    },
+    "property_address_consistency": {
+      "prompt": "Check if the property address is consistent (city, street, province, postal code) across all documents. If inconsistent, answer 'true' and provide severity (info, warning, fatal) and reason. If consistent, answer 'false'.",
+      "instructions": "Compare address fields from all relevant documents. If there's a slight discrepancy (e.g. missing unit number), that might be 'info'. If part of the address differs (e.g. different street numbers), that might be 'warning'. If the address is completely different, that is 'fatal'. Return a JSON with 'inconsistent', 'severity', and 'reason'.",
+      "category": ["appraisal", "mortgage_application", "identity_document"]
+    }
+  }
+}

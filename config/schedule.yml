@@ -1,0 +1,4 @@
+ai_document_poller_job:
+  cron: "* * * * *"
+  class: "AiDocumentPollerJob"
+  queue: default

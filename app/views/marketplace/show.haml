@@ -1,0 +1,7 @@
+.bg-white.full-w
+  .container.mx-auto.p-4
+    = turbo_stream_from @deal
+    = render partial: 'deals/deal', locals: { deal: @deal, deal_cycle_partial: @deal_cycle_partial, deal_flow_partial: @deal_flow_partial }
+
+- unless user_signed_in?
+  = render "banner"

@@ -1,0 +1,66 @@
+.flex.flex-col.w-full.h-full.divide-y.divide-gray-200.text-gray-600.bg-white{data: {controller: 'notifications'}}
+  .flex.p-6.gap-4.items-center
+    %span.flex-1.grow.font-bold.leading-9.text-2xl.font-serif= t('.notifications')
+    - unless @notifications_empty
+      %button.levitas-button{href: '#', data: {action: 'click->notifications#clearAll', 'notifications-target': 'clearAllBtn'}}= t('.clear_all')
+    = image_tag 'icons/x.svg', {'data-action': 'click->sidebar#toggle', class: 'hover:cursor-pointer'}
+  .flex.flex-col.p-6.gap-4.justify-between.hidden{data: {'notifications-target': 'confirmDelete'}}
+    %p.font-bold.text-sm= t('.delete_all_msg')
+    .flex.gap-4
+      %button.levitas-button.critical{data: {action: 'click->notifications#deleteNotifications'}}= t('.delete_all');
+      %button.levitas-button.secondary{data: {action: 'click->notifications#toggleClearAll'}}= t('.cancel');
+  - unless @notifications_empty
+    .flex.flex-col
+      - if @notifications.present? && @notifications[:last_24_hours].present?
+        %p.notification-heading{class: 'px-[22px]'}= t('.last_24_hours')
+        - @notifications[:last_24_hours].each do |notification|
+          .notification{class: "#{'unread' unless notification.read?}", data: {action: 'click->notifications#markAsRead', notification_id: notification.id}}
+            - unless notification.read?
+              .icon
+              .flex.flex-col.gap-3
+                %p= notification.content
+                .timestamp
+                  %span= distance_of_time_in_words(DateTime.now, notification.created_at, scope: 'notifications.sidebar.distance_in_words')
+                  = link_to t('.delete'), notification_path(notification), method: :delete, data: {action: 'click->notifications#delete', notification_id: notification.id, 'turbo-method': :delete}
+            - else
+              %p= notification.content
+              .timestamp
+                %span= distance_of_time_in_words(DateTime.now, notification.created_at, scope: 'notifications.sidebar.distance_in_words')
+                = link_to t('.delete'), notification_path(notification), method: :delete, data: {action: 'click->notifications#delete', notification_id: notification.id, 'turbo-method': :delete}
+      - if @notifications.present? && @notifications[:last_7_days].present?
+        %p.notification-heading{class: 'px-[22px]'}= t('.last_7_days')
+        - @notifications[:last_7_days].each do |notification|
+          .notification{class: "#{'unread' unless notification.read?}", data: {action: 'click->notifications#markAsRead', notification_id: notification.id}}
+            - unless notification.read?
+              .icon
+              .flex.flex-col.gap-3
+                %p= notification.content
+                .timestamp
+                  %span= distance_of_time_in_words(DateTime.now, notification.created_at, scope: 'notifications.sidebar.distance_in_words')
+                  = link_to t('.delete'), notification_path(notification), method: :delete, data: {action: 'click->notifications#delete', notification_id: notification.id, 'turbo-method': :delete}
+            - else
+              %p= notification.content
+              .timestamp
+                %span= distance_of_time_in_words(DateTime.now, notification.created_at, scope: 'notifications.sidebar.distance_in_words')
+                = link_to t('.delete'), notification_path(notification), method: :delete, data: {action: 'click->notifications#delete', notification_id: notification.id, 'turbo-method': :delete}
+      - if @notifications.present? && @notifications[:older].present?
+        %p.notification-heading{class: 'px-[22px]'}= t('.older')
+        - @notifications[:older].each do |notification|
+          .notification{class: "#{'unread' unless notification.read?}", data: {action: 'click->notifications#markAsRead', notification_id: notification.id }}
+            - unless notification.read?
+              .icon
+              .flex.flex-col.gap-3
+                %p= notification.content
+                .timestamp
+                  %span= distance_of_time_in_words(DateTime.now, notification.created_at, scope: 'notifications.sidebar.distance_in_words')
+                  = link_to t('.delete'), notification_path(notification), method: :delete, data: {action: 'click->notifications#delete', notification_id: notification.id, 'turbo-method': :delete}
+            - else
+              %p= notification.content
+              .timestamp
+                %span= distance_of_time_in_words(DateTime.now, notification.created_at, scope: 'notifications.sidebar.distance_in_words')
+                = link_to t('.delete'), notification_path(notification), method: :delete, data: {action: 'click->notifications#delete', notification_id: notification.id, 'turbo-method': :delete}
+
+  - else
+    .flex.flex-col.p-10.gap-3.h-full.justify-center.items-center.text-center
+      %h2.text-xl.font-bold.font-serif.leading-9= t('.you_dont_have_new_notifications')
+      %p.text-sm= t('.no_notifications_msg')

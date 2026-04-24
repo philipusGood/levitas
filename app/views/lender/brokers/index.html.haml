@@ -1,0 +1,54 @@
+-# - if Broker.count.zero?
+-#   .flex.flex-col.justify-center.items-center.h-screen
+-#     %h3.mt-2.text-sm.font-semibold.text-gray-900
+-#       = t('.no_brokers')
+-#     %p.mt-1.text-sm.text-gray-500
+-#       = t('.start_adding_brokers')
+-#     .mt-6
+-#       = link_to new_broker_path, class: "inline-block px-4 py-2 text-base rounded-lg flex justify-center border border-[#E4E4E7] hover:cursor-pointer bg-blue-600 text-white" do
+-#         = t('.invite_brokers')
+-# - else
+.flex.flex-col.gap-y-12
+  .flex.items-center
+    %h1.font-serif.font-bold.leading-9.text-gray-900.text-2xl
+      = t('.brokers')
+  .flex.flex-col.gap-8
+    .flex.overflow-x-auto
+      %table.rounded-table.w-full.select-text
+        %thead
+          %tr
+            %th{:scope => "col"}
+              = t('.full_name')
+            %th{:scope => "col"}
+              = t('.email')
+            %th{:scope => "col"}
+              = t('.prospect_deals')
+            %th{:scope => "col"}
+              = t('.commited_deals')
+            %th{:scope => "col"}
+              %span.sr-only
+                = t('.edit')
+        %tbody
+          - @brokers.each do |broker_lender|
+            %tr
+              %td{"data-label": t('.full_name')}
+                = broker_lender.broker.full_name
+              %td{"data-label": t('.email')}
+                = broker_lender.broker.email
+              %td.text-bold
+                = broker_lender.broker.deals.financing.count
+              %td.text-bold
+                = @lender.commited_deals_from_broker(broker_lender.broker).count
+              %td
+                - if broker_lender.pending?
+                  .space-x-4
+                    = link_to reject_invitation_lender_brokers_path(broker_id: broker_lender.broker_id), class: "text-red-500 hover:text-red-400", data: { turbo_method: :post } do
+                      = t('.reject')
+                    = link_to accept_invitation_lender_brokers_path(broker_id: broker_lender.broker_id), class: "text-blue-500 hover:text-blue-400", data: { turbo_method: :post } do
+                      = t('.accept_invitation')
+                - else
+                  = link_to reject_invitation_lender_brokers_path(broker_id: broker_lender.broker_id), class: "text-red-500 hover:text-red-400", data: { turbo_method: :post } do
+                    = t('.remove_pool')
+                  
+
+    = render 'partials/pagination', collection: @brokers

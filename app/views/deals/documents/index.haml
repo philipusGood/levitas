@@ -1,0 +1,171 @@
+- if Flipper.enabled?(:ai_documents, Current.user)
+  - if @deal&.ai_document_pool.present? && @deal.ai_document_pool.status != AiDocumentPool::PREFILLED
+    %main.h-full.flex.items-center.flex-col.justify-center
+      .text-center
+        %h1.mt-4.text-2xl.tracking-tight.text-gray-900.font-serif
+          Preparing your Deal ✨
+        %p.mt-6.text-base.leading-7.text-gray-600
+          Feel free to grab a coffee while we handle this for you! We'll notify you when it's ready.
+
+        %div.border.border-gray-300.rounded-md.shadow-md.bg-white.p-6.text-center.mt-10
+          %div.flex.flex-col.justify-center.items-center
+            %svg.animate-spin.-ml-1.mr-3.h-10.w-10.text-white{fill: "none", viewbox: "0 0 24 24", xmlns: "http://www.w3.org/2000/svg"}
+              %circle.opacity-25{cx: "12", cy: "12", r: "10", stroke: "#F4F4F5", "stroke-width" => "4"}
+              %path.opacity-75{d: "M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z", fill: "rgb(59 119 168)"}
+            %p.mt-4.text-gray-600.text-sm Processing your documents. This may take 2-3 minutes
+        .mt-10.flex.items-center.justify-center.gap-x-6
+          = link_to t('.back_to_dashboard'), root_path, class: 'btn btn-default'
+  - elsif @deal.ai_document_pool.present? && @deal.ai_document_pool.status == AiDocumentPool::PREFILLED && @deal.ai_document_pool.has_inconsistencies?
+    .container.flex.flex-col.items-center.p-8.min-h-screen
+      / Header Section
+      .text-center
+        .deal-creator-step-title.text-center Processing Complete!
+        %p.text-base.text-gray-700.leading-6.font-sans.mb-4
+          We've detected this issue. Please review before you continue reviewing your prefilled application.
+        %p.text-sm.text-gray-700.leading-6.font-sans.mb-4
+          Found
+          %span.font-bold #{@deal&.ai_document_pool.inconsistencies.count} inconsistencies
+          that require your attention.
+
+      .p-6.max-w-3xl.w-full
+        %ul
+          - @deal&.ai_document_pool.inconsistencies.each do |inconsistency|
+            %li.flex.items-start.space-x-4.mb-4
+              %span.text-red-500
+                - case inconsistency["severity"]
+                  - when "warning"
+                    %svg{fill: "none", height: "16", viewbox: "0 0 16 16", width: "16", xmlns: "http://www.w3.org/2000/svg"}
+                      %path{"clip-rule" => "evenodd", d: "M6.60548 2.47909C7.21748 1.39109 8.78308 1.39109 9.39428 2.47909L13.8583 10.4151C14.4583 11.4823 13.6879 12.7991 12.4647 12.7991H3.53588C2.31188 12.7991 1.54148 11.4823 2.14148 10.4151L6.60548 2.47909ZM8.79988 10.3999C8.79988 10.6121 8.71559 10.8155 8.56556 10.9656C8.41553 11.1156 8.21205 11.1999 7.99988 11.1999C7.78771 11.1999 7.58422 11.1156 7.43419 10.9656C7.28416 10.8155 7.19988 10.6121 7.19988 10.3999C7.19988 10.1877 7.28416 9.98423 7.43419 9.8342C7.58422 9.68417 7.78771 9.59989 7.99988 9.59989C8.21205 9.59989 8.41553 9.68417 8.56556 9.8342C8.71559 9.98423 8.79988 10.1877 8.79988 10.3999ZM7.99988 3.99989C7.78771 3.99989 7.58422 4.08417 7.43419 4.2342C7.28416 4.38423 7.19988 4.58771 7.19988 4.79989V7.19989C7.19988 7.41206 7.28416 7.61554 7.43419 7.76557C7.58422 7.9156 7.78771 7.99989 7.99988 7.99989C8.21205 7.99989 8.41553 7.9156 8.56556 7.76557C8.71559 7.61554 8.79988 7.41206 8.79988 7.19989V4.79989C8.79988 4.58771 8.71559 4.38423 8.56556 4.2342C8.41553 4.08417 8.21205 3.99989 7.99988 3.99989Z", fill: "#EAB308", "fill-rule" => "evenodd"}
+                  - when "success"
+                    %svg{fill: "none", height: "16", viewbox: "0 0 16 16", width: "16", xmlns: "http://www.w3.org/2000/svg"}
+                      %path{"clip-rule" => "evenodd", d: "M7.99961 14.4001C9.69699 14.4001 11.3249 13.7258 12.5251 12.5256C13.7253 11.3253 14.3996 9.69748 14.3996 8.0001C14.3996 6.30271 13.7253 4.67485 12.5251 3.47461C11.3249 2.27438 9.69699 1.6001 7.99961 1.6001C6.30222 1.6001 4.67436 2.27438 3.47413 3.47461C2.27389 4.67485 1.59961 6.30271 1.59961 8.0001C1.59961 9.69748 2.27389 11.3253 3.47413 12.5256C4.67436 13.7258 6.30222 14.4001 7.99961 14.4001ZM10.9652 6.9657C11.1109 6.81482 11.1916 6.61273 11.1897 6.40298C11.1879 6.19322 11.1038 5.99257 10.9555 5.84424C10.8071 5.69592 10.6065 5.61178 10.3967 5.60996C10.187 5.60814 9.98489 5.68877 9.83401 5.8345L7.19961 8.4689L6.16521 7.4345C6.01433 7.28877 5.81225 7.20814 5.60249 7.20996C5.39273 7.21178 5.19208 7.29592 5.04375 7.44424C4.89543 7.59257 4.81129 7.79322 4.80947 8.00298C4.80765 8.21273 4.88828 8.41482 5.03401 8.5657L6.63401 10.1657C6.78403 10.3157 6.98748 10.3999 7.19961 10.3999C7.41174 10.3999 7.61519 10.3157 7.76521 10.1657L10.9652 6.9657Z", fill: "#10B981", "fill-rule" => "evenodd"}
+                  - when "info"
+                    %svg{fill: "none", height: "16", viewbox: "0 0 16 16", width: "16", xmlns: "http://www.w3.org/2000/svg"}
+                      %path{"clip-rule" => "evenodd", d: "M7.99961 14.4001C9.69699 14.4001 11.3249 13.7258 12.5251 12.5256C13.7253 11.3253 14.3996 9.69748 14.3996 8.0001C14.3996 6.30271 13.7253 4.67485 12.5251 3.47461C11.3249 2.27438 9.69699 1.6001 7.99961 1.6001C6.30222 1.6001 4.67436 2.27438 3.47413 3.47461C2.27389 4.67485 1.59961 6.30271 1.59961 8.0001C1.59961 9.69748 2.27389 11.3253 3.47413 12.5256C4.67436 13.7258 6.30222 14.4001 7.99961 14.4001ZM5.59961 7.2001C5.38744 7.2001 5.18395 7.28438 5.03392 7.43441C4.88389 7.58444 4.79961 7.78792 4.79961 8.0001C4.79961 8.21227 4.88389 8.41575 5.03392 8.56578C5.18395 8.71581 5.38744 8.8001 5.59961 8.8001H10.3996C10.6118 8.8001 10.8153 8.71581 10.9653 8.56578C11.1153 8.41575 11.1996 8.21227 11.1996 8.0001C11.1996 7.78792 11.1153 7.58444 10.9653 7.43441C10.8153 7.28438 10.6118 7.2001 10.3996 7.2001H5.59961Z", fill: "#71717A", "fill-rule" => "evenodd"}
+                  - when "fatal"
+                    %svg{fill: "none", height: "16", viewbox: "0 0 16 16", width: "16", xmlns: "http://www.w3.org/2000/svg"}
+                      %path{"clip-rule" => "evenodd", d: "M7.99961 14.4001C9.69699 14.4001 11.3249 13.7258 12.5251 12.5256C13.7253 11.3253 14.3996 9.69748 14.3996 8.0001C14.3996 6.30271 13.7253 4.67485 12.5251 3.47461C11.3249 2.27438 9.69699 1.6001 7.99961 1.6001C6.30222 1.6001 4.67436 2.27438 3.47413 3.47461C2.27389 4.67485 1.59961 6.30271 1.59961 8.0001C1.59961 9.69748 2.27389 11.3253 3.47413 12.5256C4.67436 13.7258 6.30222 14.4001 7.99961 14.4001ZM6.96521 5.8345C6.81433 5.68877 6.61225 5.60814 6.40249 5.60996C6.19273 5.61178 5.99208 5.69592 5.84375 5.84424C5.69543 5.99257 5.61129 6.19322 5.60947 6.40298C5.60765 6.61273 5.68828 6.81482 5.83401 6.9657L6.86841 8.0001L5.83401 9.0345C5.7576 9.10829 5.69666 9.19657 5.65473 9.29417C5.6128 9.39178 5.59073 9.49675 5.58981 9.60298C5.58889 9.7092 5.60913 9.81454 5.64935 9.91286C5.68958 10.0112 5.74898 10.1005 5.82409 10.1756C5.89921 10.2507 5.98853 10.3101 6.08685 10.3504C6.18516 10.3906 6.29051 10.4108 6.39673 10.4099C6.50295 10.409 6.60793 10.3869 6.70553 10.345C6.80314 10.3031 6.89141 10.2421 6.96521 10.1657L7.99961 9.1313L9.03401 10.1657C9.18489 10.3114 9.38697 10.3921 9.59673 10.3902C9.80649 10.3884 10.0071 10.3043 10.1555 10.156C10.3038 10.0076 10.3879 9.80698 10.3897 9.59722C10.3916 9.38746 10.3109 9.18538 10.1652 9.0345L9.13081 8.0001L10.1652 6.9657C10.3109 6.81482 10.3916 6.61273 10.3897 6.40298C10.3879 6.19322 10.3038 5.99257 10.1555 5.84424C10.0071 5.69592 9.80649 5.61178 9.59673 5.60996C9.38697 5.60814 9.18489 5.68877 9.03401 5.8345L7.99961 6.8689L6.96521 5.8345Z", fill: "#DC2626", "fill-rule" => "evenodd"}
+              %p.text-gray-700.text-sm
+                = inconsistency["reason"]
+
+        .fixed.w-full.right-0.bottom-0.lg:bottom-10.flex.justify-between.items-center.bg-gray-900.lg:rounded-xl.p-4.lg:p-6.z-30{:class => "lg:right-[40px] lg:w-[calc(100%-400px)] gap-2.5"}
+          = button_tag type: 'submit', class: 'save-as-draft-btn invisible', name: "draft", value: "true" do
+            Continue without AI
+
+          .flex.w-full.lg:w-auto.justify-between{:class => "gap-2.5"}
+            =  link_to deal_main_applicant_index_path(@deal), class: 'flex items-center gap-2 bg-blue-600 rounded-lg leading-6 py-2 px-3 font-medium text-white', id: "continue-button" do
+              %span.hidden.lg:inline Review Pre-filled Data
+              %svg{:fill => "none", :height => "24", :viewbox => "0 0 24 24", :width => "24", :xmlns => "http://www.w3.org/2000/svg"}
+                %path{"clip-rule" => "evenodd", :d => "M9.29279 16.7074C9.10532 16.5199 9 16.2656 9 16.0004C9 15.7352 9.10532 15.4809 9.29279 15.2934L12.5858 12.0004L9.29279 8.70741C9.11063 8.5188 9.00983 8.2662 9.01211 8.00401C9.01439 7.74181 9.11956 7.491 9.30497 7.30559C9.49038 7.12018 9.74119 7.01501 10.0034 7.01273C10.2656 7.01045 10.5182 7.11125 10.7068 7.29341L14.7068 11.2934C14.8943 11.4809 14.9996 11.7352 14.9996 12.0004C14.9996 12.2656 14.8943 12.5199 14.7068 12.7074L10.7068 16.7074C10.5193 16.8949 10.265 17.0002 9.99979 17.0002C9.73462 17.0002 9.48031 16.8949 9.29279 16.7074Z", :fill => "white", "fill-rule" => "evenodd"}
+  - else
+    %div
+      %h1.deal-creator-step-title
+      = t('.ai_title')
+    %p.deal-creator-step-description
+      = t('.ai_leading')
+    .grid.grid-cols-1.lg:grid-cols-3.gap-4
+      .bg-gray-50.border-gray-300.border-1.rounded-lg.pt-5.pb-5.px-4.text-sm.text-gray-700
+        .divide-y.divide-gray-200
+          = t('.ai_description')
+          %ul.mt-4.mb-4
+            - [t('.mortgage_application'), t('.appraisal'), t('.credit_bureau'), t('.notice_of_assessment'), t('.mortgage_statement'), t('.municipal_tax_bill')].each do |document|
+              %li.mt-1
+                %span.flex.items-center.gap-2
+                  %svg{width: "16", height: "16", viewBox: "0 0 16 16", fill: "none", xmlns: "http://www.w3.org/2000/svg"}
+                    %path{d: "M5.99967 8H9.99967M5.99967 10.6667H9.99967M11.333 14H4.66634C4.31272 14 3.97358 13.8595 3.72353 13.6095C3.47348 13.3594 3.33301 13.0203 3.33301 12.6667V3.33333C3.33301 2.97971 3.47348 2.64057 3.72353 2.39052C3.97358 2.14048 4.31272 2 4.66634 2H8.39034C8.56714 2.00004 8.73668 2.0703 8.86167 2.19533L12.471 5.80467C12.596 5.92966 12.6663 6.0992 12.6663 6.276V12.6667C12.6663 13.0203 12.5259 13.3594 12.2758 13.6095C12.0258 13.8595 11.6866 14 11.333 14Z", stroke: "#71717A", "stroke-linecap": "round", "stroke-linejoin": "round"}
+                  %span
+                    = document
+        .hello
+          = t('.ai_description_p2')
+      .col-span-2
+        = form_with(url: upload_ai_deal_documents_path(@deal), data: { turbo: false, controller: 'documents-async', "dropzone-target" => "form", "documents-async-target": "form", "documents-async-deal-id-value": @deal.id, "documents-async-form-path": upload_ai_deal_documents_path(@deal)}, class: "dropzone") do |f|
+          .flex.flex-col.self-stretch.gap-8.dz-message.mb-4
+            .flex.items-center.justify-center.w-full
+              %label.flex.flex-col.items-center.justify-center.w-full.h-64.border-2.border-gray-300.border-dashed.rounded-lg.cursor-pointer.bg-gray-50.dark:hover:bg-bray-800.dark:bg-gray-700.hover:bg-gray-100.dark:border-gray-600.dark:hover:border-gray-500.dark:hover:bg-gray-600{for: "dropzone-file"}
+                .hidden.text-center.mt-4{"data-dropzone-target" => "loader"}
+                  %i.fas.fa-spinner.fa-spin.text-2xl.text-base
+                    Uploading...
+                .flex.flex-col.items-center.justify-center.pt-5.pb-6{"data-dropzone-target" => "container"}
+                  %svg.w-10.h-10.mb-3.text-gray-400{fill: "none", stroke: "currentColor", viewbox: "0 0 24 24", xmlns: "http://www.w3.org/2000/svg"}
+                    %path{d: "M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12", "stroke-linecap" => "round", "stroke-linejoin" => "round", "stroke-width" => "2"}
+                  %p.mb-2.text-sm.text-gray-500.dark:text-gray-400
+                    %span.font-semibold=t('.click_to_upload')
+                    =t('.or_drag_and_drop')
+                  %p.mb-2.text-sm.text-gray-500.dark:text-gray-400
+                    = t('.max_file_size')
+                  %button.btn.btn-primary.flex.gap-1.items-center{type: "button"}
+                    %svg{fill: "none", height: "17", viewbox: "0 0 16 17", width: "16", xmlns: "http://www.w3.org/2000/svg"}
+                      %path{"clip-rule" => "evenodd", d: "M6.39998 3.69998C5.55128 3.69998 4.73735 4.03712 4.13723 4.63724C3.53712 5.23735 3.19998 6.05129 3.19998 6.89998C3.19998 7.74867 3.53712 8.5626 4.13723 9.16272C4.73735 9.76284 5.55128 10.1 6.39998 10.1C7.24867 10.1 8.0626 9.76284 8.66272 9.16272C9.26283 8.5626 9.59998 7.74867 9.59998 6.89998C9.59998 6.05129 9.26283 5.23735 8.66272 4.63724C8.0626 4.03712 7.24867 3.69998 6.39998 3.69998ZM1.59998 6.89998C1.59988 6.14454 1.77809 5.39975 2.12011 4.72617C2.46214 4.0526 2.95831 3.46926 3.56829 3.0236C4.17827 2.57794 4.88483 2.28255 5.63049 2.16144C6.37616 2.04034 7.13988 2.09695 7.85955 2.32666C8.57921 2.55637 9.2345 2.9527 9.77211 3.48342C10.3097 4.01413 10.7145 4.66424 10.9535 5.38088C11.1924 6.09752 11.2589 6.86045 11.1474 7.60762C11.036 8.35479 10.7497 9.0651 10.312 9.68078L14.1656 13.5344C14.3113 13.6853 14.3919 13.8873 14.3901 14.0971C14.3883 14.3069 14.3042 14.5075 14.1558 14.6558C14.0075 14.8042 13.8069 14.8883 13.5971 14.8901C13.3873 14.8919 13.1853 14.8113 13.0344 14.6656L9.18158 10.8128C8.46347 11.3234 7.61865 11.6265 6.73972 11.6889C5.86078 11.7512 4.98163 11.5705 4.19862 11.1664C3.4156 10.7622 2.75892 10.1504 2.30055 9.39786C1.84218 8.64532 1.5998 7.78113 1.59998 6.89998Z", fill: "white", "fill-rule" => "evenodd"}
+                    = t('.browse_file')
+
+          .fixed.w-full.right-0.bottom-0.lg:bottom-10.flex.justify-between.items-center.bg-gray-900.lg:rounded-xl.p-4.lg:p-6.z-30{:class => "lg:right-[40px] lg:w-[calc(100%-400px)] gap-2.5"}
+            = button_tag type: 'submit', class: 'save-as-draft-btn', name: "draft", value: "true" do
+              Continue without AI
+
+            .flex.w-full.lg:w-auto.justify-between{:class => "gap-2.5"}
+              = button_tag type: 'submit', class: 'flex items-center gap-2 bg-blue-600 rounded-lg leading-6 py-2 px-3 font-medium text-white', id: "continue-button" do
+                %span.hidden.lg:inline Save and Continue
+                %svg{:fill => "none", :height => "24", :viewbox => "0 0 24 24", :width => "24", :xmlns => "http://www.w3.org/2000/svg"}
+                  %path{"clip-rule" => "evenodd", :d => "M9.29279 16.7074C9.10532 16.5199 9 16.2656 9 16.0004C9 15.7352 9.10532 15.4809 9.29279 15.2934L12.5858 12.0004L9.29279 8.70741C9.11063 8.5188 9.00983 8.2662 9.01211 8.00401C9.01439 7.74181 9.11956 7.491 9.30497 7.30559C9.49038 7.12018 9.74119 7.01501 10.0034 7.01273C10.2656 7.01045 10.5182 7.11125 10.7068 7.29341L14.7068 11.2934C14.8943 11.4809 14.9996 11.7352 14.9996 12.0004C14.9996 12.2656 14.8943 12.5199 14.7068 12.7074L10.7068 16.7074C10.5193 16.8949 10.265 17.0002 9.99979 17.0002C9.73462 17.0002 9.48031 16.8949 9.29279 16.7074Z", :fill => "white", "fill-rule" => "evenodd"}
+
+        #document-preview{style: "display: none;"}
+          .flex.flex-wrap.items-center.gap-3.p-3.w-full.bg-gray-100.rounded-lg
+            .flex.items-center.justify-center.gap-1.w-10.h-10.bg-blue-600.rounded-full.gap-2{class: "min-w-[2.5rem]"}
+              = image_tag("icons/document.svg")
+            .flex.flex-col.flex-1.truncate
+              %p.font-bold.flex.items-center.gap-2
+                %span{"data-dz-name" => ""}
+              %p.text-xs.opacity-70
+                %span{"data-dz-name" => ""}
+            .flex 
+              %svg.w-8.h-8.text-gray-200.animate-spin.dark:text-gray-600.fill-blue-600{"aria-hidden" => "true", fill: "none", viewbox: "0 0 100 101", xmlns: "http://www.w3.org/2000/svg"}
+                %path{d: "M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z", fill: "currentColor"}
+                %path{d: "M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z", fill: "currentFill"}
+
+        #documents.grid.lg:grid-cols-2.gap-4
+          - @deal.documents.each do |document|
+            = render partial: 'deals/documents/document', locals: { document: document }
+- else
+  %div
+    %h1.deal-creator-step-title
+      = t('.title')
+    %p.deal-creator-step-description
+      = t('.leading')
+    = form_with(url: upload_deal_documents_path(@deal), data: { turbo: false, controller: 'documents-async', "dropzone-target" => "form", "documents-async-target": "form", "documents-async-deal-id-value": @deal.id , "documents-async-form-path": upload_deal_documents_path(@deal)}, class: "dropzone") do |f|
+      .flex.flex-col.self-stretch.gap-8.dz-message.mb-4
+        .flex.items-center.justify-center.w-full
+          %label.flex.flex-col.items-center.justify-center.w-full.h-64.border-2.border-gray-300.border-dashed.rounded-lg.cursor-pointer.bg-gray-50.dark:hover:bg-bray-800.dark:bg-gray-700.hover:bg-gray-100.dark:border-gray-600.dark:hover:border-gray-500.dark:hover:bg-gray-600{for: "dropzone-file"}
+            .hidden.text-center.mt-4{"data-dropzone-target" => "loader"}
+              %i.fas.fa-spinner.fa-spin.text-2xl.text-base
+                Uploading...
+            .flex.flex-col.items-center.justify-center.pt-5.pb-6{"data-dropzone-target" => "container"}
+              %svg.w-10.h-10.mb-3.text-gray-400{fill: "none", stroke: "currentColor", viewbox: "0 0 24 24", xmlns: "http://www.w3.org/2000/svg"}
+                %path{d: "M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12", "stroke-linecap" => "round", "stroke-linejoin" => "round", "stroke-width" => "2"}
+              %p.mb-2.text-sm.text-gray-500.dark:text-gray-400
+                %span.font-semibold=t('.click_to_upload')
+                =t('.or_drag_and_drop')
+              %p.mb-2.text-sm.text-gray-500.dark:text-gray-400
+                = t('.max_file_size')
+              %button.btn.btn-primary.flex.gap-1.items-center{type: "button"}
+                %svg{fill: "none", height: "17", viewbox: "0 0 16 17", width: "16", xmlns: "http://www.w3.org/2000/svg"}
+                  %path{"clip-rule" => "evenodd", d: "M6.39998 3.69998C5.55128 3.69998 4.73735 4.03712 4.13723 4.63724C3.53712 5.23735 3.19998 6.05129 3.19998 6.89998C3.19998 7.74867 3.53712 8.5626 4.13723 9.16272C4.73735 9.76284 5.55128 10.1 6.39998 10.1C7.24867 10.1 8.0626 9.76284 8.66272 9.16272C9.26283 8.5626 9.59998 7.74867 9.59998 6.89998C9.59998 6.05129 9.26283 5.23735 8.66272 4.63724C8.0626 4.03712 7.24867 3.69998 6.39998 3.69998ZM1.59998 6.89998C1.59988 6.14454 1.77809 5.39975 2.12011 4.72617C2.46214 4.0526 2.95831 3.46926 3.56829 3.0236C4.17827 2.57794 4.88483 2.28255 5.63049 2.16144C6.37616 2.04034 7.13988 2.09695 7.85955 2.32666C8.57921 2.55637 9.2345 2.9527 9.77211 3.48342C10.3097 4.01413 10.7145 4.66424 10.9535 5.38088C11.1924 6.09752 11.2589 6.86045 11.1474 7.60762C11.036 8.35479 10.7497 9.0651 10.312 9.68078L14.1656 13.5344C14.3113 13.6853 14.3919 13.8873 14.3901 14.0971C14.3883 14.3069 14.3042 14.5075 14.1558 14.6558C14.0075 14.8042 13.8069 14.8883 13.5971 14.8901C13.3873 14.8919 13.1853 14.8113 13.0344 14.6656L9.18158 10.8128C8.46347 11.3234 7.61865 11.6265 6.73972 11.6889C5.86078 11.7512 4.98163 11.5705 4.19862 11.1664C3.4156 10.7622 2.75892 10.1504 2.30055 9.39786C1.84218 8.64532 1.5998 7.78113 1.59998 6.89998Z", fill: "white", "fill-rule" => "evenodd"}
+                = t('.browse_file')
+      = render partial: 'deals/partials/action_bar', locals: { f: f, back_action_path: deal_loan_purpose_index_path(@deal), show_save_action: true, skip_action_path: nil, submit: false }
+
+    #document-preview{style: "display: none;"}
+      .flex.flex-wrap.items-center.gap-3.p-3.w-full.bg-gray-100.rounded-lg
+        .flex.items-center.justify-center.gap-1.w-10.h-10.bg-blue-600.rounded-full.gap-2{class: "min-w-[2.5rem]"}
+          = image_tag("icons/document.svg")
+        .flex.flex-col.flex-1.truncate
+          %p.font-bold.flex.items-center.gap-2
+            %span{"data-dz-name" => ""}
+          %p.text-xs.opacity-70
+            %span{"data-dz-name" => ""}
+        .flex 
+          %svg.w-8.h-8.text-gray-200.animate-spin.dark:text-gray-600.fill-blue-600{"aria-hidden" => "true", fill: "none", viewbox: "0 0 100 101", xmlns: "http://www.w3.org/2000/svg"}
+            %path{d: "M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z", fill: "currentColor"}
+            %path{d: "M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z", fill: "currentFill"}
+
+    #documents.grid.lg:grid-cols-2.gap-4
+      - @deal.documents.each do |document|
+        = render partial: 'deals/documents/document', locals: { document: document }

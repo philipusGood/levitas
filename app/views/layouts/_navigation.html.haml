@@ -1,0 +1,107 @@
+.sticky.top-0.z-30.flex.flex-col.flex-auto.bg-gray-900.w-full.lg:static.lg:gap-6.lg:w-56{class: "lg:min-w-[14rem] lg:max-w-[14rem]", "data-layout-target": "navigation"}
+  .flex.z-30.w-full.items-center.justify-between.h-16.p-3.bg-gray-900.shadow.lg:h-auto.lg:px-4.lg:py-6.lg:shadow-none.lg:flex-none{"data-layout-target": "topBar"}
+    = image_tag 'logo/levitas.svg', class: "py-1.5 lg:py-2 lg:px-3 lg:h-10"
+    .flex.items-start.gap-3
+      %span.notification-bell{class: "#{'alert' if user_has_unread_notifications}", data: {action: "click->sidebar#toggleNotifications"}}
+      %button.p-2.outline-0.lg:hidden{"data-action" => "click->layout#toggleMenu", :type => "button"}
+        %span.sr-only Open/Close menu
+        .hamburger-menu
+          %span.line
+
+  %nav.max-md:duration-500.max-md:ease-linear.overflow-auto.top-0.flex.flex-col.w-full.h-0.max-h-0.bg-gray-900.font-sans.lg:h-full.lg:max-h-full.lg:overflow-visible.lg:flex.lg:pt-0.lg:static{:class => "max-md:transition-[height]", "data-layout-target" => "navbar", :role => "navigation"}
+    %ul.flex.flex-1.flex-col.px-3.gap-2.font-medium.text-sm{:role => "list"}
+      %li
+        = link_to dashboard_index_path, class: "nav-item #{'active' if current_page?(dashboard_index_path)}" do
+          %svg{fill: "none", height: "24", viewbox: "0 0 24 24", width: "24", xmlns: "http://www.w3.org/2000/svg"}
+            %path{d: "M12.8487 2.75173C12.6237 2.52677 12.3185 2.40039 12.0003 2.40039C11.6821 2.40039 11.3769 2.52677 11.1519 2.75173L2.75189 11.1517C2.5333 11.3781 2.41235 11.6812 2.41508 11.9958C2.41782 12.3105 2.54402 12.6114 2.76651 12.8339C2.989 13.0564 3.28998 13.1826 3.60461 13.1853C3.91925 13.1881 4.22237 13.0671 4.44869 12.8485L4.80029 12.4969V20.4001C4.80029 20.7184 4.92672 21.0236 5.15177 21.2487C5.37681 21.4737 5.68203 21.6001 6.00029 21.6001H8.40029C8.71855 21.6001 9.02378 21.4737 9.24882 21.2487C9.47386 21.0236 9.60029 20.7184 9.60029 20.4001V18.0001C9.60029 17.6819 9.72672 17.3766 9.95177 17.1516C10.1768 16.9266 10.482 16.8001 10.8003 16.8001H13.2003C13.5186 16.8001 13.8238 16.9266 14.0488 17.1516C14.2739 17.3766 14.4003 17.6819 14.4003 18.0001V20.4001C14.4003 20.7184 14.5267 21.0236 14.7518 21.2487C14.9768 21.4737 15.282 21.6001 15.6003 21.6001H18.0003C18.3186 21.6001 18.6238 21.4737 18.8488 21.2487C19.0739 21.0236 19.2003 20.7184 19.2003 20.4001V12.4969L19.5519 12.8485C19.7782 13.0671 20.0813 13.1881 20.396 13.1853C20.7106 13.1826 21.0116 13.0564 21.2341 12.8339C21.4566 12.6114 21.5828 12.3105 21.5855 11.9958C21.5882 11.6812 21.4673 11.3781 21.2487 11.1517L12.8487 2.75173Z", :opacity => "0.8"}
+          - if current_user.admin?
+            %span= t('layouts.application.deals')
+          - unless current_user.admin?
+            %span= t('layouts.application.dashboard')
+      - unless current_user.admin? || current_user.broker?
+        %li
+          = link_to marketplace_index_path, class: "nav-item dropdown", data: {'action': 'click->layout#toggleDropdown'} do
+            %svg{fill: "none", height: "24", viewbox: "0 0 24 24", width: "24", xmlns: "http://www.w3.org/2000/svg"}
+              %path{d: "M7.20039 5.9999V7.1999H4.80039C4.16387 7.1999 3.55342 7.45276 3.10333 7.90285C2.65325 8.35293 2.40039 8.96338 2.40039 9.5999V13.8839C5.47283 15.0224 8.72379 15.6035 12.0004 15.5999C15.277 15.6035 18.5279 15.0224 21.6004 13.8839V9.5999C21.6004 8.96338 21.3475 8.35293 20.8974 7.90285C20.4474 7.45276 19.8369 7.1999 19.2004 7.1999H16.8004V5.9999C16.8004 5.04512 16.4211 4.12945 15.746 3.45432C15.0708 2.77919 14.1552 2.3999 13.2004 2.3999H10.8004C9.84561 2.3999 8.92994 2.77919 8.25481 3.45432C7.57968 4.12945 7.20039 5.04512 7.20039 5.9999ZM9.95186 5.15137C9.72682 5.37642 9.60039 5.68164 9.60039 5.9999V7.1999H14.4004V5.9999C14.4004 5.68164 14.274 5.37642 14.0489 5.15137C13.8239 4.92633 13.5187 4.7999 13.2004 4.7999H10.8004C10.4821 4.7999 10.1769 4.92633 9.95186 5.15137ZM11.1519 11.1514C10.9268 11.3764 10.8004 11.6816 10.8004 11.9999C10.8004 12.3182 10.9268 12.6234 11.1519 12.8484C11.3769 13.0735 11.6821 13.1999 12.0004 13.1999H12.0124C12.3307 13.1999 12.6359 13.0735 12.8609 12.8484C13.086 12.6234 13.2124 12.3182 13.2124 11.9999C13.2124 11.6816 13.086 11.3764 12.8609 11.1514C12.6359 10.9263 12.3307 10.7999 12.0124 10.7999H12.0004C11.6821 10.7999 11.3769 10.9263 11.1519 11.1514ZM2.40039 19.1999V16.4303C5.41599 17.4479 8.64519 17.9999 12.0004 17.9999C15.2645 18.003 18.5072 17.4728 21.6004 16.4303V19.1999C21.6004 19.8364 21.3475 20.4469 20.8974 20.897C20.4474 21.347 19.8369 21.5999 19.2004 21.5999H4.80039C4.16387 21.5999 3.55342 21.347 3.10333 20.897C2.65325 20.4469 2.40039 19.8364 2.40039 19.1999Z", :opacity => "0.8", "fill-rule" => "evenodd", "clip-rule" => "evenodd"}
+            %span= t('layouts.application.marketplace')
+        %li{class: "#{'hidden' unless current_page?(marketplace_index_path)}", data: { "layout-target": "dropdown" }}
+          %ul.flex.flex-1.flex-col.gap-1
+            %li
+              = link_to marketplace_index_path({visibility: 'private'}), class: "nav-item #{'active' if current_page?(marketplace_index_path({visibility: 'private'}))}" do
+                %span= t('layouts.application.private')
+            %li
+              = link_to marketplace_index_path({visibility: 'public'}), class: "nav-item #{'active' if current_page?(marketplace_index_path({visibility: 'public'}))}" do
+                %span= t('layouts.application.public')
+      - if current_user.admin?
+        %li
+          = link_to marketplace_index_path, class: "nav-item" do
+            %svg{fill: "none", height: "24", viewbox: "0 0 24 24", width: "24", xmlns: "http://www.w3.org/2000/svg"}
+              %path{d: "M7.20039 5.9999V7.1999H4.80039C4.16387 7.1999 3.55342 7.45276 3.10333 7.90285C2.65325 8.35293 2.40039 8.96338 2.40039 9.5999V13.8839C5.47283 15.0224 8.72379 15.6035 12.0004 15.5999C15.277 15.6035 18.5279 15.0224 21.6004 13.8839V9.5999C21.6004 8.96338 21.3475 8.35293 20.8974 7.90285C20.4474 7.45276 19.8369 7.1999 19.2004 7.1999H16.8004V5.9999C16.8004 5.04512 16.4211 4.12945 15.746 3.45432C15.0708 2.77919 14.1552 2.3999 13.2004 2.3999H10.8004C9.84561 2.3999 8.92994 2.77919 8.25481 3.45432C7.57968 4.12945 7.20039 5.04512 7.20039 5.9999ZM9.95186 5.15137C9.72682 5.37642 9.60039 5.68164 9.60039 5.9999V7.1999H14.4004V5.9999C14.4004 5.68164 14.274 5.37642 14.0489 5.15137C13.8239 4.92633 13.5187 4.7999 13.2004 4.7999H10.8004C10.4821 4.7999 10.1769 4.92633 9.95186 5.15137ZM11.1519 11.1514C10.9268 11.3764 10.8004 11.6816 10.8004 11.9999C10.8004 12.3182 10.9268 12.6234 11.1519 12.8484C11.3769 13.0735 11.6821 13.1999 12.0004 13.1999H12.0124C12.3307 13.1999 12.6359 13.0735 12.8609 12.8484C13.086 12.6234 13.2124 12.3182 13.2124 11.9999C13.2124 11.6816 13.086 11.3764 12.8609 11.1514C12.6359 10.9263 12.3307 10.7999 12.0124 10.7999H12.0004C11.6821 10.7999 11.3769 10.9263 11.1519 11.1514ZM2.40039 19.1999V16.4303C5.41599 17.4479 8.64519 17.9999 12.0004 17.9999C15.2645 18.003 18.5072 17.4728 21.6004 16.4303V19.1999C21.6004 19.8364 21.3475 20.4469 20.8974 20.897C20.4474 21.347 19.8369 21.5999 19.2004 21.5999H4.80039C4.16387 21.5999 3.55342 21.347 3.10333 20.897C2.65325 20.4469 2.40039 19.8364 2.40039 19.1999Z", :opacity => "0.8", "fill-rule" => "evenodd", "clip-rule" => "evenodd"}
+            %span= t('layouts.application.marketplace')
+      - if current_user.admin?
+        %li
+          = link_to brokers_path, class: "nav-item #{'active' if current_page?(brokers_path)}" do
+            %svg{:fill => "none", :height => "24", :viewbox => "0 0 24 24", :width => "24", :xmlns => "http://www.w3.org/2000/svg"}
+              %path{:d => "M10.8002 7.19961C10.8002 8.15439 10.4209 9.07006 9.74578 9.74519C9.07065 10.4203 8.15497 10.7996 7.20019 10.7996C6.24542 10.7996 5.32974 10.4203 4.65461 9.74519C3.97948 9.07006 3.6002 8.15439 3.6002 7.19961C3.6002 6.24483 3.97948 5.32916 4.65461 4.65402C5.32974 3.97889 6.24542 3.59961 7.20019 3.59961C8.15497 3.59961 9.07065 3.97889 9.74578 4.65402C10.4209 5.32916 10.8002 6.24483 10.8002 7.19961ZM20.4002 7.19961C20.4002 7.67237 20.3071 8.1405 20.1262 8.57727C19.9452 9.01404 19.6801 9.4109 19.3458 9.74519C19.0115 10.0795 18.6146 10.3447 18.1779 10.5256C17.7411 10.7065 17.273 10.7996 16.8002 10.7996C16.3274 10.7996 15.8593 10.7065 15.4225 10.5256C14.9858 10.3447 14.5889 10.0795 14.2546 9.74519C13.9203 9.4109 13.6551 9.01404 13.4742 8.57727C13.2933 8.1405 13.2002 7.67237 13.2002 7.19961C13.2002 6.24483 13.5795 5.32916 14.2546 4.65402C14.9297 3.97889 15.8454 3.59961 16.8002 3.59961C17.755 3.59961 18.6706 3.97889 19.3458 4.65402C20.0209 5.32916 20.4002 6.24483 20.4002 7.19961ZM15.5162 20.3996C15.5714 20.0072 15.6002 19.6076 15.6002 19.1996C15.603 17.3142 14.9687 15.4832 13.8002 14.0036C14.7123 13.477 15.7469 13.1998 16.8002 13.1998C17.8534 13.1998 18.888 13.477 19.8001 14.0036C20.7122 14.5302 21.4697 15.2876 21.9963 16.1997C22.5229 17.1118 22.8002 18.1464 22.8002 19.1996V20.3996H15.5162ZM7.20019 13.1996C8.79149 13.1996 10.3176 13.8317 11.4428 14.957C12.5681 16.0822 13.2002 17.6083 13.2002 19.1996V20.3996H1.2002V19.1996C1.2002 17.6083 1.83234 16.0822 2.95755 14.957C4.08277 13.8317 5.6089 13.1996 7.20019 13.1996Z", :opacity => "0.8"}
+            %span= t('layouts.application.brokers')
+      - unless current_user.lender?
+        %li
+          = link_to lenders_path, class: "nav-item #{'active' if current_page?(lenders_path)}" do
+            %svg{:fill => "none", :height => "24", :viewbox => "0 0 24 24", :width => "24", :xmlns => "http://www.w3.org/2000/svg"}
+              %path{:d => "M15.6002 7.19961C15.6002 8.15439 15.2209 9.07006 14.5458 9.74519C13.8706 10.4203 12.955 10.7996 12.0002 10.7996C11.0454 10.7996 10.1297 10.4203 9.45461 9.74519C8.77948 9.07006 8.4002 8.15439 8.4002 7.19961C8.4002 6.24483 8.77948 5.32916 9.45461 4.65403C10.1297 3.97889 11.0454 3.59961 12.0002 3.59961C12.955 3.59961 13.8706 3.97889 14.5458 4.65403C15.2209 5.32916 15.6002 6.24483 15.6002 7.19961ZM21.6002 9.59961C21.6002 10.2361 21.3473 10.8466 20.8973 11.2967C20.4472 11.7468 19.8367 11.9996 19.2002 11.9996C18.5637 11.9996 17.9532 11.7468 17.5031 11.2967C17.0531 10.8466 16.8002 10.2361 16.8002 9.59961C16.8002 8.96309 17.0531 8.35264 17.5031 7.90255C17.9532 7.45247 18.5637 7.19961 19.2002 7.19961C19.8367 7.19961 20.4472 7.45247 20.8973 7.90255C21.3473 8.35264 21.6002 8.96309 21.6002 9.59961ZM16.8002 17.9996C16.8002 16.7266 16.2945 15.5057 15.3943 14.6055C14.4941 13.7053 13.2732 13.1996 12.0002 13.1996C10.7272 13.1996 9.50626 13.7053 8.60608 14.6055C7.70591 15.5057 7.2002 16.7266 7.2002 17.9996V21.5996H16.8002V17.9996ZM7.2002 9.59961C7.2002 10.2361 6.94734 10.8466 6.49725 11.2967C6.04717 11.7468 5.43672 11.9996 4.8002 11.9996C4.16368 11.9996 3.55323 11.7468 3.10314 11.2967C2.65305 10.8466 2.4002 10.2361 2.4002 9.59961C2.4002 8.96309 2.65305 8.35264 3.10314 7.90255C3.55323 7.45247 4.16368 7.19961 4.8002 7.19961C5.43672 7.19961 6.04717 7.45247 6.49725 7.90255C6.94734 8.35264 7.2002 8.96309 7.2002 9.59961ZM19.2002 21.5996V17.9996C19.2019 16.7795 18.8921 15.5792 18.3002 14.5124C18.8322 14.3763 19.3883 14.3634 19.926 14.4749C20.4638 14.5863 20.9689 14.8191 21.403 15.1555C21.8371 15.4919 22.1886 15.923 22.4307 16.4159C22.6729 16.9088 22.7992 17.4504 22.8002 17.9996V21.5996H19.2002ZM5.7002 14.5124C5.10829 15.5793 4.79851 16.7796 4.8002 17.9996V21.5996H1.2002V17.9996C1.19996 17.4501 1.32555 16.9077 1.56733 16.4142C1.80911 15.9207 2.16067 15.4891 2.59506 15.1525C3.02944 14.8159 3.53513 14.5832 4.07337 14.4722C4.6116 14.3613 5.16809 14.375 5.7002 14.5124Z", :fill => "#71717A", :opacity => "0.8"}
+            %span= t('layouts.application.lenders')
+      - if current_user.lender?
+        %li
+          = link_to lender_brokers_path, class: "nav-item #{'active' if current_page?(lender_brokers_path)}" do
+            %svg{:fill => "none", :height => "24", :viewbox => "0 0 24 24", :width => "24", :xmlns => "http://www.w3.org/2000/svg"}
+              %path{:d => "M15.6002 7.19961C15.6002 8.15439 15.2209 9.07006 14.5458 9.74519C13.8706 10.4203 12.955 10.7996 12.0002 10.7996C11.0454 10.7996 10.1297 10.4203 9.45461 9.74519C8.77948 9.07006 8.4002 8.15439 8.4002 7.19961C8.4002 6.24483 8.77948 5.32916 9.45461 4.65403C10.1297 3.97889 11.0454 3.59961 12.0002 3.59961C12.955 3.59961 13.8706 3.97889 14.5458 4.65403C15.2209 5.32916 15.6002 6.24483 15.6002 7.19961ZM21.6002 9.59961C21.6002 10.2361 21.3473 10.8466 20.8973 11.2967C20.4472 11.7468 19.8367 11.9996 19.2002 11.9996C18.5637 11.9996 17.9532 11.7468 17.5031 11.2967C17.0531 10.8466 16.8002 10.2361 16.8002 9.59961C16.8002 8.96309 17.0531 8.35264 17.5031 7.90255C17.9532 7.45247 18.5637 7.19961 19.2002 7.19961C19.8367 7.19961 20.4472 7.45247 20.8973 7.90255C21.3473 8.35264 21.6002 8.96309 21.6002 9.59961ZM16.8002 17.9996C16.8002 16.7266 16.2945 15.5057 15.3943 14.6055C14.4941 13.7053 13.2732 13.1996 12.0002 13.1996C10.7272 13.1996 9.50626 13.7053 8.60608 14.6055C7.70591 15.5057 7.2002 16.7266 7.2002 17.9996V21.5996H16.8002V17.9996ZM7.2002 9.59961C7.2002 10.2361 6.94734 10.8466 6.49725 11.2967C6.04717 11.7468 5.43672 11.9996 4.8002 11.9996C4.16368 11.9996 3.55323 11.7468 3.10314 11.2967C2.65305 10.8466 2.4002 10.2361 2.4002 9.59961C2.4002 8.96309 2.65305 8.35264 3.10314 7.90255C3.55323 7.45247 4.16368 7.19961 4.8002 7.19961C5.43672 7.19961 6.04717 7.45247 6.49725 7.90255C6.94734 8.35264 7.2002 8.96309 7.2002 9.59961ZM19.2002 21.5996V17.9996C19.2019 16.7795 18.8921 15.5792 18.3002 14.5124C18.8322 14.3763 19.3883 14.3634 19.926 14.4749C20.4638 14.5863 20.9689 14.8191 21.403 15.1555C21.8371 15.4919 22.1886 15.923 22.4307 16.4159C22.6729 16.9088 22.7992 17.4504 22.8002 17.9996V21.5996H19.2002ZM5.7002 14.5124C5.10829 15.5793 4.79851 16.7796 4.8002 17.9996V21.5996H1.2002V17.9996C1.19996 17.4501 1.32555 16.9077 1.56733 16.4142C1.80911 15.9207 2.16067 15.4891 2.59506 15.1525C3.02944 14.8159 3.53513 14.5832 4.07337 14.4722C4.6116 14.3613 5.16809 14.375 5.7002 14.5124Z", :fill => "#71717A", :opacity => "0.8"}
+            %span= t('layouts.application.brokers')
+
+    .flex.flex-col.px-3.py-4.lg:px-4.hidden{class: "gap-2.5", "data-popover-target" => "popover", id: "user-profile"}
+      %div.flex.flex-col.relative.bg-white.divide-y.divide-gray-200.border.border-gray-locale.rounded-lg.text-gray-700.text-sm{"data-controller": "locale"}
+        .flex.items-center.px-2.py-3.gap-3.hover:bg-gray-100.hover:rounded-t-lg.hover:cursor-pointer
+          = image_tag "icons/user.svg"
+          %a{href: profile_path}
+            = t('.view_profile')
+        - if Flipper.enabled?(:localization, current_user)
+          .relative.flex.items-center.justify-between.px-2.py-3.hover:bg-gray-100.hover:cursor-pointer{"data-action": "click->locale#showOptions click->locale#toggleMobileOptions"}
+            .flex.gap-3
+              = image_tag "icons/globe-alt.svg"
+              %button
+                = t('.language')
+            .flex.gap-1
+              %span.px-3.text-gray-900.font-medium{class: "py-0.5"}= current_user.locale
+              = image_tag "icons/chevron-right.svg", data: { "locale-target": "chevronRight" }
+              = image_tag "icons/chevron-down-grey.svg", data: { "locale-target": "chevronDown" }, class: "hidden"
+            .flex.flex-col.bg-white.divide-y.divide-gray-200.border.border-gray-locale.rounded-lg.text-gray-700.text-sm.absolute.bottom-0.hidden{class: "left-[calc(100%+0.5rem)] w-[11.75rem]", "data-locale-target": "languageOptions"}
+              = link_to switch_locale_path('en'), class: "flex items-center justify-between px-4 py-3 hover:cursors-pointer" do
+                = t('.english')
+                %span{class: "rounded-md py-0.5 px-3 bg-[#F3F4F6] text-gray-900 font-medium"} en
+              = link_to switch_locale_path('fr'), class: "flex items-center justify-between px-4 py-3 hover:cursors-pointer" do
+                = t('.french')
+                %span{class: "rounded-md py-0.5 px-3 bg-[#F3F4F6] text-gray-900 font-medium"} fr
+          .flex.flex-col.bg-white.divide-y.divide-gray-200.border.border-gray-locale.text-gray-700.text-sm.invisible.h-0.transition-all.lg:hidden{"data-locale-target": "languageOptionsMobile"}
+            = link_to switch_locale_path('en'), class: "flex items-center justify-between px-4 py-3 hover:cursors-pointer" do
+              = t('.english')
+              %span{class: "rounded-md py-0.5 px-3 bg-[#F3F4F6] text-gray-900 font-medium"} en
+            = link_to switch_locale_path('fr'), class: "flex items-center justify-between px-4 py-3 hover:cursors-pointer" do
+              = t('.french')
+              %span{class: "rounded-md py-0.5 px-3 bg-[#F3F4F6] text-gray-900 font-medium"} fr
+        .flex.items-center.px-2.py-3.gap-3.hover:bg-gray-100.hover:rounded-b-lg.hover:cursor-pointer
+          = image_tag "icons/logout.svg"
+          = link_to destroy_user_session_path, class: "text-red-500", onclick: "posthog.reset()" do
+            = t('.logout')
+    .flex.p-4
+      .flex.flex-auto.items-center.gap-3.p-2.bg-gray-800.text-sm.font-medium.text-gray-400.hover:text-white.hover:cursor-pointer.dropdown-profile{:class => "rounded-[48px]", "data-action" => "click->popover#toggle", "data-popover-id": "user-profile"}
+        %span.flex-shrink-0
+          - if current_user.avatar.attached?
+            = image_tag(current_user.avatar.variant(:thumb), class: "rounded-full")
+          - else
+            = image_tag(current_user.url_for_avatar, class: "rounded-full")
+        %span.flex.flex-1.flex-col.items-start.truncate
+          %span
+            = current_user.full_name
+          %span.font-normal.text-xs
+            = current_user.role.titleize
+        %span.flex.justify-end.max-lg:hidden
+          = image_tag 'icons/dots-horizontal.svg'

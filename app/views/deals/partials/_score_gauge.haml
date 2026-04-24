@@ -1,0 +1,9 @@
+.flex.flex-col.flex-1.p-2.gap-1
+  %p.text-sm.opacity-70= t('.gross_service_ratio')
+  = render 'deals/partials/score', value: @deal.GSR, ranges: {excellent: 24, average: 32}
+.flex.flex-col.flex-1.p-2.gap-1
+  %p.text-sm.opacity-70= t('.loan_to_value_ratio')
+  = render 'deals/partials/score', value: @deal.LVR, ranges: {excellent: 64, average: 75}
+.flex.flex-col.flex-1.p-2.gap-1
+  %p.text-sm.opacity-70= t('.total_debt_service_ratio')
+  = render 'deals/partials/score', value: @deal.TDSR, ranges: {excellent: 31, average: 40}

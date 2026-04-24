@@ -1,0 +1,18 @@
+- if lender.present?
+  %li.flex.p-2.gap-3.items-center{id: lender.email, data: {"invite-lenders-target": "addedLenders"}}
+    .flex.items-center.justify-center.rounded-full.w-12.h-12.bg-blue-400
+      %span.text-white.font-bold= lender.short_full_name
+    .flex.flex-col.flex-1.gap-1
+      %span.text-gray-600.font-bold= lender.full_name
+      %p.text-gray-400.text-sm= lender.email
+    %span.text-rose-600.text-sm.font-bold.hover:cursor-pointer{ data: { email: lender.email, action: "click->invite-lenders#removeLender" } }= t('partials.modals.invite_lenders.remove')
+    = hidden_field_tag 'lenders[]', lender.email, {id: "lenders_#{lender.email}"}
+- else
+  %li.flex.p-2.gap-3.items-center{id: email, data: {"invite-lenders-target": "addedLenders"}}
+    .flex.items-center.justify-center.rounded-full.w-12.h-12.bg-gray-400
+      %span.text-white.font-bold D
+    .flex.flex-col.flex-1.gap-1
+      %span.text-gray-600.font-bold= email
+      %p.text-gray-400.text-sm= t('partials.modals.invite_lenders.not_registered')
+    %span.text-rose-600.text-sm.font-bold.hover:cursor-pointer{ data: { email: email, action: "click->invite-lenders#removeLender" } }= t('partials.modals.invite_lenders.remove')
+    = hidden_field_tag 'lenders[]', email, {id: "lenders_#{email}"}

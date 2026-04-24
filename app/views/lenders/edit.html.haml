@@ -1,0 +1,7 @@
+.flex.flex-col.gap-y-12.text-gray-700
+  .flex.flex-col.gap-3.text-gray-600
+    = link_to lenders_path, class: "flex items-center max-w-max gap-2 px-1 py-2" do
+      = image_tag "icons/arrow-left.svg", class: "p-1"
+      %span.font-medium= t('.back_to_profile')
+    %h2.font-serif.text-2xl.leading-9.font-bold= t('.edit') + " #{@lender.full_name}"
+  = render 'form'

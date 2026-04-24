@@ -1,0 +1,35 @@
+.flex.flex-col.self-stretch.gap-3.bg-white.border.border-gray-200.rounded-lg.text-gray-600.font-sans
+  = render partial: "deals/partials/terms_success_banner", locals: { title: "Deal Terms Accepted", description: "Broker accepted the deal terms, you can now proceed to next stage." }
+  .flex.flex-wrap.px-2.gap-3.border-b.border-gray-200.pb-3
+    .terms-cell
+      %p.text-sm.opacity-70= t('.mortgage_principal')
+      %p.font-bold
+        = number_to_currency_without_cents(@deal.target)
+    .terms-cell
+      %p.text-sm.opacity-70
+        = t('.lenders_fee')
+      %p.font-bold
+        = number_to_percentage(@deal.terms.lenders_fee, precision: 2, strip_insignificant_zeros: true)
+    .terms-cell
+      %p.text-sm.opacity-70
+        = t('.interest_rate')
+      %p.font-bold
+        = number_to_percentage(@deal.terms.interest_rate, precision: 2, strip_insignificant_zeros: true)
+    .terms-cell
+      %p.text-sm.opacity-70
+        = t('.amortization')
+      %p.font-bold
+        = @deal.terms.amortization_period
+    .terms-cell
+      %p.text-sm.opacity-70
+        = t('.terms')
+      %p.font-bold
+        = deal_terms_in_words(@deal.terms.terms_to_years_months)
+    .terms-cell
+      %p.text-sm.opacity-70
+        = t('.type')
+      %p.font-bold
+        = @deal.terms.type
+  .flex.flex-col.md:flex-row.px-2.gap-3
+    = render "deals/partials/score_gauge"
+  .flex.items-center.justify-end.p-4.gap-3.self-stretch

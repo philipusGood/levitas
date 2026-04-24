@@ -1,0 +1,26 @@
+- if alert
+  %div.mb-4{"data-controller": "dismissible"}
+    .rounded-md.bg-red-50.p-4{"data-dismissible-target": "element"}
+      .flex
+        .ml-3
+          %p.text-sm.font-medium.text-red-800
+            = alert
+        .ml-auto.pl-3
+          %div{class: "-mx-1.5 -my-1.5"}
+            %div.inline-flex.rounded-md.bg-red-50.text-reed-500.hover:bg-red-100.focus:outline-none.focus:ring-2.focus:ring-red-600.focus:ring-offset-2.focus:ring-offset-red-50.hover:cursor-pointer{class: "p-1.5", type: "button",  "data-action": "click->dismissible#dismiss"}
+              %span.sr-only Dismiss
+              %svg.h-5.w-5{"aria-hidden" => "true", fill: "currentColor", viewbox: "0 0 20 20"}
+                %path{d: "M6.28 5.22a.75.75 0 00-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 101.06 1.06L10 11.06l3.72 3.72a.75.75 0 101.06-1.06L11.06 10l3.72-3.72a.75.75 0 00-1.06-1.06L10 8.94 6.28 5.22z"}
+- if notice 
+  %div.mb-4{"data-controller": "dismissible"}
+    .rounded-md.bg-green-50.p-4{"data-dismissible-target": "element"}
+      .flex
+        .ml-3
+          %p.text-sm.font-medium.text-green-800
+            = notice 
+        .ml-auto.pl-3
+          %div{class: "-mx-1.5 -my-1.5"}
+            %div.inline-flex.rounded-md.bg-green-50.text-green-500.hover:bg-green-100.focus:outline-none.focus:ring-2.focus:ring-green-600.focus:ring-offset-2.focus:ring-offset-green-50.hover:cursor-pointer{class: "p-1.5", type: "button",  "data-action": "click->dismissible#dismiss"}
+              %span.sr-only Dismiss
+              %svg.h-5.w-5{"aria-hidden" => "true", fill: "currentColor", viewbox: "0 0 20 20"}
+                %path{d: "M6.28 5.22a.75.75 0 00-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 101.06 1.06L10 11.06l3.72 3.72a.75.75 0 101.06-1.06L11.06 10l3.72-3.72a.75.75 0 00-1.06-1.06L10 8.94 6.28 5.22z"}

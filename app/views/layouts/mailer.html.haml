@@ -1,0 +1,38 @@
+!!!
+%html{lang: "en", xmlns: "http://www.w3.org/1999/xhtml", "xmlns:o" => "urn:schemas-microsoft-com:office:office"}
+  %head
+    %meta{content: "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %meta{charset: "UTF-8"}/
+    %meta{content: "width=device-width,initial-scale=1", name: "viewport"}/
+    %meta{name: "x-apple-disable-message-reformatting"}/
+    %title
+    /[if mso]
+      <noscript>
+      <xml>
+      <o:OfficeDocumentSettings>
+      <o:PixelsPerInch>96</o:PixelsPerInch>
+      </o:OfficeDocumentSettings>
+      </xml>
+      </noscript>
+    :css
+
+  %body{style: "margin:0;padding:0;background-color: #F4F4F5;"}
+    %table{role: "presentation", style: "width:100%;border-collapse:collapse;border:0;border-spacing:0;background:#F4F4F5;"}
+      %tr
+        %td{align: "center", style: "padding:0;"}
+          %table{role: "presentation", style: "width:720px;border-collapse:collapse;border-spacing:0;text-align:left;border-spacing: 0;border-collapse: separate;border-radius: 10px;"}
+            %tr
+              %td{align: "center", style: "padding:40px 0 30px 0;"}
+            %tr
+              %td{align: "left", style: "padding:0px 0 0px 30px;background:#FAFAFA;border-top-left-radius: 10px;border-top-right-radius: 10px;border-bottom: 1px solid#FAFAFA;"}
+                = image_tag('logo/levitas.png', width: '150px', height: '70px', alt: "logo")
+            %tr{style: "width:100%;border-collapse:collapse;border:0;border-spacing:0;background:#FFF;"}
+              %td{style: "padding:24px 40px 24px 40px; border-bottom-left-radius: 20px; border-bottom-right-radius: 20px;"}
+                %table{role: "presentation", style: "width:100%;border-collapse:collapse;border:0;border-spacing:0;"}
+                  %tr
+                    %td{style: "padding:0 0 36px 0;color:#153643;"}
+                      = yield
+                  %tr
+            %tr
+              %td{align: "center", style: "padding:40px 0 30px 0;font-family:Arial,sans-serif;color:#3F3F46;"}
+                Copyright © Levitas, Inc. All rights reserved.

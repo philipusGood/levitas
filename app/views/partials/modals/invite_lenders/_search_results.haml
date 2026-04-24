@@ -1,0 +1,18 @@
+%ul.absolute.top-11.inset-x-0.bg-white.grid.grid-cols-1.items-start.rounded.shadow-md.z-10{data: {"invite-lenders-target": "searchPopup"}}
+  - if lenders.empty? && params[:query].length > 3
+    %li.flex.p-2.gap-3.items-center.odd:bg-blue-50.even:bg-white
+      .flex.items-center.justify-center.rounded-full.w-12.h-12.bg-gray-400
+        %span.text-white.font-bold D
+      .flex.flex-col.flex-1.gap-1
+        %span.text-gray-600.font-bold= params[:query]
+        %p.text-gray-400.text-sm= t('partials.modals.invite_lenders.not_registered')
+      %span.text-blue-500.text-sm.font-bold.hover:cursor-pointer{ data: { "lender-email": params[:query], action: "click->invite-lenders#addLender" } }= t('partials.modals.invite_lenders.add')
+  - else
+    - lenders.each do |l|
+      %li.flex.p-2.gap-3.items-center.odd:bg-blue-50.even:bg-white
+        .flex.items-center.justify-center.rounded-full.w-12.h-12.bg-blue-400
+          %span.text-white.font-bold= l.short_full_name
+        .flex.flex-col.flex-1.gap-1
+          %span.text-gray-600.font-bold= l.full_name
+          %p.text-gray-400.text-sm= l.email
+        %span.text-blue-500.text-sm.font-bold.hover:cursor-pointer{ data: { "lender-email": l.email, action: "click->invite-lenders#addLender" } }= t('partials.modals.invite_lenders.add')

@@ -1,0 +1,30 @@
+.flex.flex-col.items-start.gap-3.p-4.rounded-lg.border.border-gray-200.bg-white.justify-between.h-full
+  .flex.flex-col.pb-3.gap-3.self-stretch.border-b.border-gray-100
+    - if deal.property_picture.attached?
+      = image_tag(deal.property_picture.variant(:thumb), class: "rounded-[10px] w-full h-24 object-center object-cover", height: "96")
+    - else
+      .w-full.h-24.object-center.object-cover{class: "rounded-[10px]"}
+    .flex.flex-col.items-start.grow.min-w-0.gap-1
+      .flex.items-center.self-stretch.justify-between.font-sans.font-normal{:class => "gap-[3px]"}
+        %p.self-stretch.text-blue-600.font-sans.font-bold
+          = number_to_currency_without_cents(deal.target)
+        .badge{class: "badge-#{deal.state}"}
+          = deal.state.humanize
+      .flex.flex-col.gap-1
+        %p.font-serif.font-medium.text-xl.text-gray-600.truncate.w-full{class: "leading-[30px] #{blur_style}"}
+          - if deal.property.address.unit.present?
+            = blur_content("#{deal.property.address.unit} #{deal.property.address.street}")
+          - else
+            = blur_content("#{deal.property.address.street}")
+        %p.font-medium.text-xs.text-gray-400
+          = "#{deal.property.address.city}, #{deal.property.address.province_abbreviation}"
+
+  - if user_signed_in?
+    = render 'dashboard/card/broker_stats', deal: deal unless current_user.lender?
+    = render 'dashboard/card/lender_stats', deal: deal if current_user.lender?
+  - else
+    = render 'dashboard/card/lender_stats', deal: deal
+
+  - if deal.lender_commited? current_user
+    .flex.items-center.py-3.px-4.rounded-lg.bg-emerald-50.w-full
+      %p.font-bold.text-sm.text-emerald-500= t('dashboard.index.you_funded_this_deal_with') + " #{number_to_currency(current_user.becomes(Lender).commited_capital(deal))}"

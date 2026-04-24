@@ -1,0 +1,12 @@
+%h1{style: "font-size:24px;margin:0 0 20px 0;font-family:Arial,sans-serif;color: #3F3F46"} Welcome #{@email}
+%p{style: "margin:0 0 30px 0;font-size:16px;line-height:24px;font-family:Arial,sans-serif;"} You can confirm your account email through the link below:
+%a{href: confirmation_url(@resource, confirmation_token: @token), style: "text-decoration: none; color: inherit;"}
+  %table{style: "margin:0 0 0px 0;background-color: #3B77A8; border: none; padding: 8px 12px; font-size: 16px; color: white; border-radius: 5px; cursor: pointer;font-family:Arial,sans-serif;"}
+    %tr
+      %td
+        Confirm my account
+
+%p{style: "margin:20px 0 30px 0;font-size:14px;line-height:20px;font-family:Arial,sans-serif; color: #3F3F46"}
+  If the button doesn't work, you can copy and paste this link into your browser:
+%p{style: "margin:0 0 30px 0;font-size:14px;line-height:20px;font-family:Arial,sans-serif; color: #3B77A8; word-break: break-all;"}
+  = confirmation_url(@resource, confirmation_token: @token)

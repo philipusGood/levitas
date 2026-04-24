@@ -1,0 +1,8 @@
+%div
+  %h1.deal-creator-step-title Secondary Applicant
+  %p.deal-creator-step-description
+    Increase your chances of mortgage approval by adding a secondary applicant to the deal. A secondary applicant can contribute additional income and strengthen the overall application. Choose to skip this step if you don't have a secondary applicant or proceed to add their information.
+
+  = link_to 'Add secondary Applicant', deal_secondary_applicant_path(@deal, 'information'), class: "py-2 px-3 border rounded-lg border-gray-200  text-base text-gray-600", id: "add-secondary-applicant"
+  = form_for @deal, url: deal_secondary_applicant_index_path, method: :get do |f|
+    = render partial: 'deals/partials/action_bar', locals: { f: f, back_action_path: deal_main_applicant_path(@deal, 'liabilities'), show_save_action: false, skip_action_path:  deal_guarantor_index_path, submit: false }

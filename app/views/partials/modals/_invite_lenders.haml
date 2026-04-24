@@ -1,0 +1,30 @@
+= turbo_frame_tag :modal do
+  .relative.z-40{ "aria-labelledby": "modal-title", "role": "dialog", "aria-modal": "true"}
+    .fixed.inset-0.bg-gray-500.bg-opacity-75
+    .fixed.inset-0.z-10.p-6.md:p-10.overflow-y-auto
+      .flex.min-h-full.items-center.justify-center.max-w-lg.mx-auto
+        .levitas-modal{data: {controller: "modal invite-lenders"}}
+          .header.border-none
+            %span.title= t('.invite_lenders')
+            = button_tag type: :button, class: "min-w-[1.5rem] min-h-[1.5rem]" do
+              = image_tag "icons/x.svg", {"data-action": "click->modal#close"}
+          .body
+            %p.text-gray-500= t('.invite_lenders_msg')
+            = form_with url: search_lenders_autocomplete_deal_lenders_path(@deal), method: :post, class: 'body', data: {"invite-lenders-target": "searchForm"} do |f|
+              .levitas-search-input
+                = f.text_field :query, placeholder: t('.search_lenders'), data: { action: "input->invite-lenders#searchLender" }
+                %div{id: 'search_results'}
+            = form_with url: deal_lenders_path(@deal), method: :post, class: "footer", data: { "invite-lenders-target": "inviteForm" } do |f|
+              %ul.grid.grid-cols-1.max-h-80.items-start.overflow-y-auto{ "data-invite-lenders-target": "lendersList", id: 'added_lenders' }
+          .footer
+            .flex.flex-auto.items-center.gap-6.justify-between
+              %span.text-sm.text-gray-500.font-bold{id: "lendersSelected"}= t('.lenders_selected', count: 0)
+              = button_tag t('.send_invites'), id: "send-invites", disabled: :disabled, class: "levitas-button primary large", "data-action": "click->invite-lenders#inviteLenders"
+            %li.flex.p-2.gap-3.items-center.hidden{id: "lenderListItemTemplate"}
+              .flex.items-center.justify-center.rounded-full.w-12.h-12.bg-blue-400
+                %span.text-white.font-bold BS
+              .flex.flex-col.flex-1.gap-1
+                %span.text-gray-600.font-bold= t('.lender_email')
+                %p.text-gray-400.text-sm brooklyn@broker.io
+              %span.text-rose-600.text-sm.font-bold{ data: { email: '', action: "click->invite-lenders#removeLender" } }= t('.remove')
+              = hidden_field_tag 'lenders[]', value: ""

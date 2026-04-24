@@ -1,0 +1,28 @@
+.flex.flex-col.self-stretch.gap-3.bg-white.border.border-gray-200.rounded-lg.text-gray-600.font-sans
+  = render partial: "deals/partials/terms_banner", locals: {title: "Set the terms of the Deal", description: "Make sure you understand and accept these terms proposed by Levitas."}
+  .flex.flex-col.md:flex-row.px-2.gap-3.border-b.border-gray-200.pb-3
+    = render "deals/partials/score_gauge"
+  - #= form_form deal.terms, url: deal_terms_path(deal), method: :post, class: "flex flex-wrap gap-3" do |f|
+  = form_with url: '#', method: :post, class: "flex flex-wrap px-4 gap-3" do |f|
+    .terms-cell.px-0.text-gray-700{class: "gap-1.5"}
+      = f.label :mortgage_principal, t('.mortage_principal'), class: "text-sm font-bold"
+      %p.text-xs.text-gray-500.mt-1= t('deals.edit.mortage_principal_hint')
+      = f.text_field :mortgage_principal, class: "terms-form-input"
+    .terms-cell.px-0.text-gray-700{class: "gap-1.5"}
+      = f.label :terms, t('.terms'), class: "text-sm font-bold"
+      = f.text_field :terms, class: "terms-form-input"
+    .terms-cell.px-0.text-gray-700{class: "gap-1.5"}
+      = f.label :interest_rate, t('.interest_rate'), class: "text-sm font-bold"
+      = f.text_field :interest_rate, class: "terms-form-input"
+    .terms-cell.px-0.text-gray-700{class: "gap-1.5"}
+      = f.label :amortization_period, t('.amortization_period'), class: "text-sm font-bold"
+      = f.select :amortization_period, options_for_select(SelectOptions::AMORTIZATION_PERIOD, nil), {}, disabled: true, class: "terms-form-input"
+    .terms-cell.px-0.text-gray-700{class: "gap-1.5"}
+      = f.label :broker_fee, t('.broker_fee'), class: "text-sm font-bold"
+      = f.text_field :broker_fee, class: "terms-form-input"
+    .terms-cell.px-0.text-gray-700{class: "gap-1.5"}
+      = f.label :type, t('.type'), class: "text-sm font-bold"
+      = f.select :type, options_for_select(SelectOptions::MORTAGE_TYPE, nil), {}, class: "terms-form-input"
+  .flex.items-center.justify-end.p-4.gap-3.self-stretch
+    = levitas_button(:button, "Reject Deal", "danger")
+    = levitas_button(:button, "Approve and Send Deal Terms", "primary")

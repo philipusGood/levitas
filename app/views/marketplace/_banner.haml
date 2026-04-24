@@ -1,0 +1,18 @@
+%div{class: "min-h-[200px]"}
+.hidden.lg:flex.p-2.fixed.w-full.left-0.bottom-0.lg:bottom-10.bg-gray-900.lg:rounded-xl.z-30.items-center.flex.gap-4{:class => "lg:left-[calc(100%-95%)] lg:w-[calc(100%-10%)] min-h-[72px]"}
+  %div.p-2
+    = image_tag("logo/levitas.svg")
+  %div
+    = image_tag("icons/lock.svg")
+  %div.flex.text-white.justify-center.flex-col
+    %p
+      Full Deal Details are available to accredited investors only.
+    %p
+      Please sign up or log in to view.
+  .flex.flex-1.items-end.justify-end
+    %div.flex.gap-2
+      - unless request.path == marketplace_index_path
+        %a.btn.btn-default{href: "/marketplace"}
+          Visit Marketplace
+      %a.btn.btn-primary{href: root_path}
+        Login / Sign Up to View

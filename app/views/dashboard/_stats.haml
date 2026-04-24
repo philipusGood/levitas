@@ -1,0 +1,44 @@
+.grid.grid-cols-2.gap-3
+  - if current_user.broker?
+    .flex.flex-col.gap-2.px-4.py-3.bg-white.border.border-gray-100.rounded-lg
+      %span.font-bold.text-sm.text-gray-800.opacity-70= t('.total_mortgage_value')
+      .flex.flex-auto.items-end
+        %p.font-serif.font-bold.text-2xl.text-gray-800
+          = number_to_currency_without_cents(performance.total_mortage_value)
+    .flex.flex-col.gap-2.px-4.py-3.bg-white.border.border-gray-100.rounded-lg
+      %span.font-bold.text-sm.text-gray-800.opacity-70= t('.deals_closing')
+      .flex.flex-auto.items-end
+        %p.font-serif.font-bold.text-2xl.text-gray-800
+          = performance.closing
+    .flex.flex-col.gap-2.px-4.py-3.bg-white.border.border-gray-100.rounded-lg
+      %span.font-bold.text-sm.text-gray-800.opacity-70= t('.fees_generated')
+      .flex.flex-auto.items-end
+        %p.font-serif.font-bold.text-2xl.text-gray-800
+          = number_to_currency_without_cents(performance.fees_generated)
+    .flex.flex-col.gap-2.px-4.py-3.bg-white.border.border-gray-100.rounded-lg
+      %span.font-bold.text-sm.text-gray-800.opacity-70= t('.total_active_deals')
+      .flex.flex-auto.items-end
+        %p.font-serif.font-bold.text-2xl.text-gray-800
+          = performance.total_active_deals
+  - if current_user.lender?
+    .flex.flex-col.gap-2.px-4.py-3.bg-white.border.border-gray-100.rounded-lg
+      %span.font-bold.text-sm.text-gray-800.opacity-70
+        = t('.total_invested_capital')
+      .flex.flex-auto.items-end
+        %p.font-serif.font-bold.text-2xl.text-gray-800
+          = number_to_currency_without_cents(@lender_performance.total_invested_capital, {})
+    .flex.flex-col.gap-2.px-4.py-3.bg-white.border.border-gray-100.rounded-lg
+      %span.font-bold.text-sm.text-gray-800.opacity-70= t('.total_commited_capital')
+      .flex.flex-auto.items-end
+        %p.font-serif.font-bold.text-2xl.text-gray-800
+          = number_to_currency_without_cents(@lender_performance.total_committed_capital, {})
+    .flex.flex-col.gap-2.px-4.py-3.bg-white.border.border-gray-100.rounded-lg
+      %span.font-bold.text-sm.text-gray-800.opacity-70= t('.total_ROI')
+      .flex.flex-auto.items-end
+        %p.font-serif.font-bold.text-2xl.text-gray-800
+          = @lender_performance.irr
+    .flex.flex-col.gap-2.px-4.py-3.bg-white.border.border-gray-100.rounded-lg
+      %span.font-bold.text-sm.text-gray-800.opacity-70= t('.monthly_cashflow')
+      .flex.flex-auto.items-end
+        %p.font-serif.font-bold.text-2xl.text-gray-800
+          = number_to_currency_without_cents(@lender_performance.cashflows)

@@ -1,0 +1,53 @@
+= form_with url: defined?(action_url) ? action_url : marketplace_index_path(request.query_parameters.merge({})), method: :get, data: {turbo: false} do |f|
+  - if @visibility.present?
+    = f.hidden_field :visibility, value: @visibility
+  - if params[:filter]
+    = f.hidden_field :filter, value: params[:filter]
+  = f.hidden_field :view, value: @deals_view, data: {"sidebar-target": "dealView"}
+  .flex.flex-col.w-full.divide-y.divide-gray-200.text-gray-600
+    .flex.flex-auto.p-6.gap-4.items-center
+      %span.flex-1.grow.font-bold.leading-9.text-2xl.font-serif= t('.filters')
+      = image_tag "icons/x.svg", {"data-action": "click->sidebar#toggle", class: "hover:cursor-pointer"}
+    .flex.flex-col.divide-y.divide-gray-200{class: "pb-[7.5rem]"}
+      .flex.flex-col.p-6.gap-3
+        %span.font-bold.text-base.py-2= t('.deal_amount')
+        .flex.gap-4
+          .flex.flex-col{class: "gap-1.5"}
+            = f.label :amount_min, t('.min'), class: 'font-bold text-sm flex'
+            = f.text_field :amount_min, placeholder: '100000', class: 'levitas-form-input w-full', value: params[:amount_min]
+          .flex.flex-col{class: "gap-1.5"}
+            = f.label :amount_max, t('.max'), class: 'font-bold text-sm flex'
+            = f.text_field :amount_max, placeholder: '800000', class: 'levitas-form-input w-full', value: params[:amount_max]
+      .flex.flex-col.p-6.gap-3
+        %span.font-bold.text-base.py-2= t('.closing_date')
+        .flex.gap-4
+          .flex.flex-1.flex-col{class: "gap-1.5"}
+            = f.select :closing_date, options_for_select(SelectOptions::DEAL_CLOSING_DATE, params[:closing_date]), {}, {class: "levitas-form-input"}
+      .flex.flex-col.p-6.gap-3
+        %span.font-bold.text-base.py-2= t('.interest_rate')
+        .flex.gap-4
+          .flex.flex-auto.flex-col{class: "gap-1.5"}
+            = f.label :interest_rate_min, t('.min'), class: 'font-bold text-sm'
+            = f.number_field :interest_rate_min, placeholder: '8%', min: 0, max: 100, step: "0.1", class: 'levitas-form-input', value: params[:interest_rate_min]
+          .flex.flex-auto.flex-col{class: "gap-1.5"}
+            = f.label :interest_rate_max, t('.max'), class: 'font-bold text-sm'
+            = f.number_field :interest_rate_max, placeholder: '10%', min: 1, max: 100, step: "0.1", class: 'levitas-form-input', value: params[:interest_rate_max]
+      .flex.flex-col.p-6.gap-3
+        %span.font-bold.text-base.py-2= t('.lenders_fee')
+        .flex.gap-4
+          .flex.flex-auto.flex-col{class: "gap-1.5"}
+            = f.label :lenders_fee_min, t('.min'), class: 'font-bold text-sm'
+            = f.number_field :lenders_fee_min, placeholder: '1%', min: 0, max: 100, step: "0.1", class: 'levitas-form-input', value: params[:lenders_fee_min]
+          .flex.flex-auto.flex-col{class: "gap-1.5"}
+            = f.label :lenders_fee_max, t('.max'), class: 'font-bold text-sm'
+            = f.number_field :lenders_fee_max, placeholder: '2.5%', min: 1, max: 100, step: "0.1", class: 'levitas-form-input', value: params[:lenders_fee_max]
+      .flex.flex-col.p-6.gap-3
+        %span.font-bold.text-base.py-2= t('.provinces')
+        .grid.grid-cols-2.gap-4
+          - SelectOptions::CANADA_PROVINCES.each do |province, value|
+            .flex.gap-2
+              = f.check_box :provinces, { multiple: true, class: 'rounded border-gray-400 text-blue-500', checked: (params[:provinces].present? && params[:provinces].include?(value)) }, value, nil
+              = f.label "provinces_#{value.downcase}", province, class: "text-sm text-gray-700"
+    .flex.justify-between.gap-4.py-4.px-6
+      %input.levitas-button.large{type: :reset, value: t('.clear_all')}
+      = f.submit t('.show_deals'), class: "levitas-button large primary", "data-action": "click->sidebar#toggle"

@@ -1,0 +1,18 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title Levitas
+    %meta{:content => "width=device-width,initial-scale=1", :name => "viewport"}/
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload"
+    = stylesheet_link_tag "application", "data-turbo-track": "reload"
+    %link{href: "https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css", rel: "stylesheet"}
+    = javascript_importmap_tags
+    = hotwire_livereload_tags if Rails.env.development?
+  %body.lg:bg-gray-50.overflow-hidden
+    .flex.z-30.w-full.items-center.justify-between.h-16.p-3.bg-gray-900.shadow.lg:h-auto.lg:px-4.lg:py-6.lg:shadow-none.lg:flex-none{"data-layout-target": "topBar"}
+      = image_tag 'logo/levitas.svg', class: "py-1.5 lg:py-2 lg:px-3 lg:h-10"
+    %main.flex-auto
+      = yield

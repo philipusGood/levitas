@@ -1,0 +1,6 @@
+.flex.items-center.gap-2{"data-controller": "deals"}
+  %div.hidden.bg-gray-300.rounded.min-w-full.min-h-full
+  %p.reveal-paragraph.select-none.w-full{"data-deals-target": "reveal"}= text.html_safe
+  .flex{"data-deals-target": "revealIcon", class: "hover:cursor-pointer"}
+    = image_tag "icons/eye.svg", data: {action: "click->deals#toggleReveal"}
+    = image_tag "icons/eye-off.svg", class: "hidden", data: {action: "click->deals#toggleReveal"}
